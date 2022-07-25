@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/pages/pageInscriptionPatient.dart';
 
 class PageAccueil extends StatefulWidget {
   @override
@@ -9,33 +10,48 @@ class _PageAccueilState extends State<PageAccueil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: ListView(
         children: [
           Column(
             children: [
               Container(
-                padding: EdgeInsetsDirectional.only(top:20, bottom: 20,),
+                width: 300,
+                padding: EdgeInsetsDirectional.only(top:20, bottom: 10,),
                // margin: EdgeInsets.all(20),
-                child: Center(
-                  child: Text(
-                    'Bienvenue sur l\'application E-Diab Care',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  'Bienvenue sur l\'application E-Diab Care',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               Container(
-                padding: EdgeInsetsDirectional.only(top: 20, bottom: 20),
-                child: Center(
-                  child: Text(
-                    'Hey! Bienvenu sur votre compagnon sanitaire. '
-                        'Nous vous proposons une alternative de suivi facile de '
-                        'votre diabète ',
-                    style: TextStyle(
-                      fontSize: 20 ,
-                      fontWeight: FontWeight.bold,
+                padding: EdgeInsetsDirectional.only(top: 10, bottom: 20),
+                child: Image.asset('images/AccueilGluco2.PNG'),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context,MaterialPageRoute(builder: (context)
+                  {
+                    return InscriptionPatient();
+                  }));
+                },
+                child: Container(
+                  height: 80,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100.0),
+                    color: Color(0xFFA2CCF9),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Continuer',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23,
+                      ),
                     ),
                   ),
                 ),

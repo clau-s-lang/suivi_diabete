@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../pages/pageInscriptionMedecin.dart';
 
@@ -61,15 +62,17 @@ class ReusableTextFormField extends StatelessWidget {
     return Container(
       width: 330,
       child: TextFormField(
-        controller: name, style: TextStyle(
+        controller: name,
+        style: TextStyle(
         fontSize: 15,
+        height: 0.5,
       ),
         validator: (value) =>
             value == null ? message : null,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: Icon(icone,
-          size: 35.0, color: Color(0xFFA2CCF9),),
+          size: 30.0, color: Color(0xFFA2CCF9),),
           border: OutlineInputBorder(),
           labelText: label,
           hintText: hint,

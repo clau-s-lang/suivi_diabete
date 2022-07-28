@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/pages/pageDataPatient.dart';
+import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
 import '../modeles/Reusables.dart';
 
@@ -21,7 +23,7 @@ class _ConnexionState extends State<Connexion> {
             'Connexion',
           ),
           SizedBox(
-            height: 100,
+            height: 80,
           ),
           Column(
             children: [
@@ -44,6 +46,25 @@ class _ConnexionState extends State<Connexion> {
               ),
               SizedBox(
                 height: 10,
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Mot de passe oublié?',
+                    style: TextStyle(
+                      color: Color(0xFFA2CCF9),
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ReusableButton(
+                text: 'Se Connecter',
+                ToPage: DonneesPatient(),
               ),
             ],
           ),

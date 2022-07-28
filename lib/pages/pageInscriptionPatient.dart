@@ -1,8 +1,9 @@
+//import 'package:dropdown_formfield/dropdown_formfield.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageInscriptionMedecin.dart';
 
 import '../modeles/Reusables.dart';
-
 
 class InscriptionPatient extends StatefulWidget {
   @override
@@ -10,7 +11,6 @@ class InscriptionPatient extends StatefulWidget {
 }
 
 class _InscriptionPatientState extends State<InscriptionPatient> {
-
   final name = TextEditingController();
   final prenom = TextEditingController();
   final genre = TextEditingController();
@@ -27,10 +27,10 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
       body: ListView(
         children: [
           ReusableRetour(),
-          ReusableMenuName(
-            'Inscription du patient'
+          ReusableMenuName('Inscription du patient'),
+          SizedBox(
+            height: 20,
           ),
-          SizedBox(height: 20,),
           Column(
             children: [
               ReusableTextFormField(
@@ -40,7 +40,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Completer votre nom',
                 icone: (Icons.account_circle_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: prenom,
                 message: 'Ce champ est obligatoire',
@@ -48,15 +50,19 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Completer votre prenom',
                 icone: (Icons.account_circle_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: genre,
                 message: 'Ce champ est obligatoire',
                 label: 'Genre',
-                hint: 'Choisissez votre genre',
+                hint: 'Completer votre prenom',
                 icone: (Icons.account_circle_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: adresse,
                 message: 'Ce champ est obligatoire',
@@ -64,7 +70,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Q.Keshero, Av.Ngobobo, Com. Goma',
                 icone: (Icons.location_on_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: phone,
                 message: 'Ce champ est obligatoire',
@@ -72,7 +80,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: '09707129016',
                 icone: (Icons.phone_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: email,
                 message: 'Ce champ est obligatoire',
@@ -80,7 +90,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Exemple@gmail.com',
                 icone: (Icons.mail_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: code,
                 message: 'Ce champ est obligatoire',
@@ -88,7 +100,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Completer le code votre medecin',
                 icone: (Icons.lock_outline),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: MdP,
                 message: 'Ce champ est obligatoire',
@@ -96,7 +110,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Completer votre mot de passe',
                 icone: (Icons.password_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableTextFormField(
                 name: confimMdP,
                 message: 'Les mots de passe correspondent pas',
@@ -104,10 +120,12 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 hint: 'Completer le meme mot de passe',
                 icone: (Icons.password_outlined),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               ReusableButton(
                 text: 'S\'inscrire',
-                  ToPage : InscriptionMedecin(),
+                ToPage: InscriptionMedecin(),
               ),
             ],
           ),
@@ -116,9 +134,3 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
     );
   }
 }
-
-
-
-
-
-

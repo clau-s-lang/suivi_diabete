@@ -21,6 +21,16 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   final MdP = TextEditingController();
   final confimMdP = TextEditingController();
 
+  final items = ['Masculin', 'Feminin', 'Genre'];
+  String? value = 'Genre';
+
+  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+        value: item,
+        child: Text(
+          item,
+          style: TextStyle(fontSize: 15, color: Colors.black54),
+        ),
+      );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +59,34 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                 label: 'Prenom',
                 hint: 'Completer votre prenom',
                 icone: (Icons.account_circle_outlined),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  left: 10,
+                ),
+                width: 330,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Colors.grey, width: 1),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: value,
+                    isExpanded: true,
+                    iconSize: 36,
+                    icon: Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.grey,
+                    ),
+                    items: items.map(buildMenuItem).toList(),
+                    onChanged: (value) => setState(() {
+                      this.value = value;
+                    }),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 10,

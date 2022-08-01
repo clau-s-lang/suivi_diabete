@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/pages/pageDataPatient.dart';
 
 import '../modeles/Reusables.dart';
 
@@ -15,41 +16,54 @@ class _MenuPatientState extends State<MenuPatient> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Text(
-              'Side menu',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+          MenuHeader(
+            ident: 'Diabète de type 2',
+            noms: 'Claudette Vanzirwe',
+            profil: 'images/clau.jpg',
+          ),
+          MenuNames(
+            designation: 'Ajouter des données',
+            icone: Icon(
+              Icons.library_add_outlined,
+              //color: Color(0xFFA2CCF9),
             ),
-            decoration: BoxDecoration(
-                color: Colors.green,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/AccueilGluco2.PNG'))),
+            ToPage: DonneesPatient(),
           ),
-          ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
+          MenuNames(
+            designation: 'Mon dossier médical',
+            icone: Icon(Icons.medical_services_outlined),
+            ToPage: DonneesPatient(),
           ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
+
+          MenuNames(
+            designation: 'Contacter mon médecin',
+            icone: Icon(Icons.call),
+            ToPage: DonneesPatient(),
           ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
+          MenuNames(
+            designation: 'Mon historique',
+            icone: Icon(Icons.data_exploration_outlined),
+            ToPage: DonneesPatient(),
           ),
-          ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
+          MenuNames(
+            designation: 'Infos sur le diabète',
+            icone: Icon(Icons.feed_outlined),
+            ToPage: DonneesPatient(),
           ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+          MenuNames(
+            designation: 'Mon Glucomètre',
+            icone: Icon(Icons.bluetooth_audio_outlined),
+            ToPage: DonneesPatient(),
+          ),
+          MenuNames(
+            designation: 'Paramètres',
+            icone: Icon(Icons.settings_outlined),
+            ToPage: DonneesPatient(),
+          ),
+          MenuNames(
+            designation: 'Déconnexion',
+            icone: Icon(Icons.exit_to_app),
+            ToPage: DonneesPatient(),
           ),
         ],
       ),

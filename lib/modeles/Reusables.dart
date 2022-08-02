@@ -219,3 +219,79 @@ class MenuNames extends StatelessWidget {
     );
   }
 }
+
+// plage identifiant de completion des donnees
+
+class PlageDeDonnees extends StatelessWidget {
+  PlageDeDonnees({
+    required this.designation,
+    required this.icone,
+  });
+
+  String designation;
+  Icon icone;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Color(0xFFE8F0FE),
+      ),
+      height: 50,
+      width: 330,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          icone,
+          SizedBox(width: 5,),
+          Text(
+            designation,
+            style: TextStyle(
+              color: Color(0xFF216DAD),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// champ pour completer les donnees
+
+class ReusableTextFormFieldData extends StatelessWidget {
+  ReusableTextFormFieldData({
+    required this.name,
+    required this.hint,
+    required this.label,
+    required this.message,
+
+  });
+
+  final TextEditingController name;
+  String message, label, hint;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 330,
+      child: TextFormField(
+        controller: name,
+        style: TextStyle(
+          fontSize: 15,
+          height: 0.5,
+        ),
+        validator: (value) =>
+        value == null ? message : null,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: label,
+          hintText: hint,
+        ),
+      ),
+    );
+  }
+}
+

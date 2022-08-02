@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
@@ -9,7 +10,6 @@ class DonneesPatient extends StatefulWidget {
 }
 
 class _DonneesPatientState extends State<DonneesPatient> {
-
   final glycemie = TextEditingController();
 
   @override
@@ -22,30 +22,100 @@ class _DonneesPatientState extends State<DonneesPatient> {
       ),
       body: ListView(
         children: [
-          SizedBox(height: 10,),
-          Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFFE8F0FE),
-            ),
-            height: 50,
-            width: 330,
-            child: Center(
-              child: Text(
-                'GLYCEMIE',
-                style: TextStyle(
-                  //color: Color(0xFF216DAD),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          SizedBox(
+            height: 10,
+          ),
+          PlageDeDonnees(
+            designation: 'GLYCEMIE',
+            icone: Icon(
+              Icons.bloodtype_outlined,
+              color: Color(0xFF216DAD),
             ),
           ),
-          SizedBox(height: 10,),
-          ReusableTextFormField(
+          SizedBox(
+            height: 10,
+          ),
+          ReusableTextFormFieldData(
             name: glycemie,
             message: 'Ce champ est obligatoire',
             label: 'Glycemie',
-            hint: '2.5 g/l',
-            icone: (Icons.bloodtype),
+            hint: 'Exemple : 2.5 g/l',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          PlageDeDonnees(
+            icone: Icon(Icons.star, color: Color(0xFF216DAD)),
+            designation: 'INSULINE',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ReusableTextFormFieldData(
+            name: glycemie,
+            message: 'Ce champ est obligatoire',
+            label: 'Insuline basale',
+            hint: 'Exemple : 2.5 U',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ReusableTextFormFieldData(
+            name: glycemie,
+            message: 'Ce champ est obligatoire',
+            label: 'Insuline bolus',
+            hint: 'Exemple : 2.5 U',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ReusableTextFormFieldData(
+            name: glycemie,
+            message: 'Ce champ est obligatoire',
+            label: 'Insuline de correction',
+            hint: 'Exemple : 2.5 U',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          PlageDeDonnees(
+            icone: Icon(Icons.star, color: Color(0xFF216DAD)),
+            designation: 'ACTIVITE PHYSIQUE',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(1000),
+                      color: Colors.blue,
+                      image: DecorationImage(
+                        image: AssetImage('images/clau.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    child: Text(
+                      'Muscu',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),

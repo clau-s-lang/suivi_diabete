@@ -65,6 +65,7 @@ class _ConnexionState extends State<Connexion> {
               ReusableButton(
                 text: 'Se Connecter',
                 ToPage: DonneesPatient(),
+                dim: 300,
               ),
             ],
           ),

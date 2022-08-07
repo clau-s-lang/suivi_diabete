@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
+import 'package:gestion_diabete/pages/pageMonDossierMedicalMedecin.dart';
 
 import '../modeles/Reusables.dart';
 
@@ -32,7 +33,7 @@ class _MenuPatientState extends State<MenuPatient> {
           MenuNames(
             designation: 'Mon dossier médical',
             icone: Icon(Icons.medical_services_outlined),
-            ToPage: DonneesPatient(),
+            ToPage: DossierMedical(),
           ),
 
           MenuNames(

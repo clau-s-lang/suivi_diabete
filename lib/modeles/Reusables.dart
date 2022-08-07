@@ -88,10 +88,12 @@ class ReusableButton extends StatelessWidget {
   ReusableButton({
     required this.text,
     required this.ToPage,
+    required this.dim,
   });
 
   String text;
   Widget ToPage;
+  double dim;
 
 
   @override
@@ -105,7 +107,7 @@ class ReusableButton extends StatelessWidget {
       },
       child: Container(
         height: 50,
-        width: 300,
+        width: dim,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.0),
           color: Color(0xFFA2CCF9),
@@ -295,3 +297,130 @@ class ReusableTextFormFieldData extends StatelessWidget {
   }
 }
 
+// Icones demonstratives
+
+class IconDemo extends StatelessWidget {
+  IconDemo({
+    required this.image,
+    required this.designation,
+  });
+
+  String image,designation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+       GestureDetector(
+         onTap: (){},
+         child:  Container(
+           width: 60,
+           height: 60,
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(1000),
+             color: Colors.blue,
+             image: DecorationImage(
+               image: AssetImage(image),
+               fit: BoxFit.cover,
+             ),
+           ),
+         ),
+       ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          child: Text(
+            designation,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// Plage descriptif
+
+class PlageDeDescription extends StatelessWidget {
+  PlageDeDescription({
+    required this.designation,
+  });
+
+  String designation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 15),
+      decoration: const BoxDecoration(
+        color: Color(0xFFF6F5F7),
+      ),
+      height: 50,
+      width: 330,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            designation,
+            style: TextStyle(
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Espace Verticale
+
+class EspaceVerticale extends StatelessWidget {
+  const EspaceVerticale({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: 10,);
+  }
+}
+
+// champs dossier medical
+
+class ReusableTextFormFieldDossierOccaz extends StatelessWidget {
+  ReusableTextFormFieldDossierOccaz({
+    required this.name,
+    required this.label,
+    required this.hint,
+
+  });
+
+  final TextEditingController name;
+  String label,hint;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 330,
+      child: TextFormField(
+        controller: name,
+        style: TextStyle(
+          fontSize: 15,
+          height: 0.5,
+        ),
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: label,
+          hintText: hint,
+        ),
+      ),
+    );
+  }
+}

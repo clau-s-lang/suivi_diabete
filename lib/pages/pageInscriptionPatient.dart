@@ -164,6 +164,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ReusableButton(
                 text: 'S\'inscrire',
                 ToPage: InscriptionMedecin(),
+                dim: 300,
               ),
             ],
           ),

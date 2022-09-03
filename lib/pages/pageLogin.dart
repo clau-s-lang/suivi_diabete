@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
-import '../modeles/Reusables.dart';
+import '../Constants/Reusables.dart';
 
 class Connexion extends StatefulWidget {
   @override

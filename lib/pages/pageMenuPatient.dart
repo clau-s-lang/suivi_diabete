@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/pages/pageAccueilMonTraitement.dart';
+import 'package:gestion_diabete/pages/pageChat.dart';
+import 'package:gestion_diabete/pages/pageChatAccueilMedecin.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMonDossierMedicalMedecin.dart';
 
-import '../modeles/Reusables.dart';
+import '../Constants/Reusables.dart';
 
 class MenuPatient extends StatefulWidget {
   @override
@@ -39,22 +42,22 @@ class _MenuPatientState extends State<MenuPatient> {
           MenuNames(
             designation: 'Contacter mon médecin',
             icone: Icon(Icons.call),
-            ToPage: DonneesPatient(),
+            ToPage: Messagerie(),
           ),
           MenuNames(
             designation: 'Mon historique',
             icone: Icon(Icons.data_exploration_outlined),
-            ToPage: DonneesPatient(),
+            ToPage: AccueilChatMedecin(),
+          ),
+          MenuNames(
+            designation: 'Mon traitement',
+            icone: Icon(Icons.medication_outlined),
+            ToPage: AccueilMonTraitement(),
           ),
           MenuNames(
             designation: 'Infos sur le diabète',
             icone: Icon(Icons.feed_outlined),
-            ToPage: DonneesPatient(),
-          ),
-          MenuNames(
-            designation: 'Mon Glucomètre',
-            icone: Icon(Icons.bluetooth_audio_outlined),
-            ToPage: DonneesPatient(),
+            ToPage: AccueilChatMedecin(),
           ),
           MenuNames(
             designation: 'Paramètres',

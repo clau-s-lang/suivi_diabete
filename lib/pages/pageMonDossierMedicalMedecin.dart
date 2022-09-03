@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageLogin.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
-import '../modeles/Reusables.dart';
+import '../Constants/Reusables.dart';
 
 class DossierMedical extends StatefulWidget {
   @override

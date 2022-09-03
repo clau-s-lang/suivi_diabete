@@ -106,6 +106,7 @@ class ReusableButton extends StatelessWidget {
         }));
       },
       child: Container(
+        margin: EdgeInsets.all(10),
         height: 50,
         width: dim,
         decoration: BoxDecoration(
@@ -236,11 +237,12 @@ class PlageDeDonnees extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(left: 3, right: 3),
       decoration: const BoxDecoration(
         color: Color(0xFFE8F0FE),
       ),
       height: 50,
-      width: 330,
+      width: 300,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -277,7 +279,8 @@ class ReusableTextFormFieldData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 330,
+      padding: EdgeInsets.only(left: 10, right: 10),
+      width: 300,
       child: TextFormField(
         controller: name,
         style: TextStyle(
@@ -407,7 +410,8 @@ class ReusableTextFormFieldDossierOccaz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 330,
+      padding: EdgeInsets.only(left: 10, right: 10),
+      width: 300,
       child: TextFormField(
         controller: name,
         style: TextStyle(
@@ -420,6 +424,28 @@ class ReusableTextFormFieldDossierOccaz extends StatelessWidget {
           labelText: label,
           hintText: hint,
         ),
+      ),
+    );
+  }
+}
+
+// champ d'ecriture de message
+
+class NewMessageWidget extends StatelessWidget {
+  const NewMessageWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey.shade200,
+      child: TextField(
+        decoration: const InputDecoration(
+          contentPadding: EdgeInsets.all(12),
+          hintText: 'Tapez votre message...',
+        ),
+
       ),
     );
   }

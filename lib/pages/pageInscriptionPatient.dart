@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageInscriptionMedecin.dart';
 
-import '../modeles/Reusables.dart';
+import '../Constants/Reusables.dart';
 
 class InscriptionPatient extends StatefulWidget {
   @override

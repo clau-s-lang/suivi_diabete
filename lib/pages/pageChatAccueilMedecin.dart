@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
 
-import '../Constants/CarteMessagerieMedecin.dart';
+import '../Reusables/CarteMessagerieMedecin.dart';
+import '../Reusables/CarteMessagerieMedecin.dart';
 
 class AccueilChatMedecin extends StatefulWidget {
   @override

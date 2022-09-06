@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
-import '../Constants/Reusables.dart';
+import '../Reusables/BoutonDeConfimation.dart';
+import '../Reusables/ChampsIdentifiants.dart';
+import '../Reusables/Icone de retour.dart';
+import '../Reusables/ChampdeRedactionMessage.dart';
+import '../Reusables/TitreSansAppBar.dart';
 
 class Connexion extends StatefulWidget {
   @override

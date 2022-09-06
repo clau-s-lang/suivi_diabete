@@ -3,7 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageInscriptionMedecin.dart';
 
-import '../Constants/Reusables.dart';
+import '../Reusables/BoutonDeConfimation.dart';
+import '../Reusables/ChampsIdentifiants.dart';
+import '../Reusables/Icone de retour.dart';
+import '../Reusables/ChampdeRedactionMessage.dart';
+import '../Reusables/TitreSansAppBar.dart';
 
 class InscriptionPatient extends StatefulWidget {
   @override

@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageLogin.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
-import '../Constants/Reusables.dart';
+import '../Reusables/BoutonDeConfimation.dart';
+import '../Reusables/ChampData.dart';
+import '../Reusables/ChampDossierMed.dart';
+import '../Reusables/IconeDemostrative.dart';
+import '../Reusables/PlageIdentifiantData.dart';
+import '../Reusables/PlageSansIcone.dart';
+import '../Reusables/ChampdeRedactionMessage.dart';
 
 class DonneesPatient extends StatefulWidget {
   @override

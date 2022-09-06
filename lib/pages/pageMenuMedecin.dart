@@ -6,7 +6,9 @@ import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMonDossierMedicalMedecin.dart';
 import 'package:gestion_diabete/pages/pageOrdonanceMedecin.dart';
 
-import '../Constants/Reusables.dart';
+import '../Reusables/AppBarDrawer.dart';
+import '../Reusables/DenominationMenus.dart';
+import '../Reusables/ChampdeRedactionMessage.dart';
 
 class MenuMedecin extends StatefulWidget {
   @override

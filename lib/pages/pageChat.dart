@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Constants/Reusables.dart';
+import '../Reusables/ChampdeRedactionMessage.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';

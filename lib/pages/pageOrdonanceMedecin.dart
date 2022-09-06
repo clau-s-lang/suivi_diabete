@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
-
-import '../Constants/Reusables.dart';
+import '../Reusables/AjoutSuppression.dart';
+import '../Reusables/BoutonDeConfimation.dart';
+import '../Reusables/ChampData.dart';
+import '../Reusables/ChampOrdonnance.dart';
+import '../Reusables/IdentifiantOrdonance.dart';
 
 class PrescriptionMed extends StatefulWidget {
   @override
@@ -10,6 +14,8 @@ class PrescriptionMed extends StatefulWidget {
 }
 
 class _PrescriptionMedState extends State<PrescriptionMed> {
+  final ordonance = TextEditingController();
+  final posologie = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +26,81 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
       ),
       body: ListView(
         children: [
-          Container(
-            child: Text(
-              ''
-            ),
+          Column(
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: Center(
+                  child: Text(
+                    'E-Diab Health Care Service',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              IdOrdonnance(
+                variable: 'Patient : ',
+                valeur: 'Claudette Vanzirwe',
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              IdOrdonnance(
+                variable: 'Age : ',
+                valeur: '24' + 'ans',
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              IdOrdonnance(variable: 'Date : ', valeur: '24/08/2022'),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: Text(
+                    '------------------------------------------------------------------------------------'),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ChampOrdannance(
+            ordonance: ordonance,
+            posologie: posologie,
+            label: 'Designation',
+            hint: 'Exemple : Paracétamol',
+            message: 'Vous ne pouvez pas envoyer un formulaire vide',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          AjoutSuppression(
+              icone: Icon(
+                Icons.add_circle_outline_outlined,
+                color: Color(0xFFA2CCF9),
+                size: 15,
+              ),
+              designation: 'Ajouter'),
+          SizedBox(
+            height: 10,
+          ),
+          Column(
+            children: [
+              IdOrdonnance(variable: 'Médecin : ', valeur: 'Queen Mughole'),
+              SizedBox(
+                height: 10,
+              ),
+              IdOrdonnance(variable: 'Signature : ', valeur: 'signature')
+            ],
           ),
           SizedBox(
             height: 10,

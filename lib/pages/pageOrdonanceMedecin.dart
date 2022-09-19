@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/Reusables/EspaceVerticale.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
 import '../Reusables/AjoutSuppression.dart';
@@ -70,9 +71,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
+         EspaceVerticale(),
           ChampOrdannance(
             ordonance: ordonance,
             posologie: posologie,
@@ -80,19 +79,17 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
             hint: 'Exemple : Paracétamol',
             message: 'Vous ne pouvez pas envoyer un formulaire vide',
           ),
-          SizedBox(
-            height: 10,
-          ),
-          AjoutSuppression(
-              icone: Icon(
-                Icons.add_circle_outline_outlined,
-                color: Color(0xFFA2CCF9),
-                size: 15,
-              ),
-              designation: 'Ajouter'),
-          SizedBox(
-            height: 10,
-          ),
+         EspaceVerticale(),
+
+             AjoutSuppression(
+                icone: Icon(
+                  Icons.add_circle_outline_outlined,
+                  color: Color(0xFFA2CCF9),
+                  size: 15,
+                ),
+                designation: 'Ajouter',
+            couleur: Color(0xFFA2CCF9),),
+          EspaceVerticale(),
           Column(
             children: [
               IdOrdonnance(variable: 'Médecin : ', valeur: 'Queen Mughole'),
@@ -102,9 +99,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
               IdOrdonnance(variable: 'Signature : ', valeur: 'signature')
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
+         EspaceVerticale(),
           ReusableButton(
             text: 'Envoyer',
             ToPage: DonneesPatient(),

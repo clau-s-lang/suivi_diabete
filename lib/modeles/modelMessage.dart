@@ -1,24 +1,54 @@
 
-import 'package:gestion_diabete/modeles/modelUser.dart';
+import 'package:gestion_diabete/modeles/modelUserEssai.dart';
 
 class Message{
-  final User? sender;
-  final String? avatar;
-  final String? time;
-  final int? unreadCount;
-  final bool? isRead;
-  final String? text;
+  String id;
+  final User sender;
+  final User receiver;
+  final String avatar;
+  final DateTime time;
+  final int unreadCount;
+  final bool isRead;
+  final String text;
 
   Message({
-     this.sender,
-     this.avatar,
-     this.time,
-     this.unreadCount,
-     this.text,
-     this.isRead,
+    this.id = '',
+    required this.receiver,
+    required this.sender,
+     required this.avatar,
+     required this.time,
+     required this.unreadCount,
+     required this.text,
+     required this.isRead,
 });
+
+  Map<String, dynamic> toJson() => {
+    'id' : id,
+    'sender' : sender,
+    'receiver' : receiver,
+    'avatar': avatar,
+    'time' : time.toIso8601String(),
+    'unreadCount' : unreadCount,
+    'text' : text,
+    'isRead' : isRead ? 1 : 0,
+  };
+
+    static Message fromJson(Map<String, dynamic> json) => Message(
+    id: json['id'],
+    sender:json['sender'],
+    receiver: json['receiver'],
+    avatar: json['avatar'],
+    time: json['time'],
+    unreadCount: json['unreadCount'],
+    text: json['text'],
+    isRead: json['isRead'],
+  );
 }
 
+
+
+
+/*
 final List<Message> recentsChats = [
   Message(
       sender: Claudia,
@@ -145,4 +175,4 @@ final List<Message> messages = [
     time: '11:50 AM',
     text: 'Es-tu sur de n\'avoir rien à me dire?',
   ),
-];
+];*/

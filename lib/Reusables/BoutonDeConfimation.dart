@@ -5,17 +5,20 @@ class ReusableButton extends StatelessWidget {
     required this.text,
     required this.ToPage,
     required this.dim,
+    //required this.nom,
   });
 
   String text;
   Widget ToPage;
   double dim;
+  //TextEditingController? nom;
 
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        //final name = nom.text;
         Navigator.push(context,MaterialPageRoute(builder: (context)
         {
           return ToPage;

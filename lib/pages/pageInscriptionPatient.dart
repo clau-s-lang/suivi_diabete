@@ -49,6 +49,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
             children: [
               ReusableTextFormField(
                 name: name,
+                type: TextInputType.name,
                 message: 'Ce champ est obligatoire',
                 label: 'Nom',
                 hint: 'Completer votre nom',
@@ -59,6 +60,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: prenom,
+                type: TextInputType.name,
                 message: 'Ce champ est obligatoire',
                 label: 'Prenom',
                 hint: 'Completer votre prenom',
@@ -97,6 +99,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: genre,
+                type: TextInputType.text,
                 message: 'Ce champ est obligatoire',
                 label: 'Genre',
                 hint: 'Completer votre prenom',
@@ -107,6 +110,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: adresse,
+                type: TextInputType.text,
                 message: 'Ce champ est obligatoire',
                 label: 'Adresse',
                 hint: 'Q.Keshero, Av.Ngobobo, Com. Goma',
@@ -117,6 +121,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: phone,
+                type: TextInputType.phone,
                 message: 'Ce champ est obligatoire',
                 label: 'Téléphone',
                 hint: '09707129016',
@@ -127,6 +132,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: email,
+                type: TextInputType.emailAddress,
                 message: 'Ce champ est obligatoire',
                 label: 'Email',
                 hint: 'Exemple@gmail.com',
@@ -137,6 +143,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: code,
+                type: TextInputType.text,
                 message: 'Ce champ est obligatoire',
                 label: 'Code du medecin',
                 hint: 'Completer le code votre medecin',
@@ -147,6 +154,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: MdP,
+                type: TextInputType.visiblePassword,
                 message: 'Ce champ est obligatoire',
                 label: 'Mot de passe',
                 hint: 'Completer votre mot de passe',
@@ -157,6 +165,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
               ),
               ReusableTextFormField(
                 name: confimMdP,
+                type: TextInputType.visiblePassword,
                 message: 'Les mots de passe correspondent pas',
                 label: 'Confirmer mot de passe',
                 hint: 'Completer le meme mot de passe',

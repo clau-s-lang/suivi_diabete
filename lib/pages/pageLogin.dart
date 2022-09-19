@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/api/apiProvider.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
+import 'package:provider/provider.dart';
 
 import '../Reusables/BoutonDeConfimation.dart';
 import '../Reusables/ChampsIdentifiants.dart';
@@ -16,6 +18,8 @@ class Connexion extends StatefulWidget {
 class _ConnexionState extends State<Connexion> {
   final email = TextEditingController();
   final Mdp = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  bool isVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +37,85 @@ class _ConnexionState extends State<Connexion> {
             children: [
               ReusableTextFormField(
                 name: email,
+                type: TextInputType.emailAddress,
                 message: 'Ce champ est obligatoire',
                 label: 'Email',
                 hint: 'Exemple@gmail.com',
                 icone: (Icons.mail_outlined),
               ),
+
+              /* Container(
+                width: 330,
+                child: TextFormField(
+                  controller: email,
+                  style: TextStyle(
+                    fontSize: 15,
+                    height: 0.5,
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Obligatoire';
+                    }
+                    if (value != MdP.text) {
+                      return 'Mot de passe different';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.mail_outlined,
+                      size: 30.0,
+                      color: Color(0xFFA2CCF9),
+                    ),
+                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                    hintText: 'Exemple@gmail.com',
+                  ),
+                ),
+              ),*/
               SizedBox(
                 height: 10,
               ),
-              ReusableTextFormField(
+              Container(
+                width: 330,
+                child: TextFormField(
+                  controller: Mdp,
+                  style: TextStyle(
+                    fontSize: 15,
+                    height: 0.5,
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Obligatoire';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isVisible = !isVisible;
+                        });
+                      },
+                      icon: Icon(
+                          isVisible ? Icons.visibility : Icons.visibility_off),
+                    ),
+                    border: OutlineInputBorder(),
+                    labelText: 'Mot de passe',
+                    hintText: 'Completer votre mot de passe',
+                  ),
+                ),
+              ),
+              /* ReusableTextFormField(
                 name: Mdp,
+                type: TextInputType.visiblePassword,
                 message: 'Ce champ est obligatoire',
                 label: 'Mot de passe',
                 hint: 'Completer votre mot de passe',
                 icone: (Icons.password_outlined),
-              ),
+              ),*/
               SizedBox(
                 height: 10,
               ),
@@ -66,11 +134,38 @@ class _ConnexionState extends State<Connexion> {
               SizedBox(
                 height: 10,
               ),
-              ReusableButton(
+              GestureDetector(
+                onTap: () async {
+                  final provider =
+                      Provider.of<ProviderApi>(context, listen: false);
+                  provider.signInWithEmail(
+                      email: email.text, password: Mdp.text, context: context);
+                  Center(child: CircularProgressIndicator(),);
+                },
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  height: 50,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100.0),
+                    color: Color(0xFFA2CCF9),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Se Connecter',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+             /* ReusableButton(
                 text: 'Se Connecter',
                 ToPage: DonneesPatient(),
                 dim: 300,
-              ),
+              ),*/
             ],
           ),
         ],

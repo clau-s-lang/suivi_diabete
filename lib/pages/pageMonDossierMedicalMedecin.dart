@@ -28,7 +28,6 @@ class _DossierMedicalState extends State<DossierMedical> {
         ),
       );
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +72,7 @@ class _DossierMedicalState extends State<DossierMedical> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -146,9 +143,7 @@ class _DossierMedicalState extends State<DossierMedical> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -158,8 +153,11 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
+                      //padding: EdgeInsets.only(left: 10, right: 10),
                       child: Text(
                         'Surpoids, obésité',
                         style: TextStyle(
@@ -187,9 +185,7 @@ class _DossierMedicalState extends State<DossierMedical> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -199,7 +195,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Hypertension',
@@ -228,9 +226,7 @@ class _DossierMedicalState extends State<DossierMedical> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -240,7 +236,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Hypothyroide',
@@ -267,9 +265,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -279,7 +275,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Maladie coeliaque',
@@ -318,7 +316,7 @@ class _DossierMedicalState extends State<DossierMedical> {
             label: 'Médicaux',
             hint: 'Exemple : A la viande',
           ),
-         EspaceVerticale(),
+          EspaceVerticale(),
           ReusableTextFormFieldDossierOccaz(
             name: type,
             label: 'Chirurgicaux',
@@ -340,9 +338,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -352,7 +348,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Tabagisme',
@@ -379,9 +377,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -391,7 +387,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Alcool',
@@ -418,9 +416,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -430,7 +426,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Sédentarité',
@@ -457,9 +455,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -469,7 +465,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Cholesterol',
@@ -496,9 +494,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -508,7 +504,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Age',
@@ -535,9 +533,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -547,7 +543,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Hérédité',
@@ -574,9 +572,7 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           Container(
-            padding: EdgeInsets.only(
-              left: 10,
-            ),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: 330,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
@@ -586,7 +582,9 @@ class _DossierMedicalState extends State<DossierMedical> {
               child: DropdownButton<String>(
                 hint: Row(
                   children: [
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
                       child: Text(
                         'Cardio-vasculaire',
@@ -613,8 +611,8 @@ class _DossierMedicalState extends State<DossierMedical> {
           ),
           EspaceVerticale(),
           ReusableButton(
-            text: 'Enregistrer les modifications' ,
-            ToPage:  Connexion(),
+            text: 'Enregistrer les modifications',
+            ToPage: Connexion(),
             dim: 200,
           ),
           EspaceVerticale(),

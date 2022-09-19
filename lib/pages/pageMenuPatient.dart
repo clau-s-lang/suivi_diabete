@@ -4,6 +4,7 @@ import 'package:gestion_diabete/pages/pageAccueilMonTraitement.dart';
 import 'package:gestion_diabete/pages/pageChat.dart';
 import 'package:gestion_diabete/pages/pageChatAccueilMedecin.dart';
 import 'package:gestion_diabete/pages/pageDataPatient.dart';
+import 'package:gestion_diabete/pages/pageHistoriqueMedecin.dart';
 import 'package:gestion_diabete/pages/pageMonDossierMedicalMedecin.dart';
 
 import '../Reusables/AppBarDrawer.dart';
@@ -49,7 +50,7 @@ class _MenuPatientState extends State<MenuPatient> {
           MenuNames(
             designation: 'Mon historique',
             icone: Icon(Icons.data_exploration_outlined),
-            ToPage: AccueilChatMedecin(),
+            ToPage: HistoriqueChart(),
           ),
           MenuNames(
             designation: 'Mon traitement',
@@ -67,9 +68,9 @@ class _MenuPatientState extends State<MenuPatient> {
             ToPage: DonneesPatient(),
           ),
           MenuNames(
-            designation: 'Déconnexion',
+            designation: 'Déconnexion vers Medecin',
             icone: Icon(Icons.exit_to_app),
-            ToPage: DonneesPatient(),
+            ToPage: AccueilChatMedecin(),
           ),
         ],
       ),

@@ -9,7 +9,6 @@ import '../Reusables/ChampDossierMed.dart';
 import '../Reusables/IconeDemostrative.dart';
 import '../Reusables/PlageIdentifiantData.dart';
 import '../Reusables/PlageSansIcone.dart';
-import '../Reusables/ChampdeRedactionMessage.dart';
 
 class DonneesPatient extends StatefulWidget {
   @override
@@ -112,7 +111,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                 width: 10,
               ),
               IconDemo(
-                image: 'images/clau.jpg',
+                image: 'images/sportCo.PNG',
                 designation: 'Sport collectif',
               ),
               SizedBox(
@@ -126,7 +125,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                 width: 10,
               ),
               IconDemo(
-                image: 'images/clau.jpg',
+                image: 'images/sportMarche.PNG',
                 designation: 'Marche',
               ),
             ],
@@ -159,21 +158,21 @@ class _DonneesPatientState extends State<DonneesPatient> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconDemo(
-                image: 'images/clau.jpg',
+                image: 'images/stress.PNG',
                 designation: 'Stress',
               ),
               SizedBox(
                 width: 10,
               ),
               IconDemo(
-                image: 'images/clau.jpg',
+                image: 'images/maladie.PNG',
                 designation: 'Maladie',
               ),
               SizedBox(
                 width: 10,
               ),
               IconDemo(
-                image: 'images/clau.jpg',
+                image: 'images/allergie.PNG',
                 designation: 'Allérgie',
               ),
             ],

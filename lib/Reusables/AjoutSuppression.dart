@@ -4,10 +4,12 @@ class AjoutSuppression extends StatelessWidget {
   AjoutSuppression({
     required this.icone,
     required this.designation,
+    required this.couleur,
   });
 
   Icon icone;
   String designation;
+  Color couleur;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class AjoutSuppression extends StatelessWidget {
               child: Text(
                 designation,
                 style: TextStyle(
-                  color: Color(0xFFA2CCF9),
+                  color: couleur,
                 ),
               ),
             )

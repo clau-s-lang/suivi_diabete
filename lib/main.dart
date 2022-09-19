@@ -1,16 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/api/apiProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:gestion_diabete/pages/pageAccueil.dart';
 
-void main() {
-  runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-       theme: ThemeData(
-          primaryColor: Colors.white,
-        ),
-        home:SuiviDiabete(),
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(SuiviDiabete());
+   /* MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.white,
       ),
-  );
+      home: SuiviDiabete(),
+    ),
+  );*/
 }
 
 class SuiviDiabete extends StatefulWidget {
@@ -21,6 +26,12 @@ class SuiviDiabete extends StatefulWidget {
 class _SuiviDiabeteState extends State<SuiviDiabete> {
   @override
   Widget build(BuildContext context) {
-    return PageAccueil();
+    return ChangeNotifierProvider(
+        create: (context) => ProviderApi(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+            home: PageAccueil(),
+        ),
+    );
   }
 }

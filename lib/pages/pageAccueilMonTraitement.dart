@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageDataPatient.dart';
-import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
+import 'package:gestion_diabete/pages/pageDossierMedicalPatient.dart';
 import 'package:gestion_diabete/pages/pageMenuPatient.dart';
+import 'package:gestion_diabete/pages/pageOrdonnancePatient.dart';
+import 'package:gestion_diabete/pages/pageTraitementPatient.dart';
 
 class AccueilMonTraitement extends StatefulWidget {
   @override
@@ -49,8 +50,8 @@ class _AccueilMonTraitement extends State<AccueilMonTraitement>
       body: TabBarView(
         controller: tabController,
         children: [
-          Text('Mes Medicaments'),
-         Text('Mes Ordonances'),
+          TraitementPatient(),
+          OrdonnancePatient(),
         ],
       ),
     );

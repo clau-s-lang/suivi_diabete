@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "824338900656",
+    "project_id": "suividiabete-7f89d",
+    "storage_bucket": "suividiabete-7f89d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824338900656:android:2c6c5c640c38eef469fd75",
+        "android_client_info": {
+          "package_name": "com.example.gestion_diabete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824338900656-1n6tmaculeq9qrgf98urfqku70s7lhdn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVmx41sCJLXejRwiGGe_FIiqdX7lTG7HU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824338900656-1n6tmaculeq9qrgf98urfqku70s7lhdn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

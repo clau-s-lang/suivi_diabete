@@ -7,11 +7,13 @@ class ReusableTextFormField extends StatelessWidget {
     required this.label,
     required this.message,
     required this.icone,
+    required this.type,
   });
 
   final TextEditingController name;
   String message, label, hint;
   IconData icone;
+  TextInputType type;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,9 @@ class ReusableTextFormField extends StatelessWidget {
           fontSize: 15,
           height: 0.5,
         ),
-        validator: (value) =>
-        value == null ? message : null,
-        keyboardType: TextInputType.text,
+         validator: (value) =>
+        value == null  ? message : null,
+        keyboardType: type,
         decoration: InputDecoration(
           prefixIcon: Icon(icone,
             size: 30.0, color: Color(0xFFA2CCF9),),

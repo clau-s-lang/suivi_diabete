@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageLogin.dart';
-import 'package:gestion_diabete/pages/pageMenuPatient.dart';
+import '../menus/pageMenuPatient.dart';
+import '../users/pageLogin.dart';
+//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
 import '../Reusables/BoutonDeConfimation.dart';
 import '../Reusables/ChampData.dart';

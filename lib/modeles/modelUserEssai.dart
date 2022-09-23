@@ -1,3 +1,4 @@
+/*
 class User {
   final int id;
   final String name;
@@ -29,4 +30,4 @@ User(id: 6, name:'You', avatar: 'assets/images/clau.jpg');
 final User Rose =
 User(id: 6, name:'You', avatar: 'assets/images/clau.jpg');
 final User Claude =
-User(id: 6, name:'You', avatar: 'assets/images/clau.jpg');
+User(id: 6, name:'You', avatar: 'assets/images/clau.jpg');*/

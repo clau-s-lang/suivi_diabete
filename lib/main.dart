@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/api/apiProvider.dart';
+import 'package:gestion_diabete/wrapper.dart';
 import 'package:provider/provider.dart';
-import 'package:gestion_diabete/pages/pageAccueil.dart';
+import 'widget/pageAccueil.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class _SuiviDiabeteState extends State<SuiviDiabete> {
         create: (context) => ProviderApi(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-            home: PageAccueil(),
+            home: Wrapper(),
         ),
     );
   }

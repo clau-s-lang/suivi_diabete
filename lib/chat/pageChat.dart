@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../Reusables/ChampdeRedactionMessage.dart';
-import 'package:gestion_diabete/pages/pageMenuPatient.dart';
+//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
+
+import '../menus/pageMenuPatient.dart';
 
 class Messagerie extends StatefulWidget {
   @override

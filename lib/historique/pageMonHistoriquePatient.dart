@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
+import '../menus/pageMenuMedecin.dart';
+//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 import 'package:gestion_diabete/style/styleChart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../menus/pageMenuPatient.dart';
 import '../modeles/modelChart.dart';
 
 class HistoriqueChart extends StatefulWidget {
@@ -35,7 +37,7 @@ class _HistoriqueChartState extends State<HistoriqueChart> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyle.bg_color,
-      drawer: MenuMedecin(),
+      drawer: MenuPatient(),
       appBar: AppBar(
         title: Text('Historique'),
         backgroundColor: Color(0xFF216DAD),

@@ -2,39 +2,39 @@ import 'dart:ffi';
 
 class DossierMedical {
   final String idDossier;
-  final String TypeDeDiabete;
-  final String AnneeDecouverte;
+  final String typeDeDiabete;
+  final String anneeDecouverte;
   final String modeDeDecouverte;
   final String insulinotherapie;
   final String insulinotherapieDepuis;
-  final Array Allergie;
-  final Array Vaccination;
+  final Array allergie;
+  final Array vaccination;
   final String modeDeVie;
-  final String Surpoids;
+  final String surpoids;
   final String hypertension;
   final String maladieCoeliaque;
-  final String AntecedentMedicaux;
-  final String AntecedentChirurgicaux;
-  final String AntecedentFamilliaux;
-  final String Tabagisme;
+  final String antecedentMedicaux;
+  final String antecedentChirurgicaux;
+  final String antecedentFamilliaux;
+  final String tabagisme;
   final String alcool;
   final String sendentarite;
   final String cholesterol;
   final String age;
-  final String Heredite;
-  final String Cardiovasculare;
+  final String heredite;
+  final String cardiovasculare;
 
   DossierMedical({
     required this.age,
     required this.alcool,
-    required this.Allergie,
-    required this.AnneeDecouverte,
-    required this.AntecedentChirurgicaux,
-    required this.AntecedentFamilliaux,
-    required this.AntecedentMedicaux,
-    required this.Cardiovasculare,
+    required this.allergie,
+    required this.anneeDecouverte,
+    required this.antecedentChirurgicaux,
+    required this.antecedentFamilliaux,
+    required this.antecedentMedicaux,
+    required this.cardiovasculare,
     required this.cholesterol,
-    required this.Heredite,
+    required this.heredite,
     required this.hypertension,
     required this.idDossier,
     required this.insulinotherapie,
@@ -43,23 +43,23 @@ class DossierMedical {
     required this.modeDeDecouverte,
     required this.modeDeVie,
     required this.sendentarite,
-    required this.Surpoids,
-    required this.Tabagisme,
-    required this.TypeDeDiabete,
-    required this.Vaccination,
+    required this.surpoids,
+    required this.tabagisme,
+    required this.typeDeDiabete,
+    required this.vaccination,
   });
 
   Map<String, dynamic> toJson() => {
     'age': age,
     'alcool': alcool,
-    'Allergie': Allergie,
-    'AnneeDecouverte' : AnneeDecouverte,
-    'AntecedentChirurgicaux': AntecedentChirurgicaux,
-    'AntecedentFamilliaux' : AntecedentFamilliaux,
-    'AntecedentMedicaux' : AntecedentMedicaux,
-    'Cardiovasculare' : Cardiovasculare,
+    'allergie': allergie,
+    'anneeDecouverte' : anneeDecouverte,
+    'antecedentChirurgicaux': antecedentChirurgicaux,
+    'antecedentFamilliaux' : antecedentFamilliaux,
+    'antecedentMedicaux' : antecedentMedicaux,
+    'cardiovasculare' : cardiovasculare,
     'cholesterol' : cholesterol,
-    'Heredite' : Heredite,
+    'heredite' : heredite,
     'hypertension' : hypertension,
     'idDossier' : idDossier,
     'insulinotherapie' : insulinotherapie,
@@ -68,23 +68,23 @@ class DossierMedical {
     'modeDeDecouverte' : modeDeDecouverte,
     'modeDeVie': modeDeVie,
     'sendentarite' : sendentarite,
-    'Surpoids' : Surpoids,
-    'Tabagisme' : Tabagisme,
-    'TypeDeDiabete' : TypeDeDiabete,
-    'Vaccination' : Vaccination,
+    'surpoids' : surpoids,
+    'tabagisme' : tabagisme,
+    'typeDeDiabete' : typeDeDiabete,
+    'vaccination' : vaccination,
   };
 
   static DossierMedical fromJson(Map<String, dynamic> json) => DossierMedical(
     age: json['age'],
     alcool: json['alcool'],
-    Allergie: json['Allergie'],
-    AnneeDecouverte : json['AnneeDecouverte'],
-    AntecedentChirurgicaux: json['AntecedentChirurgicaux'],
-    AntecedentFamilliaux: json['AntecedentFamilliaux'],
-    AntecedentMedicaux: json['AntecedentMedicaux'],
-    Cardiovasculare: json['Cardiovasculare'],
+    allergie: json['allergie'],
+    anneeDecouverte : json['anneeDecouverte'],
+    antecedentChirurgicaux: json['antecedentChirurgicaux'],
+    antecedentFamilliaux: json['antecedentFamilliaux'],
+    antecedentMedicaux: json['antecedentMedicaux'],
+    cardiovasculare: json['cardiovasculare'],
     cholesterol : json['cholesterol'],
-    Heredite: json['Heredite'],
+    heredite: json['heredite'],
     hypertension: json['hypertension'],
     idDossier: json['idDossier'],
     insulinotherapie: json['insulinotherapie'],
@@ -93,9 +93,9 @@ class DossierMedical {
     modeDeDecouverte : json['modeDeDecouverte'],
     modeDeVie: json['modeDeVie'],
     sendentarite: json['sendentarite'],
-    Surpoids: json['Surpoids'],
-    Tabagisme: json['Tabagisme'],
-    TypeDeDiabete : json['TypeDeDiabete'],
-    Vaccination: json['Vaccination'],
+    surpoids: json['surpoids'],
+    tabagisme: json['tabagisme'],
+    typeDeDiabete : json['typeDeDiabete'],
+    vaccination: json['vaccination'],
   );
 }

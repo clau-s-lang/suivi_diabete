@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/Reusables/EspaceVerticale.dart';
-import 'package:gestion_diabete/pages/pageDataPatient.dart';
-import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
+//import 'package:gestion_diabete/pages/pageDataPatient.dart';
+import '../menus/pageMenuMedecin.dart';
 import '../Reusables/AjoutSuppression.dart';
 import '../Reusables/BoutonDeConfimation.dart';
 import '../Reusables/ChampData.dart';
 import '../Reusables/ChampOrdonnance.dart';
 import '../Reusables/IdentifiantOrdonance.dart';
+import '../signes_vitaux/pageDataPatient.dart';
 
 class PrescriptionMed extends StatefulWidget {
   @override

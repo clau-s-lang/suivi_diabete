@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageInscriptionPatient.dart';
+import '../users/pageInscriptionMedecin.dart';
+import '../users/pageInscriptionPatient.dart';
+import '../users/pageLogin.dart';
 
 class PageAccueil extends StatefulWidget {
   @override
@@ -35,7 +37,7 @@ class _PageAccueilState extends State<PageAccueil> {
                 onTap: (){
                   Navigator.push(context,MaterialPageRoute(builder: (context)
                   {
-                    return InscriptionPatient();
+                    return Connexion();
                   }));
                 },
                 child: Container(

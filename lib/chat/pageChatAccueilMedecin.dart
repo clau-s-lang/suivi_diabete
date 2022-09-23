@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
+import '../menus/pageMenuMedecin.dart';
 
 import '../Reusables/CarteMessagerieMedecin.dart';
 import '../Reusables/CarteMessagerieMedecin.dart';

@@ -26,7 +26,7 @@ class ReusableTextFormField extends StatelessWidget {
           height: 0.5,
         ),
          validator: (value) =>
-        value == null  ? message : null,
+        value == null || value.isEmpty  ? message : null,
         keyboardType: type,
         decoration: InputDecoration(
           prefixIcon: Icon(icone,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gestion_diabete/pages/pageLogin.dart';
-import 'package:gestion_diabete/pages/pageloading.dart';
+import 'pageLogin.dart';
+import '../dashboards/pageDashboardMedecin.dart';
+import '../widget/pageloading.dart';
 import 'package:provider/provider.dart';
 import '../Reusables/BoutonDeConfimation.dart';
 import '../Reusables/ChampsIdentifiants.dart';
@@ -200,10 +201,10 @@ class _InscriptionMedecinState extends State<InscriptionMedecin> {
                                 fname: name.text,
                                 sname: postnom.text,
                                 genre: genre.text,
-                                Specialisation: specialite.text,
+                                specialisation: specialite.text,
                                 numPhone: phone.text,
-                                Email: email.text,
-                                Clinique: clinique.text,
+                                email: email.text,
+                                clinique: clinique.text,
                               );
                               final provider =
                                   Provider.of<ProviderApi> (context, listen: false);
@@ -219,12 +220,13 @@ class _InscriptionMedecinState extends State<InscriptionMedecin> {
                               });
                             }
                             clearFields();
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Connexion();
+                                }));
                           }
                           //final name = nom.text;
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return Connexion();
-                          }));
+
                         },
                         child: Container(
                           margin: EdgeInsets.all(10),

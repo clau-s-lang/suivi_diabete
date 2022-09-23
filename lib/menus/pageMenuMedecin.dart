@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageChat.dart';
-import 'package:gestion_diabete/pages/pageChatAccueilMedecin.dart';
-import 'package:gestion_diabete/pages/pageDataPatient.dart';
-import 'package:gestion_diabete/pages/pageHistoriqueMedecin.dart';
-import 'package:gestion_diabete/pages/pageMonDossierMedicalMedecin.dart';
-import 'package:gestion_diabete/pages/pageNoteMedecin.dart';
-import 'package:gestion_diabete/pages/pageOrdonanceMedecin.dart';
-import 'package:gestion_diabete/pages/pageTraitementMedecin.dart';
+import '../chat/pageChat.dart';
+//import 'package:gestion_diabete/pages/pageChatAccueilMedecin.dart';
+//import 'package:gestion_diabete/pages/pageDataPatient.dart';
+import '../historique/pageHistoriqueMedecin.dart';
+import '../dossier_med/pageMonDossierMedicalMedecin.dart';
+import '../notes/pageNoteMedecin.dart';
+import '../chat/pageChatAccueilMedecin.dart';
+import '../ordonnances/pageOrdonanceMedecin.dart';
+import '../signes_vitaux/pageDataPatient.dart';
+import '../traitements/pageTraitementMedecin.dart';
 
 import '../Reusables/AppBarDrawer.dart';
 import '../Reusables/DenominationMenus.dart';

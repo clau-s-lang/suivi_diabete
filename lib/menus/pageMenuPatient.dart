@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageAccueilMonTraitement.dart';
-import 'package:gestion_diabete/pages/pageChat.dart';
-import 'package:gestion_diabete/pages/pageChatAccueilMedecin.dart';
-import 'package:gestion_diabete/pages/pageDataPatient.dart';
-import 'package:gestion_diabete/pages/pageHistoriqueMedecin.dart';
-import 'package:gestion_diabete/pages/pageMonDossierMedicalMedecin.dart';
+import '../signes_vitaux/pageDataPatient.dart';
+import '../traitements/pageAccueilMonTraitement.dart';
+import '../chat/pageChat.dart';
+//import 'package:gestion_diabete/pages/pageChatAccueilMedecin.dart';
+//import 'package:gestion_diabete/pages/pageDataPatient.dart';
+import '../historique/pageHistoriqueMedecin.dart';
+import '../dossier_med/pageMonDossierMedicalMedecin.dart';
 
 import '../Reusables/AppBarDrawer.dart';
 import '../Reusables/DenominationMenus.dart';
 import '../Reusables/ChampdeRedactionMessage.dart';
+import '../chat/pageChatAccueilMedecin.dart';
 
 class MenuPatient extends StatefulWidget {
   @override

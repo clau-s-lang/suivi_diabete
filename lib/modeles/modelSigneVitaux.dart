@@ -1,67 +1,67 @@
 class SigneVitaux{
   final String idSigne;
-  final String Glycemie;
-  final String Insulinebasale;
-  final String InsulineBolus;
-  final String InsulineDeCorrection;
-  final Map ActivitePhysique;
-  final String Duree;
+  final String glycemie;
+  final String insulinebasale;
+  final String insulineBolus;
+  final String insulineDeCorrection;
+  final Map activitePhysique;
+  final String duree;
   final int nbreDePas;
-  final Map Contexte;
-  final double Poids;
-  final double HbA1c;
-  final double PressionArterielleSyst;
-  final String PressionArterielleDiast;
-  final String Remarque;
+  final Map contexte;
+  final double poids;
+  final double hbA1c;
+  final double pressionArterielleSyst;
+  final String pressionArterielleDiast;
+  final String remarque;
 
   SigneVitaux({
     required this.idSigne,
-    required this.Glycemie,
-    required this.Insulinebasale,
-    required this.InsulineBolus,
-    required this.InsulineDeCorrection,
-    required this.ActivitePhysique,
-    required this.Duree,
+    required this.glycemie,
+    required this.insulinebasale,
+    required this.insulineBolus,
+    required this.insulineDeCorrection,
+    required this.activitePhysique,
+    required this.duree,
     required this.nbreDePas,
-    required this.Contexte,
-    required this.Poids,
-    required this.HbA1c,
-    required this.PressionArterielleSyst,
-    required this.PressionArterielleDiast,
-    required this.Remarque,
+    required this.contexte,
+    required this.poids,
+    required this.hbA1c,
+    required this.pressionArterielleSyst,
+    required this.pressionArterielleDiast,
+    required this.remarque,
   });
 
   Map<String, dynamic> toJson() => {
     'idSigne': idSigne,
-    'Glycemie': Glycemie,
-    'Insulinebasale': Insulinebasale,
-    'InsulineBolus' : InsulineBolus,
-    'InsulineDeCorrection': InsulineDeCorrection,
-    'ActivitePhysique' : ActivitePhysique,
-    'Duree' : Duree,
+    'glycemie': glycemie,
+    'insulinebasale': insulinebasale,
+    'insulineBolus' : insulineBolus,
+    'insulineDeCorrection': insulineDeCorrection,
+    'activitePhysique' : activitePhysique,
+    'duree' : duree,
     'nbreDePas' : nbreDePas,
-    'Contexte' : Contexte,
-    'Poids' : Poids,
-    'HbA1c' : HbA1c,
-    'PressionArterielleSyst' : PressionArterielleSyst,
-    'PressionArterielleDiast' : PressionArterielleDiast,
-    'Remarque' : Remarque,
+    'contexte' : contexte,
+    'poids' : poids,
+    'hbA1c' : hbA1c,
+    'pressionArterielleSyst' : pressionArterielleSyst,
+    'pressionArterielleDiast' : pressionArterielleDiast,
+    'remarque' : remarque,
   };
 
   static SigneVitaux fromJson(Map<String, dynamic> json) => SigneVitaux(
     idSigne: json['idSigne'],
-    Glycemie: json['Glycemie'],
-    Insulinebasale: json['Insulinebasale'],
-    InsulineBolus : json['InsulineBolus'],
-    InsulineDeCorrection: json['InsulineDeCorrection'],
-    ActivitePhysique: json['ActivitePhysique'],
-    Duree: json['Duree'],
+    glycemie: json['glycemie'],
+    insulinebasale: json['insulinebasale'],
+    insulineBolus : json['insulineBolus'],
+    insulineDeCorrection: json['insulineDeCorrection'],
+    activitePhysique: json['activitePhysique'],
+    duree: json['duree'],
     nbreDePas: json['nbreDePas'],
-    Contexte : json['Contexte'],
-    Poids: json['Poids'],
-    HbA1c: json['HbA1c'],
-    PressionArterielleSyst: json['PressionArterielleSyst'],
-    PressionArterielleDiast: json['PressionArterielleDiast'],
-    Remarque : json['Remarque'],
+    contexte : json['contexte'],
+    poids: json['poids'],
+    hbA1c: json['hbA1c'],
+    pressionArterielleSyst: json['pressionArterielleSyst'],
+    pressionArterielleDiast: json['pressionArterielleDiast'],
+    remarque : json['remarque'],
   );
 }

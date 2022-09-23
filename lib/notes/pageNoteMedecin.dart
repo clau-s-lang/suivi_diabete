@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/database/dbNote.dart';
-import 'package:gestion_diabete/pages/pageAjoutNote.dart';
-import 'package:gestion_diabete/pages/pageMenuMedecin.dart';
-import 'package:gestion_diabete/pages/pageNoteDetails.dart';
+import 'package:gestion_diabete/notes/pageNoteDetails.dart';
+import 'pageAjoutNote.dart';
+import '../menus/pageMenuMedecin.dart';
+//import 'package:gestion_diabete/pages/pageNoteDetails.dart';
 import '../Reusables/NoteCardWidget.dart';
 import '../modeles/modelNote.dart';
 import 'package:intl/intl.dart';

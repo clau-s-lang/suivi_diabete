@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/pages/pageDossierMedicalPatient.dart';
-import 'package:gestion_diabete/pages/pageMenuPatient.dart';
-import 'package:gestion_diabete/pages/pageOrdonnancePatient.dart';
-import 'package:gestion_diabete/pages/pageTraitementPatient.dart';
+import 'package:gestion_diabete/traitements/pageTraitementPatient.dart';
+import '../dossier_med/pageDossierMedicalPatient.dart';
+//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
+//import 'package:gestion_diabete/pages/pageTraitementPatient.dart';
+
+import '../menus/pageMenuPatient.dart';
+import '../ordonnances/pageOrdonnancePatient.dart';
 
 class AccueilMonTraitement extends StatefulWidget {
   @override

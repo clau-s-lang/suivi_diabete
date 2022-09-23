@@ -3,8 +3,8 @@ import 'package:gestion_diabete/modeles/modelUserEssai.dart';
 
 class Message{
   String id;
-  final User sender;
-  final User receiver;
+  /*final User sender;
+  final User receiver;*/
   final String avatar;
   final DateTime time;
   final int unreadCount;
@@ -13,8 +13,8 @@ class Message{
 
   Message({
     this.id = '',
-    required this.receiver,
-    required this.sender,
+   /* required this.receiver,
+    required this.sender,*/
      required this.avatar,
      required this.time,
      required this.unreadCount,
@@ -24,8 +24,8 @@ class Message{
 
   Map<String, dynamic> toJson() => {
     'id' : id,
-    'sender' : sender,
-    'receiver' : receiver,
+    /*'sender' : sender,
+    'receiver' : receiver,*/
     'avatar': avatar,
     'time' : time.toIso8601String(),
     'unreadCount' : unreadCount,
@@ -35,8 +35,8 @@ class Message{
 
     static Message fromJson(Map<String, dynamic> json) => Message(
     id: json['id'],
-    sender:json['sender'],
-    receiver: json['receiver'],
+   /* sender:json['sender'],
+    receiver: json['receiver'],*/
     avatar: json['avatar'],
     time: json['time'],
     unreadCount: json['unreadCount'],

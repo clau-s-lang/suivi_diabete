@@ -1,23 +1,23 @@
 class Users {
-  String UserId;
-  final String Email;
+  String userId;
+  final String email;
   final String role;
 
   Users({
-    this.UserId = '',
-    required this.Email,
+    this.userId = '',
+    required this.email,
     required this.role,
   });
 
   Map<String, dynamic> toJson() => {
-        'UserId': UserId,
-        'Email': Email,
+        'userId': userId,
+        'email': email,
         'role': role,
       };
 
   static Users fromJson(Map<String, dynamic> json) => Users(
-        UserId: json['UserId'],
-        Email: json['Email'],
+        userId: json['userId'],
+        email: json['email'],
         role: json['role'],
       );
 }

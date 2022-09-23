@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/database/dbNote.dart';
-import 'package:gestion_diabete/pages/pageAjoutNote.dart';
+import '../notes/pageAjoutNote.dart';
 import 'package:intl/intl.dart';
 
 import '../modeles/modelNote.dart';

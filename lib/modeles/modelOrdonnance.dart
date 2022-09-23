@@ -5,14 +5,14 @@ class Ordonnance{
   final String idMedecin;
   final String designation;
   final String posologie;
-  final DateTime DatedeCreation;
+  final DateTime datedeCreation;
 
   Ordonnance({
     required this.idPatient,
     required this.idMedecin,
     required this.designation,
     required this.posologie,
-    required this.DatedeCreation
+    required this.datedeCreation
 });
 
   Map<String, dynamic> toJson() => {
@@ -20,7 +20,7 @@ class Ordonnance{
     'idMedecin': idMedecin,
     'designation': designation,
     'posologie' : posologie,
-    'DatedeCreation': DatedeCreation,
+    'datedeCreation': datedeCreation,
   };
 
   static Ordonnance fromJson(Map<String, dynamic> json) => Ordonnance(
@@ -28,6 +28,6 @@ class Ordonnance{
     idMedecin: json['idMedecin'],
     designation: json['designation'],
       posologie : json['posologie'],
-      DatedeCreation: (json['DatedeCreation'] as Timestamp).toDate(),
+      datedeCreation: (json['datedeCreation'] as Timestamp).toDate(),
   );
 }

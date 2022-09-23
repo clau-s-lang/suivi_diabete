@@ -46,6 +46,20 @@ class  FireBaseApi extends ChangeNotifier {
     }
   }
 
+  Future toFirestore(User? user, Medecin medecin) async {
+    try {
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+        email: medecin.email,
+        password: medecin.password,
+      );
+      medecin.idMedecin = user!.uid;
+      await _firestore.collection('Medecin').doc(user.uid).set(medecin.toJson());
+      await _firestore.collection('Users').doc(userCredential.user!.uid).set(medecin.toUser());
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }
+
 
   Future addPatient ({required Patient patient}) async {
    final  medecinId = auth.currentUser!.uid;
@@ -136,15 +150,7 @@ class  FireBaseApi extends ChangeNotifier {
     }
   }
 
-  Future toFirestore(User? user, Medecin medecin) async {
-    try {
-      medecin.idMedecin = user!.uid;
-      await _firestore.collection('Medecin').doc(user.uid).set(medecin.toJson());
-      await _firestore.collection('Users').doc(user.uid).set(medecin.toUser());
-    } catch (e) {
-      Fluttertoast.showToast(msg: e.toString());
-    }
-  }
+
 
   Future toFirestoreP(User? user, Patient patient) async {
     try {

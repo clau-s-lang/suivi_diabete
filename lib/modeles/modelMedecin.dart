@@ -8,6 +8,7 @@ class Medecin {
   final String numPhone;
   final String specialisation;
   final String clinique;
+  final String password;
 
   //final String role;
   //final String password;
@@ -22,6 +23,7 @@ class Medecin {
     this.userId = '',
     required this.email,
     required this.numPhone,
+    required this.password,
     //required this.role,
     //required this.password,
   });
@@ -48,7 +50,7 @@ class Medecin {
         'role': 'medecin',
       };
 
-  static Medecin fromJson(Map<String, dynamic> json) => Medecin(
+  /*static Medecin fromJson(Map<String, dynamic> json) => Medecin(
         idMedecin: json['idUser'],
         fname: json['fname'],
         sname: json['sname'],
@@ -62,5 +64,5 @@ class Medecin {
 
         //role: json['role'],
         //password: json['password'],
-      );
+      );*/
 }

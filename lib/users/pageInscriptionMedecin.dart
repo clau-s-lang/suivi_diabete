@@ -203,6 +203,7 @@ class _InscriptionMedecinState extends State<InscriptionMedecin> {
                                 genre: genre.text,
                                 specialisation: specialite.text,
                                 numPhone: phone.text,
+                                password: MdP.text,
                                 email: email.text,
                                 clinique: clinique.text,
                               );

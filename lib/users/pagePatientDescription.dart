@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/signes_vitaux/pageDataPatient.dart';
 import 'package:intl/intl.dart';
 
 class PatientDescription extends StatelessWidget {
@@ -42,14 +44,31 @@ class PatientDescription extends StatelessWidget {
           return ListView(
             padding: EdgeInsets.all(20),
             children: [
-              Row(
-                children: [
-                  Container(
-                    height: 200,
-                    child: CircleAvatar(
-                        backgroundImage: AssetImage(doc!['photo'])),
+              Container(
+                height: 200,
+                child: Text(
+                  doc!['sname'],
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.brown,
                   ),
-                ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: Text(
+                  doc!['fname'],
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.brown,
+                  ),
+                ),
+              ),
+              Text(
+                doc['email'],
+                style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
             ],
           );

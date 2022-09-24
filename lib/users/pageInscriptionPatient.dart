@@ -27,7 +27,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   final _formKey = GlobalKey<FormState>();
   final name = TextEditingController();
   final prenom = TextEditingController();
-  final genre = TextEditingController();
+ // late var genre = TextEditingController();
   final adresse = TextEditingController();
   final phone = TextEditingController();
   final email = TextEditingController();
@@ -39,9 +39,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   bool loading = false;
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  final items = ['Masculin', 'Feminin', 'Genre'];
-  String? value = 'Genre';
+  final items = ['Masculin', 'Feminin',];
 
+  String genre ='Masculin';
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
         value: item,
         child: Text(
@@ -96,7 +96,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      value: value,
+                      value: genre,
                       isExpanded: true,
                       iconSize: 36,
                       icon: Icon(
@@ -105,7 +105,8 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                       ),
                       items: items.map(buildMenuItem).toList(),
                       onChanged: (value) => setState(() {
-                        this.value = value;
+                        //this.valueChoosen = value;
+                        genre = value!;
                       }),
                     ),
                   ),
@@ -253,9 +254,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                       final pat = Patient(
                         fname: name.text,
                         sname: prenom.text,
-                        genre: genre.text,
                         adresse: adresse.text,
                         medecinId: auth.currentUser!.uid,
+                        genre: genre,
                         email: email.text,
                         password: MdP.text,
                         numPhone: phone.text,
@@ -289,7 +290,6 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   void clearFields() {
     name.clear();
     prenom.clear();
-    genre.clear();
     phone.clear();
     email.clear();
     MdP.clear();

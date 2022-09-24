@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/modeles/modelSigneVitaux.dart';
 
 class IconDemo extends StatelessWidget {
   IconDemo({
@@ -13,7 +15,8 @@ class IconDemo extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+          },
           child:  Container(
             width: 60,
             height: 60,

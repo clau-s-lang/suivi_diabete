@@ -3,20 +3,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../modeles/modelSigneVitaux.dart';
 import '../users/pageInscriptionPatient.dart';
 
 import '../modeles/modelMedecin.dart';
 import '../modeles/modelPatient.dart';
 
-class  FireBaseApi extends ChangeNotifier {
+class FireBaseApi extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  Future signUpWithEmailMed(
-      {
-        required String email,
-        required String password,
-        required Medecin medecin}) async {
+  Future signUpWithEmailMed({required String email,
+    required String password,
+    required Medecin medecin}) async {
     try {
       UserCredential userCredential =
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -26,8 +25,6 @@ class  FireBaseApi extends ChangeNotifier {
       final user = userCredential.user;
       print(user?.uid);
       toFirestore(userCredential.user, medecin);
-
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Fluttertoast.showToast(msg: 'Le mot de passe fourni est faible.');
@@ -53,36 +50,45 @@ class  FireBaseApi extends ChangeNotifier {
         password: medecin.password,
       );
       medecin.idMedecin = user!.uid;
-      await _firestore.collection('Medecin').doc(user.uid).set(medecin.toJson());
-      await _firestore.collection('Users').doc(userCredential.user!.uid).set(medecin.toUser());
+      await _firestore
+          .collection('Medecin')
+          .doc(user.uid)
+          .set(medecin.toJson());
+      await _firestore
+          .collection('Users')
+          .doc(userCredential.user!.uid)
+          .set(medecin.toUser());
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
     }
   }
 
-
-  Future addPatient ({required Patient patient}) async {
-   final  medecinId = auth.currentUser!.uid;
-    try{
+  Future addPatient({required Patient patient}) async {
+    final medecinId = auth.currentUser!.uid;
+    try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: patient.email,
         password: patient.password,
       );
-      await _firestore.collection('Users').doc(userCredential.user!.uid).set({'userId':userCredential.user!.uid, 'email': patient.email,'role' : 'patient'});
+      await _firestore.collection('Users').doc(userCredential.user!.uid).set({
+        'userId': userCredential.user!.uid,
+        'email': patient.email,
+        'role': 'patient'
+      });
       final newPatient = _firestore.collection('Patient');
       await newPatient.add({
         'idPatient': userCredential.user!.uid,
         'fname': patient.fname,
         'sname': patient.sname,
-    'medecinId': medecinId,
-    'email': patient.email,
+        'medecinId': medecinId,
+        'email': patient.email,
         'genre': patient.genre,
         'numPhone': patient.numPhone,
       }).catchError((onError) => print(onError));
-    } catch(e){
+    } catch (e) {
       print(e);
     }
-}
+  }
 
   Future signInWithEmailMed(
       {required String email, required String password, context}) async {
@@ -94,7 +100,9 @@ class  FireBaseApi extends ChangeNotifier {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Fluttertoast.showToast(msg: 'Email ou mot de passe incorrect.', backgroundColor: Colors.redAccent);
+        Fluttertoast.showToast(
+            msg: 'Email ou mot de passe incorrect.',
+            backgroundColor: Colors.redAccent);
       } else if (e.code == 'wrong-password') {
         Fluttertoast.showToast(msg: 'Email ou mot de passe incorrect.');
       } else if (e.code == 'too-many-requests') {
@@ -104,11 +112,12 @@ class  FireBaseApi extends ChangeNotifier {
       }
       return InscriptionPatient();
     }
-
   }
 
-  Future signInWithEmailPat(
-      {required String email, required String password, }) async {
+  Future signInWithEmailPat({
+    required String email,
+    required String password,
+  }) async {
     try {
       UserCredential userCredential =
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -150,15 +159,63 @@ class  FireBaseApi extends ChangeNotifier {
     }
   }
 
-
-
   Future toFirestoreP(User? user, Patient patient) async {
     try {
       patient.idPatient = user!.uid;
-      await _firestore.collection('Patient').doc(user.uid).set(patient.toJson());
+      await _firestore
+          .collection('Patient')
+          .doc(user.uid)
+          .set(patient.toJson());
       await _firestore.collection('Users').doc(user.uid).set(patient.toUserP());
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
     }
   }
+
+/* Future addSigne({
+    required String glycemie,
+    required String insulinebasale,
+    required String insulineBolus,
+    required String insulineDeCorrection,
+    required String activitePhysique,
+    required String duree,
+    required int nbreDePas,
+    required String contexte,
+    required double poids,
+    required double hbA1c,
+    required double pressionArterielleSyst,
+    required String pressionArterielleDiast,
+    required String remarque,
+    required String time,
+  }) async {
+    final patientId = auth.currentUser!.uid;
+    try {
+      final docIdS = FirebaseFirestore.instance.collection('SigneVitaux').doc();
+      String docId = docIdS.id;
+      await FirebaseFirestore.instance
+          .collection('SigneVitaux')
+          .doc(docId)
+          .set({
+        'idSigne': docId,
+        'glycemie': glycemie,
+        'insulinebasale': insulinebasale,
+        'insulineBolus': insulineBolus,
+        'insulineDeCorrection': insulineDeCorrection,
+        'activitePhysique': activitePhysique,
+        'duree': duree,
+        'nbreDePas': nbreDePas,
+        'contexte': contexte,
+        'poids': poids,
+        'hbA1c': hbA1c,
+        'patientId': patientId,
+        'pressionArterielleSyst': pressionArterielleSyst,
+        'pressionArterielleDiast': pressionArterielleDiast,
+        'remarque': remarque,
+        'time':Timestamp.now(),
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+}*/
 }

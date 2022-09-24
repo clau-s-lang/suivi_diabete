@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
 Widget patientTile(
-    {required String photo,
+    {required String sname,
     required String name,
-    required String type_diabete,
+    required String email,
     routing}) {
   return Card(
     child: ListTile(
-      leading: CircleAvatar(
-        backgroundImage: AssetImage("$photo"),
-      ),
+      leading: Text("$sname"),
       title: Text("$name"),
-      subtitle: Text("$type_diabete"),
+      subtitle: Text("$email"),
       onTap: routing,
     ),
   );

@@ -46,7 +46,7 @@ class Medecin {
       };
   Map<String, dynamic> toUser() => {
         'UserId': userId,
-        'Email': email,
+        'email': email,
         'role': 'medecin',
       };
 

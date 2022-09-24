@@ -1,18 +1,20 @@
 class SigneVitaux{
   final String idSigne;
+  final String patientId;
   final String glycemie;
   final String insulinebasale;
   final String insulineBolus;
   final String insulineDeCorrection;
-  final Map activitePhysique;
+  final String activitePhysique;
   final String duree;
-  final int nbreDePas;
-  final Map contexte;
-  final double poids;
-  final double hbA1c;
-  final double pressionArterielleSyst;
+  final String nbreDePas;
+  final String contexte;
+  final String poids;
+  final String hbA1c;
+  final String pressionArterielleSyst;
   final String pressionArterielleDiast;
   final String remarque;
+  final String time;
 
   SigneVitaux({
     required this.idSigne,
@@ -20,15 +22,17 @@ class SigneVitaux{
     required this.insulinebasale,
     required this.insulineBolus,
     required this.insulineDeCorrection,
-    required this.activitePhysique,
     required this.duree,
     required this.nbreDePas,
     required this.contexte,
+    required this.patientId,
+    required this.activitePhysique,
     required this.poids,
     required this.hbA1c,
     required this.pressionArterielleSyst,
     required this.pressionArterielleDiast,
     required this.remarque,
+    required this.time,
   });
 
   Map<String, dynamic> toJson() => {
@@ -40,15 +44,17 @@ class SigneVitaux{
     'activitePhysique' : activitePhysique,
     'duree' : duree,
     'nbreDePas' : nbreDePas,
-    'contexte' : contexte,
+    'contexteMaladie' : contexte,
     'poids' : poids,
     'hbA1c' : hbA1c,
+    'patientId': patientId,
     'pressionArterielleSyst' : pressionArterielleSyst,
     'pressionArterielleDiast' : pressionArterielleDiast,
     'remarque' : remarque,
+    'time':time,
   };
 
-  static SigneVitaux fromJson(Map<String, dynamic> json) => SigneVitaux(
+ /* static SigneVitaux fromJson(Map<String, dynamic> json) => SigneVitaux(
     idSigne: json['idSigne'],
     glycemie: json['glycemie'],
     insulinebasale: json['insulinebasale'],
@@ -63,5 +69,5 @@ class SigneVitaux{
     pressionArterielleSyst: json['pressionArterielleSyst'],
     pressionArterielleDiast: json['pressionArterielleDiast'],
     remarque : json['remarque'],
-  );
+  );*/
 }

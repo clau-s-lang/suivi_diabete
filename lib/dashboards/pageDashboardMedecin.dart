@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../menus/pageMenuMedecin.dart';
+import '../signes_vitaux/pageDataPatient.dart';
 import '../users/pageInscriptionPatient.dart';
 import '../users/pagePatientDescription.dart';
 
@@ -17,6 +19,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      drawer: MenuMedecin(),
       appBar: AppBar(
         title: Text('Mes Patients'),
         backgroundColor: Color(0xFF216DAD),
@@ -24,7 +27,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Patient')
-            .where('medecin', isEqualTo: user!.email)
+            .where('medecinId', isEqualTo: user!.uid)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.none) {
@@ -53,9 +56,9 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
               itemBuilder: (context, index) {
                 DocumentSnapshot patientAssigned = snapshot.data!.docs[index];
                 return patientTile(
-                  photo: patientAssigned[''],
-                  name: patientAssigned[''],
-                  type_diabete: patientAssigned[''],
+                  sname: patientAssigned['sname'],
+                  name: patientAssigned['fname'],
+                  email: patientAssigned['email'],
                   routing: () => Navigator.push(
                     context,
                     MaterialPageRoute(

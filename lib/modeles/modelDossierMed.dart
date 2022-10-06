@@ -1,14 +1,17 @@
 import 'dart:ffi';
 
 class DossierMedical {
-  final String idDossier;
+  String idDossier;
+  String idPatient;
+  String idMedecin;
   final String insulinotherapie;
-  final String insulinotherapieDepuis;
-  final String allergie;
+  String insulinotherapieDepuis;
+  String allergie;
   final String vaccination;
   final String modeDeVie;
   final String surpoids;
   final String hypertension;
+  final String hypotroide;
   final String maladieCoeliaque;
   final String antecedentMedicaux;
   final String antecedentChirurgicaux;
@@ -21,8 +24,11 @@ class DossierMedical {
   final String cardiovasculare;
 
   DossierMedical({
+    this.idDossier = '',
+    this.idPatient = '',
+    this.idMedecin = '',
     required this.alcool,
-    required this.allergie,
+    this.allergie = 'null',
     required this.antecedentChirurgicaux,
     required this.antecedentFamilliaux,
     required this.antecedentMedicaux,
@@ -30,9 +36,9 @@ class DossierMedical {
     required this.cholesterol,
     required this.heredite,
     required this.hypertension,
-    required this.idDossier,
+    required this.hypotroide,
     required this.insulinotherapie,
-    required this.insulinotherapieDepuis,
+    this.insulinotherapieDepuis = 'null',
     required this.maladieCoeliaque,
     required this.modeDeVie,
     required this.sendentarite,
@@ -42,6 +48,9 @@ class DossierMedical {
   });
 
   Map<String, dynamic> toJson() => {
+    'idDossier':idDossier,
+    'idPatient' : idPatient,
+    'idMedecin':idMedecin,
     'alcool': alcool,
     'allergie': allergie,
     'antecedentChirurgicaux': antecedentChirurgicaux,
@@ -51,6 +60,7 @@ class DossierMedical {
     'cholesterol' : cholesterol,
     'heredite' : heredite,
     'hypertension' : hypertension,
+    'hypotroide':hypotroide,
     'idDossier' : idDossier,
     'insulinotherapie' : insulinotherapie,
     'insulinotherapieDepuis' : insulinotherapieDepuis,
@@ -74,6 +84,7 @@ class DossierMedical {
     hypertension: json['hypertension'],
     idDossier: json['idDossier'],
     insulinotherapie: json['insulinotherapie'],
+    hypotroide:json['hypotroide'],
     insulinotherapieDepuis : json['insulinotherapieDepuis'],
     maladieCoeliaque: json['maladieCoeliaque'],
     modeDeVie: json['modeDeVie'],

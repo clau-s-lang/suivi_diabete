@@ -155,6 +155,7 @@ class FireBaseApi extends ChangeNotifier {
     try {
       final docIdO = FirebaseFirestore.instance.collection('Ordonnance').doc();
       String docId = docIdO.id;
+      ord.idOrdonnance = docId;
       await FirebaseFirestore.instance.collection('Ordonnance').doc(docId).set(
             ord.toJson(),
           );
@@ -167,6 +168,7 @@ class FireBaseApi extends ChangeNotifier {
     try {
       final docIdDoss = FirebaseFirestore.instance.collection('DossierMedical').doc();
       String docId = docIdDoss.id;
+      doss.idDossier = docId;
       await FirebaseFirestore.instance.collection('DossierMedical').doc(docId).set(
         doss.toJson(),
       );

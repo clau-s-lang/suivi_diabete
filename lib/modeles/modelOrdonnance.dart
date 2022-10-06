@@ -18,6 +18,7 @@ class Ordonnance{
 });
 
   Map<String, dynamic> toJson() => {
+    'idOrdonnance' : idOrdonnance,
     'idPatient': idPatient,
     'idMedecin': idMedecin,
     'designation': designation,

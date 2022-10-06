@@ -177,7 +177,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       label: 'Dossier médical',
                       iconData: Icons.medication_outlined,
                       onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DossierMedicalPat()))),
+                          MaterialPageRoute(builder: (context) => DossierMedicalPat(patientId:widget.patientId)))),
                   buttonWidget(
                       label: 'Historique glycémique',
                       iconData: Icons.data_exploration_outlined,

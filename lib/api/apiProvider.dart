@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gestion_diabete/database/dbUser.dart';
+import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import 'package:gestion_diabete/modeles/modelMedecin.dart';
+import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 
 import '../modeles/modelPatient.dart';
 
@@ -19,19 +21,22 @@ class ProviderApi extends ChangeNotifier {
       FireBaseApi().signUpWithEmailMed(
           email: email, password: password, medecin: medecin);
 
-  void signInWithEmailMed(
+  void signInWithEmail(
           {required String email,
           required String password,
           }) =>
-      FireBaseApi().signInWithEmailMed(email: email, password: password);
+      FireBaseApi().signInWithEmail(email: email, password: password);
 
   void addPatient({required Patient patient}) => FireBaseApi().addPatient(
         patient: patient,
       );
+  void addOrdo({required Ordonnance ord})=>FireBaseApi().addOrdo(ord:ord);
 
-  void signInWithEmailPat(
+  void addDoss({required DossierMedical doss})=>FireBaseApi().addDoss(doss:doss);
+
+ /* void signInWithEmailPat(
           {required String email,
           required String password,
           }) =>
-      FireBaseApi().signInWithEmailPat(email: email, password: password);
+      FireBaseApi().signInWithEmailPat(email: email, password: password);*/
 }

@@ -41,7 +41,7 @@ class _MenuPatientState extends State<MenuPatient> {
           MenuNames(
             designation: 'Mon dossier médical',
             icone: Icon(Icons.medical_services_outlined),
-            ToPage: DossierMedical(),
+            ToPage: DossierMedicalPat(),
           ),
 
           MenuNames(

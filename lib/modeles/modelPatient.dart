@@ -14,6 +14,10 @@ class Patient {
   final String numPhone;
   final String admittedDate;
   final String password;
+  final String birthday;
+  final String typeDediabte;
+  final String anneeDecouverte;
+  final String modeDecouverte;
 
   Patient({
     this.idPatient = '',
@@ -25,12 +29,13 @@ class Patient {
     required this.adresse,
     required this.admittedDate,
     required this.numPhone,
+    required this.birthday,
+    required this.anneeDecouverte,
+    required this.modeDecouverte,
+    required this.typeDediabte,
     this.userId = '',
     required this.password,
-    //this.autresComplications,
-    /* required this.idDossierMedicales,
-    required this.idMedecinAssigned,*/
-    //required this.birthday,
+
   });
   Map<String, dynamic> toJson() => {
         'idPatient': idPatient,
@@ -38,17 +43,21 @@ class Patient {
         'sname': sname,
         'email': email,
         'genre': genre,
-         'adresse' : adresse,
+        'age': birthday,
+        'anneeDecouverte': anneeDecouverte,
+        'modeDecouverte': modeDecouverte,
+        'typeDediabte': typeDediabte,
+        'adresse': adresse,
         'medecinId': medecinId,
         'numPhone': numPhone,
-        'admittedDate' : admittedDate,
+        'admittedDate': admittedDate,
       };
 
   Map<String, dynamic> toUserP() => {
-    'UserId': userId,
-    'Email': email,
-    'role': 'patient',
-  };
+        'UserId': userId,
+        'Email': email,
+        'role': 'patient',
+      };
 
   /*static Patient fromJson(Map<String, dynamic> json) => Patient(
         idPatient: json['idPatient'],

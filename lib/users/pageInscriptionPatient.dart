@@ -32,6 +32,10 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   final phone = TextEditingController();
   final email = TextEditingController();
   final code = TextEditingController();
+  final age = TextEditingController();
+  final typeDiab = TextEditingController();
+  final anneDecouv = TextEditingController();
+  final modeDecouv = TextEditingController();
   final MdP = TextEditingController();
   final confimMdP = TextEditingController();
   final admittedDate = TextEditingController();
@@ -111,6 +115,77 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                     ),
                   ),
                 ),
+                Container(
+                  width: 330,
+                  child: TextFormField(
+                    controller: age,
+                    style: TextStyle(
+                      fontSize: 15,
+                      height: 0.5,
+                    ),
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2022),
+                          lastDate: DateTime.now());
+                      if (pickedDate != null) {
+                        String formattedDate =
+                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                        setState(() {
+                          age.text = formattedDate;
+                        });
+                      } else {
+                        snackBarWidget(context,
+                            message: "La date n'est pas selectioné");
+                      }
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.calendar_today_outlined,
+                        size: 30.0,
+                        color: Color(0xFFA2CCF9),
+                      ),
+                      border: OutlineInputBorder(),
+                      labelText: 'Date d\'inscription',
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ReusableTextFormField(
+                  name: typeDiab,
+                  type: TextInputType.name,
+                  message: 'Ce champ est obligatoire',
+                  label: 'Type de diabete',
+                  hint: 'Completer votre prenom',
+                  icone: (Icons.account_circle_outlined),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ReusableTextFormField(
+                  name: anneDecouv,
+                  type: TextInputType.name,
+                  message: 'Ce champ est obligatoire',
+                  label: 'Année de decouverte',
+                  hint: 'Completer votre nom',
+                  icone: (Icons.account_circle_outlined),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ReusableTextFormField(
+                  name: modeDecouv,
+                  type: TextInputType.name,
+                  message: 'Ce champ est obligatoire',
+                  label: 'Mode de decouverte',
+                  hint: 'Completer votre prenom',
+                  icone: (Icons.account_circle_outlined),
+                ),
+
                 SizedBox(
                   height: 10,
                 ),
@@ -257,6 +332,10 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                         adresse: adresse.text,
                         medecinId: auth.currentUser!.uid,
                         genre: genre,
+                        birthday: age.text,
+                        typeDediabte: typeDiab.text,
+                        anneeDecouverte: anneDecouv.text,
+                        modeDecouverte: modeDecouv.text,
                         email: email.text,
                         password: MdP.text,
                         numPhone: phone.text,

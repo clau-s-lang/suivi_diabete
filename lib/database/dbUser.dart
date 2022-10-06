@@ -1,24 +1,26 @@
 //import 'package:cloestore/cloud_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../modeles/modelSigneVitaux.dart';
-import '../users/pageInscriptionPatient.dart';
-
+import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
+import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import '../modeles/modelMedecin.dart';
 import '../modeles/modelPatient.dart';
+import '../users/pagePatientDescription.dart';
 
 class FireBaseApi extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  Future signUpWithEmailMed({required String email,
-    required String password,
-    required Medecin medecin}) async {
+  Future signUpWithEmailMed(
+      {required String email,
+      required String password,
+      required Medecin medecin}) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -36,7 +38,7 @@ class FireBaseApi extends ChangeNotifier {
       } else if (e.code == 'too-many-requests') {
         Fluttertoast.showToast(
             msg:
-            'Nous avons bloqué toutes les requetes en provenance de votre appareil suite à une activté inhabituelle ');
+                'Nous avons bloqué toutes les requetes en provenance de votre appareil suite à une activté inhabituelle ');
       }
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
@@ -75,8 +77,9 @@ class FireBaseApi extends ChangeNotifier {
         'email': patient.email,
         'role': 'patient'
       });
-      final newPatient = _firestore.collection('Patient');
-      await newPatient.add({
+      final newPatient =
+          _firestore.collection('Patient').doc(userCredential.user!.uid);
+      await newPatient.set({
         'idPatient': userCredential.user!.uid,
         'fname': patient.fname,
         'sname': patient.sname,
@@ -90,11 +93,11 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
-  Future signInWithEmailMed(
+  Future signInWithEmail(
       {required String email, required String password, context}) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -108,31 +111,7 @@ class FireBaseApi extends ChangeNotifier {
       } else if (e.code == 'too-many-requests') {
         Fluttertoast.showToast(
             msg:
-            'Nous avons bloqué toutes les requetes en provenance de votre appareil suite à une activté inhabituelle');
-      }
-      return InscriptionPatient();
-    }
-  }
-
-  Future signInWithEmailPat({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        Fluttertoast.showToast(msg: 'Email ou mot de passe incorrect.');
-      } else if (e.code == 'wrong-password') {
-        Fluttertoast.showToast(msg: 'Email ou mot de passe incorrect.');
-      } else if (e.code == 'too-many-requests') {
-        Fluttertoast.showToast(
-            msg:
-            'Nous avons bloqué toutes les requetes en provenance de votre appareil suite à une activté inhabituelle');
+                'Nous avons bloqué toutes les requetes en provenance de votre appareil suite à une activté inhabituelle');
       }
     }
   }
@@ -169,6 +148,30 @@ class FireBaseApi extends ChangeNotifier {
       await _firestore.collection('Users').doc(user.uid).set(patient.toUserP());
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
+    }
+  }
+
+  Future addOrdo({required Ordonnance ord}) async {
+    try {
+      final docIdO = FirebaseFirestore.instance.collection('Ordonnance').doc();
+      String docId = docIdO.id;
+      await FirebaseFirestore.instance.collection('Ordonnance').doc(docId).set(
+            ord.toJson(),
+          );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future addDoss({required DossierMedical doss}) async {
+    try {
+      final docIdDoss = FirebaseFirestore.instance.collection('DossierMedical').doc();
+      String docId = docIdDoss.id;
+      await FirebaseFirestore.instance.collection('DossierMedical').doc(docId).set(
+        doss.toJson(),
+      );
+    } catch (e) {
+      print(e);
     }
   }
 

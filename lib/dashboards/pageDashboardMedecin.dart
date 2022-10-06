@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/profile_patient.dart';
+import 'package:provider/provider.dart';
+import '../api/apiProvider.dart';
 import '../menus/pageMenuMedecin.dart';
 import '../signes_vitaux/pageDataPatient.dart';
 import '../users/pageInscriptionPatient.dart';
+import '../users/pageLogin.dart';
 import '../users/pagePatientDescription.dart';
 
 import '../modeles/modelUser.dart';
@@ -19,10 +23,19 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      drawer: MenuMedecin(),
       appBar: AppBar(
         title: Text('Mes Patients'),
         backgroundColor: Color(0xFF216DAD),
+        actions: [
+          TextButton.icon(
+              icon: Icon(Icons.logout, color: Colors.white,),
+              onPressed: (){
+                final provider = Provider.of<ProviderApi>(context, listen: false);
+                provider.logOut();
+                // Center(child: CircularProgressIndicator(),);
+              },
+              label: Text('Deconnexion', style:TextStyle(color: Colors.white),)),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -63,7 +76,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => PatientDescription(
-                        patientId: patientAssigned['docId'],
+                        patientId: patientAssigned['idPatient'],
                       ),
                     ),
                   ),
@@ -74,7 +87,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.person_add_alt),
         onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>  InscriptionPatient())),
+            MaterialPageRoute(builder: (context) =>  Profile())),
       ),
     );
   }

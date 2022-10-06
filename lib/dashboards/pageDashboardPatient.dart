@@ -10,7 +10,7 @@ class DashboardPatient extends StatefulWidget {
 class _DashboardPatientState extends State<DashboardPatient> {
   @override
   Widget build(BuildContext context) {
-    return Connexion()
+    return DonneesPatient();
     ;
   }
 }

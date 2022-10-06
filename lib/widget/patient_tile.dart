@@ -7,7 +7,7 @@ Widget patientTile(
     routing}) {
   return Card(
     child: ListTile(
-      leading: Text("$sname"),
+      leading: CircleAvatar(child: Text(name[0])),
       title: Text("$name"),
       subtitle: Text("$email"),
       onTap: routing,

@@ -14,7 +14,10 @@ class MenuNames extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: icone,
-      title: Text(designation),
+      title: Text(designation,
+      style: TextStyle(
+        fontSize: 15,
+      ),),
       onTap: () => {
         Navigator.push(context,MaterialPageRoute(builder: (context)
         {

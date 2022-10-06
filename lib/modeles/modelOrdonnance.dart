@@ -1,15 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Ordonnance{
-  final String idPatient;
-  final String idMedecin;
+  String idOrdonnance;
+  String idPatient;
+  String idMedecin;
   final String designation;
   final String posologie;
-  final DateTime datedeCreation;
+  final String datedeCreation;
 
   Ordonnance({
-    required this.idPatient,
-    required this.idMedecin,
+    this.idOrdonnance = '',
+    this.idPatient ='',
+    this.idMedecin ='',
     required this.designation,
     required this.posologie,
     required this.datedeCreation
@@ -28,6 +30,6 @@ class Ordonnance{
     idMedecin: json['idMedecin'],
     designation: json['designation'],
       posologie : json['posologie'],
-      datedeCreation: (json['datedeCreation'] as Timestamp).toDate(),
+      datedeCreation: json['datedeCreation'],
   );
 }

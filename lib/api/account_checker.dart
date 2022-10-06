@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../dashboards/pageDashboardPatient.dart';
 
-
 class AccountChecker extends StatefulWidget {
   @override
   _AccountCheckerState createState() => _AccountCheckerState();
@@ -71,7 +70,7 @@ class _AccountCheckerState extends State<AccountChecker> {
                           final provider = Provider.of<ProviderApi>(context, listen: false);
                           provider.logOut();
                         },
-                        child: Text('Ecran de connexion'),
+                        child: Text('Deconnexion'),
                       ),
                     ],
                   ),

@@ -36,111 +36,110 @@ class _ConnexionState extends State<Connexion> {
             SizedBox(
               height: 80,
             ),
-            Column(
-              children: [
-                ReusableTextFormField(
-                  name: email,
-                  type: TextInputType.emailAddress,
-                  message: 'Ce champ est obligatoire',
-                  label: 'Email',
-                  hint: 'Exemple@gmail.com',
-                  icone: (Icons.mail_outlined),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 330,
-                  child: TextFormField(
-                    controller: Mdp,
-                    style: TextStyle(
-                      fontSize: 15,
-                      height: 0.5,
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Obligatoire';
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isVisible = !isVisible;
-                          });
-                        },
-                        icon: Icon(isVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  ReusableTextFormField(
+                    name: email,
+                    type: TextInputType.emailAddress,
+                    message: 'Ce champ est obligatoire',
+                    label: 'Email',
+                    hint: 'Exemple@gmail.com',
+                    icone: (Icons.mail_outlined),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: 330,
+                    child: TextFormField(
+                      controller: Mdp,
+                      style: TextStyle(
+                        fontSize: 15,
+                        height: 0.5,
                       ),
-                      border: OutlineInputBorder(),
-                      labelText: 'Mot de passe',
-                      hintText: 'Completer votre mot de passe',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Obligatoire';
+                        }
+                        return null;
+                      },
+                      keyboardType: TextInputType.visiblePassword,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isVisible = !isVisible;
+                            });
+                          },
+                          icon: Icon(isVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
+                        border: OutlineInputBorder(),
+                        labelText: 'Mot de passe',
+                        hintText: 'Completer votre mot de passe',
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      'Mot de passe oublié?',
-                      style: TextStyle(
-                        color: Color(0xFFA2CCF9),
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    final provider =
-                        Provider.of<ProviderApi>(context, listen: false);
-                    provider.signInWithEmailMed(
-                        email: email.text,
-                        password: Mdp.text,
-                        );
-                   /* Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                          return InscriptionPatient();
-                        }));*/
-                    Center(
-                      child: CircularProgressIndicator(),
-                    );
-
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(10),
-                    height: 50,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100.0),
-                      color: Color(0xFFA2CCF9),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Se Connecter',
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        'Mot de passe oublié?',
                         style: TextStyle(
+                          color: Color(0xFFA2CCF9),
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final provider =
+                          Provider.of<ProviderApi>(context, listen: false);
+                      provider.signInWithEmail(
+                          email: email.text,
+                          password: Mdp.text,
+                          );
+                      Center(
+                        child: CircularProgressIndicator(),
+                      );
+
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      height: 50,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100.0),
+                        color: Color(0xFFA2CCF9),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Se Connecter',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                /* ReusableButton(
-                  text: 'Se Connecter',
-                  ToPage: DonneesPatient(),
-                  dim: 300,
-                ),*/
-              ],
+                  /* ReusableButton(
+                    text: 'Se Connecter',
+                    ToPage: DonneesPatient(),
+                    dim: 300,
+                  ),*/
+                ],
+              ),
             ),
           ],
         ),

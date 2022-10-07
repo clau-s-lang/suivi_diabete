@@ -8,10 +8,10 @@ import '../menus/pageMenuMedecin.dart';
 import '../signes_vitaux/pageDataPatient.dart';
 import '../users/pageInscriptionPatient.dart';
 import '../users/pageLogin.dart';
-import '../users/pagePatientDescription.dart';
+import '../description/pagePatientDescription.dart';
 
 import '../modeles/modelUser.dart';
-import '../widget/patient_tile.dart';
+import '../tiles/patient_tile.dart';
 
 class DashboardMedecin extends StatefulWidget {
   @override
@@ -87,7 +87,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.person_add_alt),
         onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>  Profile())),
+            MaterialPageRoute(builder: (context) =>  InscriptionPatient())),
       ),
     );
   }

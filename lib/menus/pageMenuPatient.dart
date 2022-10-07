@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/dashboards/pageDahboqrdOrdonnance.dart';
+import '../ordonnances/pageOrdonnancePatient.dart';
 import '../signes_vitaux/pageDataPatient.dart';
 import '../traitements/pageAccueilMonTraitement.dart';
 import '../chat/pageChat.dart';
@@ -12,6 +14,7 @@ import '../Reusables/AppBarDrawer.dart';
 import '../Reusables/DenominationMenus.dart';
 import '../Reusables/ChampdeRedactionMessage.dart';
 import '../chat/pageChatAccueilMedecin.dart';
+import '../traitements/pageTraitementPatient.dart';
 
 class MenuPatient extends StatefulWidget {
   @override
@@ -39,6 +42,12 @@ class _MenuPatientState extends State<MenuPatient> {
             ToPage: DonneesPatient(),
           ),
           MenuNames(
+            designation: 'Mes ordonnances',
+            icone: Icon(Icons.medical_services_outlined),
+            ToPage: DashOrdonnance(),
+          ),
+
+          MenuNames(
             designation: 'Mon dossier médical',
             icone: Icon(Icons.medical_services_outlined),
             ToPage: DonneesPatient(),
@@ -57,7 +66,7 @@ class _MenuPatientState extends State<MenuPatient> {
           MenuNames(
             designation: 'Mon traitement',
             icone: Icon(Icons.medication_outlined),
-            ToPage: AccueilMonTraitement(),
+            ToPage: TraitementPatient(),
           ),
           MenuNames(
             designation: 'Infos sur le diabète',

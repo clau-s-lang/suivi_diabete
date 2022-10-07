@@ -4,8 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gestion_diabete/modeles/modelSigneVitaux.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import '../api/apiProvider.dart';
 import '../menus/pageMenuPatient.dart';
 import '../users/pageLogin.dart';
 //import 'package:gestion_diabete/pages/pageMenuPatient.dart';
@@ -40,7 +43,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
   final PAdiast = TextEditingController();
   final remarque = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  bool loading = false;
   String activitePhysique = 'Musculation';
   String contexte = 'Stress';
 
@@ -51,6 +54,16 @@ class _DonneesPatientState extends State<DonneesPatient> {
       appBar: AppBar(
         title: Text('Ajouter des données'),
         backgroundColor: Color(0xFF216DAD),
+        actions: [
+          TextButton.icon(
+              icon: Icon(Icons.logout, color: Colors.white,),
+              onPressed: (){
+                final provider = Provider.of<ProviderApi>(context, listen: false);
+                provider.logOut();
+                // Center(child: CircularProgressIndicator(),);
+              },
+              label: Text('Deconnexion', style:TextStyle(color: Colors.white),)),
+        ],
       ),
       body: Form(
         key: _formKey,
@@ -112,7 +125,6 @@ class _DonneesPatientState extends State<DonneesPatient> {
             SizedBox(
               height: 10,
             ),
-
             PlageDeDonnees(
               icone: Icon(Icons.snowshoeing_outlined, color: Color(0xFF216DAD)),
               designation: 'NOURRITURE PRISE',
@@ -123,12 +135,12 @@ class _DonneesPatientState extends State<DonneesPatient> {
                 Container(
                   child: isLoaded
                       ? Column(
-                    children: [
-                      Image.file(
-                        _image!,
-                        height: 50,
-                      ),
-                     /* Row(
+                          children: [
+                            Image.file(
+                              _image!,
+                              height: 50,
+                            ),
+                            /* Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 OutlinedButton.icon(
@@ -161,38 +173,38 @@ class _DonneesPatientState extends State<DonneesPatient> {
                                 ),
                               ],
                             ),*/
-                    ],
-                  )
+                          ],
+                        )
                       : InkWell(
-                    child: Placeholder(
-                      color: Colors.transparent,
-                      child: CircleAvatar(
-                        child: Icon(
-                          Icons.account_circle_outlined,
-                          color: Colors.white70,
-                          size: 30,
+                          child: Placeholder(
+                            color: Colors.transparent,
+                            child: CircleAvatar(
+                              child: Icon(
+                                Icons.account_circle_outlined,
+                                color: Colors.white70,
+                                size: 30,
+                              ),
+                              backgroundColor: Colors.grey,
+                              maxRadius: 10,
+                            ),
+                            fallbackHeight: 50,
+                            fallbackWidth: 50,
+                          ),
+                          onTap: () async {
+                            final pickedFile = await ImagePicker().getImage(
+                              source: ImageSource.camera,
+                              maxHeight: 50,
+                              maxWidth: 50,
+                              imageQuality: 100,
+                            );
+                            if (pickedFile != null) {
+                              setState(() {
+                                _image = File(pickedFile.path);
+                                isLoaded = true;
+                              });
+                            }
+                          },
                         ),
-                        backgroundColor: Colors.grey,
-                        maxRadius: 10,
-                      ),
-                      fallbackHeight: 50,
-                      fallbackWidth: 50,
-                    ),
-                    onTap: () async {
-                      final pickedFile = await ImagePicker().getImage(
-                        source: ImageSource.camera,
-                        maxHeight: 50,
-                        maxWidth: 50,
-                        imageQuality: 100,
-                      );
-                      if (pickedFile != null) {
-                        setState(() {
-                          _image = File(pickedFile.path);
-                          isLoaded = true;
-                        });
-                      }
-                    },
-                  ),
                 ),
               ],
             ),
@@ -246,7 +258,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Musculation', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Musculation',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Musculation',
                       groupValue: activitePhysique,
@@ -268,7 +283,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Sport Collectif', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Sport Collectif',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Sport Collectif',
                       groupValue: activitePhysique,
@@ -290,7 +308,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Cardio Training', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Cardio Training',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Cardio Training',
                       groupValue: activitePhysique,
@@ -312,7 +333,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Marche', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Marche',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Marche',
                       groupValue: activitePhysique,
@@ -386,14 +410,17 @@ class _DonneesPatientState extends State<DonneesPatient> {
               height: 10,
             ),
             Row(
-             // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(
                   flex: 1,
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Stress', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Stress',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Stress',
                       groupValue: activitePhysique,
@@ -411,7 +438,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Maladie', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Maladie',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Maladie',
                       groupValue: activitePhysique,
@@ -429,7 +459,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     horizontalTitleGap: 0,
-                    title: Text('Allérgie', style: TextStyle(fontWeight: FontWeight.bold),),
+                    title: Text(
+                      'Allérgie',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     leading: Radio<String>(
                       value: 'Allérgie',
                       groupValue: activitePhysique,
@@ -520,36 +553,40 @@ class _DonneesPatientState extends State<DonneesPatient> {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       try {
-                        final docIdS = FirebaseFirestore.instance
-                            .collection('SigneVitaux')
-                            .doc();
-                        String docId = docIdS.id;
-                        await FirebaseFirestore.instance
-                            .collection('SigneVitaux')
-                            .doc(docId)
-                            .set({
-                          'idSigne': docId,
-                          'patientId': auth.currentUser!.uid,
-                          'glycemie': glycemie.text,
-                          'insulinebasale': insulineBasale.text,
-                          'insulineBolus': insulineBolus.text,
-                          'insulineDeCorrection': insulineCorr.text,
-                          'activitePhysique': activitePhysique,
-                          'duree': duree.text,
-                          'nbreDePas': nbrePas as String,
-                          'contexte': contexte,
-                          'poids': poids.text,
-                          'hbA1c': hba1c.text,
-                          'pressionArterielleSyst': PAsyst.text,
-                          'pressionArterielleDiast': PAdiast.text,
-                          'remarque': remarque.text,
-                          'time': Timestamp.now().toString(),
-                        }).whenComplete(() => clearFiels());
-                      } on FirebaseException catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('$e'),
-                        ));
+                        setState(() {
+                          loading = true;
+                        });
+                        final signe = SigneVitaux(
+                          /*idPatient: doc['idPatient'],
+                          idMedecin: auth.currentUser!.uid,*/
+
+                          patientId: auth.currentUser!.uid,
+                          glycemie: glycemie.text,
+                          insulinebasale: insulineBasale.text,
+                          insulineBolus: insulineBolus.text,
+                          insulineDeCorrection: insulineCorr.text,
+                          activitePhysique: activitePhysique,
+                          duree: duree.text,
+                          nbreDePas: nbrePas as String,
+                          contexte: contexte,
+                          poids: poids.text,
+                          hbA1c: hba1c.text,
+                          pressionArterielleSyst: PAsyst.text,
+                          pressionArterielleDiast: PAdiast.text,
+                          remarque: remarque.text,
+                          time: Timestamp.now().toString(),
+                        );
+                        final provider =
+                            Provider.of<ProviderApi>(context, listen: false);
+                        provider.addSigne(signe: signe);
+                      } catch (e) {
+                        Fluttertoast.showToast(msg: e.toString());
+                        setState(() {
+                          loading = false;
+                        });
                       }
+                      clearFields();
+                      Navigator.pop(context);
                     }
                   },
                   child: Container(
@@ -582,7 +619,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
     );
   }
 
-  void clearFiels() {
+  void clearFields() {
     glycemie.clear();
     insulineBasale.clear();
     insulineBolus.clear();

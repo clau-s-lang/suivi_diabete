@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/api/apiProvider.dart';
+import 'package:gestion_diabete/signes_vitaux/pageDataPatient.dart';
 import '../dashboards/pageDashboardMedecin.dart';
 import 'package:provider/provider.dart';
 
@@ -54,7 +55,7 @@ class _AccountCheckerState extends State<AccountChecker> {
           if (data['role'] == 'medecin') {
             return DashboardMedecin();
           } else if (data['role'] == 'patient') {
-            return DashboardPatient();
+            return DonneesPatient();
           } else {
             return Scaffold(
               body: Padding(

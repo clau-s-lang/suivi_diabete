@@ -1,5 +1,5 @@
 class SigneVitaux{
-  final String idSigne;
+  String idSigne;
   final String patientId;
   final String glycemie;
   final String insulinebasale;
@@ -17,7 +17,7 @@ class SigneVitaux{
   final String time;
 
   SigneVitaux({
-    required this.idSigne,
+    this.idSigne = '',
     required this.glycemie,
     required this.insulinebasale,
     required this.insulineBolus,

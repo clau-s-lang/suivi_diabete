@@ -8,7 +8,7 @@ import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import '../modeles/modelMedecin.dart';
 import '../modeles/modelPatient.dart';
-import '../users/pagePatientDescription.dart';
+import '../modeles/modelSigneVitaux.dart';
 
 class FireBaseApi extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -177,50 +177,16 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
-/* Future addSigne({
-    required String glycemie,
-    required String insulinebasale,
-    required String insulineBolus,
-    required String insulineDeCorrection,
-    required String activitePhysique,
-    required String duree,
-    required int nbreDePas,
-    required String contexte,
-    required double poids,
-    required double hbA1c,
-    required double pressionArterielleSyst,
-    required String pressionArterielleDiast,
-    required String remarque,
-    required String time,
-  }) async {
-    final patientId = auth.currentUser!.uid;
+  Future addSigne({required SigneVitaux signe}) async {
     try {
-      final docIdS = FirebaseFirestore.instance.collection('SigneVitaux').doc();
-      String docId = docIdS.id;
-      await FirebaseFirestore.instance
-          .collection('SigneVitaux')
-          .doc(docId)
-          .set({
-        'idSigne': docId,
-        'glycemie': glycemie,
-        'insulinebasale': insulinebasale,
-        'insulineBolus': insulineBolus,
-        'insulineDeCorrection': insulineDeCorrection,
-        'activitePhysique': activitePhysique,
-        'duree': duree,
-        'nbreDePas': nbreDePas,
-        'contexte': contexte,
-        'poids': poids,
-        'hbA1c': hbA1c,
-        'patientId': patientId,
-        'pressionArterielleSyst': pressionArterielleSyst,
-        'pressionArterielleDiast': pressionArterielleDiast,
-        'remarque': remarque,
-        'time':Timestamp.now(),
-      });
+      final docIdDoss = FirebaseFirestore.instance.collection('SigneVitaux').doc();
+      String docId = docIdDoss.id;
+      signe.idSigne = docId;
+      await FirebaseFirestore.instance.collection('SigneVitaux').doc(docId).set(
+        signe.toJson(),
+      );
     } catch (e) {
       print(e);
     }
   }
-}*/
 }

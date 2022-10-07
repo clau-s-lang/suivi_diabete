@@ -6,6 +6,7 @@ import 'package:gestion_diabete/modeles/modelMedecin.dart';
 import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 
 import '../modeles/modelPatient.dart';
+import '../modeles/modelSigneVitaux.dart';
 
 class ProviderApi extends ChangeNotifier {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -33,6 +34,8 @@ class ProviderApi extends ChangeNotifier {
   void addOrdo({required Ordonnance ord})=>FireBaseApi().addOrdo(ord:ord);
 
   void addDoss({required DossierMedical doss})=>FireBaseApi().addDoss(doss:doss);
+
+  void addSigne({required SigneVitaux signe})=>FireBaseApi().addSigne(signe: signe);
 
  /* void signInWithEmailPat(
           {required String email,

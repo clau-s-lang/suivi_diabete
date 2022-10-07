@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/traitements/pageTraitementPatient.dart';
 import '../dossier_med/pageDossierMedicalPatient.dart';
@@ -60,3 +61,4 @@ class _AccueilMonTraitement extends State<AccueilMonTraitement>
     );
   }
 }
+*/

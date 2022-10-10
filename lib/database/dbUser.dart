@@ -45,6 +45,37 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
+ /* Future signUpWithEmailPat(
+      {required String email,
+        required String password,
+        required Patient patient,
+      }) async {
+    try {
+      UserCredential userCredential =
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      final user = userCredential.user;
+      print(user?.uid);
+      ajoutPatient(userCredential.user, patient,);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Fluttertoast.showToast(msg: 'Le mot de passe fourni est faible.');
+      } else if (e.code == 'email-already-in-use') {
+        Fluttertoast.showToast(
+          msg: 'Il existe déjà une compte avec ce mail.',
+          toastLength: Toast.LENGTH_LONG,
+        );
+      } else if (e.code == 'too-many-requests') {
+        Fluttertoast.showToast(
+            msg:
+            'Nous avons bloqué toutes les requetes en provenance de votre appareil suite à une activté inhabituelle ');
+      }
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }*/
   Future toFirestore(User? user, Medecin medecin) async {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
@@ -64,6 +95,27 @@ class FireBaseApi extends ChangeNotifier {
       Fluttertoast.showToast(msg: e.toString());
     }
   }
+
+  /*Future ajoutPatient(User? user, Patient patient,) async {
+    final medecinId = auth.currentUser!.uid;
+    try {
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+        email: patient.email,
+        password: patient.password,
+      );
+      patient.idPatient = user!.uid;
+      await _firestore
+          .collection('Patient')
+          .doc(user.uid)
+          .set(patient.toJson());
+      await _firestore
+          .collection('Users')
+          .doc(userCredential.user!.uid)
+          .set(patient.toUserP());
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }*/
 
   Future addPatient({required Patient patient}) async {
     final medecinId = auth.currentUser!.uid;

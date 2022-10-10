@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import '../menus/pageMenuMedecin.dart';
-//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 import 'package:gestion_diabete/style/styleChart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import '../menus/pageMenuPatient.dart';
 import '../modeles/modelChart.dart';
 

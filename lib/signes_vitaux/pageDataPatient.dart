@@ -11,8 +11,6 @@ import 'package:provider/provider.dart';
 import '../api/apiProvider.dart';
 import '../menus/pageMenuPatient.dart';
 import '../users/pageLogin.dart';
-//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
-
 import '../Reusables/BoutonDeConfimation.dart';
 import '../Reusables/ChampData.dart';
 import '../Reusables/ChampDossierMed.dart';
@@ -24,8 +22,6 @@ class DonneesPatient extends StatefulWidget {
   @override
   _DonneesPatientState createState() => _DonneesPatientState();
 }
-
-//enum contextValues { Musculation, SportCollectif, Cardio_training, Marche }
 
 class _DonneesPatientState extends State<DonneesPatient> {
   bool isLoaded = false;
@@ -423,10 +419,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                     ),
                     leading: Radio<String>(
                       value: 'Stress',
-                      groupValue: activitePhysique,
+                      groupValue: contexte,
                       onChanged: (value) {
                         setState(() {
-                          activitePhysique = value!;
+                          contexte = value!;
                         });
                       },
                       activeColor: Color(0xFF216DAD),
@@ -444,10 +440,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                     ),
                     leading: Radio<String>(
                       value: 'Maladie',
-                      groupValue: activitePhysique,
+                      groupValue: contexte,
                       onChanged: (value) {
                         setState(() {
-                          activitePhysique = value!;
+                          contexte = value!;
                         });
                       },
                       activeColor: Color(0xFF216DAD),
@@ -465,10 +461,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                     ),
                     leading: Radio<String>(
                       value: 'Allérgie',
-                      groupValue: activitePhysique,
+                      groupValue: contexte,
                       onChanged: (value) {
                         setState(() {
-                          activitePhysique = value!;
+                          contexte = value!;
                         });
                       },
                       activeColor: Color(0xFF216DAD),
@@ -476,9 +472,6 @@ class _DonneesPatientState extends State<DonneesPatient> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(
-              height: 10,
             ),
             SizedBox(
               height: 10,
@@ -557,8 +550,8 @@ class _DonneesPatientState extends State<DonneesPatient> {
                           loading = true;
                         });
                         final signe = SigneVitaux(
-                          /*idPatient: doc['idPatient'],
-                          idMedecin: auth.currentUser!.uid,*/
+
+                         /* idMedecin: auth.currentUser!.uid,*/
 
                           patientId: auth.currentUser!.uid,
                           glycemie: glycemie.text,
@@ -567,7 +560,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                           insulineDeCorrection: insulineCorr.text,
                           activitePhysique: activitePhysique,
                           duree: duree.text,
-                          nbreDePas: nbrePas as String,
+                          nbreDePas: nbrePas.text,
                           contexte: contexte,
                           poids: poids.text,
                           hbA1c: hba1c.text,

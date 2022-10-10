@@ -22,6 +22,14 @@ class ProviderApi extends ChangeNotifier {
       FireBaseApi().signUpWithEmailMed(
           email: email, password: password, medecin: medecin);
 
+ /* void signUpWithEmailPat(
+      {required String email,
+        required String password,
+        required Patient patient,
+      }) =>
+      FireBaseApi().signUpWithEmailPat(
+          email: email, password: password, patient: patient,);*/
+
   void signInWithEmail(
           {required String email,
           required String password,

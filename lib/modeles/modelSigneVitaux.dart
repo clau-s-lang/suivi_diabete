@@ -1,6 +1,7 @@
 class SigneVitaux{
   String idSigne;
-  final String patientId;
+  String patientId;
+  String medecinId;
   final String glycemie;
   final String insulinebasale;
   final String insulineBolus;
@@ -25,7 +26,8 @@ class SigneVitaux{
     required this.duree,
     required this.nbreDePas,
     required this.contexte,
-    required this.patientId,
+    this.patientId ='',
+    this.medecinId = '',
     required this.activitePhysique,
     required this.poids,
     required this.hbA1c,

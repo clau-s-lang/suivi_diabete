@@ -27,7 +27,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   final _formKey = GlobalKey<FormState>();
   final name = TextEditingController();
   final prenom = TextEditingController();
- // late var genre = TextEditingController();
+  // late var genre = TextEditingController();
   final adresse = TextEditingController();
   final phone = TextEditingController();
   final email = TextEditingController();
@@ -43,9 +43,12 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   bool loading = false;
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  final items = ['Masculin', 'Feminin',];
+  final items = [
+    'Masculin',
+    'Feminin',
+  ];
 
-  String genre ='Masculin';
+  String genre = 'Masculin';
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
         value: item,
         child: Text(
@@ -132,7 +135,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                           lastDate: DateTime.now());
                       if (pickedDate != null) {
                         String formattedDate =
-                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
                         setState(() {
                           age.text = formattedDate;
                         });
@@ -185,7 +188,6 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                   hint: 'Completer votre prenom',
                   icone: (Icons.account_circle_outlined),
                 ),
-
                 SizedBox(
                   height: 10,
                 ),

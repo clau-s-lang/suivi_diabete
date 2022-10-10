@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gestion_diabete/menus/pageMenuMedecin.dart';
 import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import 'package:provider/provider.dart';
 import '../api/apiProvider.dart';
@@ -60,7 +61,7 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
     return loading
         ? Loading()
         : Scaffold(
-            drawer: MenuPatient(),
+            drawer: MenuMedecin(),
             appBar: AppBar(
               title: Text('Mon dossier médical'),
               backgroundColor: Color(0xFF216DAD),

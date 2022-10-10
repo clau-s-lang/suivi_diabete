@@ -7,6 +7,7 @@ import '../dashboards/pageDashboardMedecin.dart';
 import 'package:provider/provider.dart';
 
 import '../dashboards/pageDashboardPatient.dart';
+import '../dashboards/pageDashboardSigne.dart';
 
 class AccountChecker extends StatefulWidget {
   @override
@@ -46,6 +47,13 @@ class _AccountCheckerState extends State<AccountChecker> {
           }
           if (snapshot.hasError) {
             return Material(
+              /*child:  ElevatedButton(
+                onPressed: () {
+                  final provider = Provider.of<ProviderApi>(context, listen: false);
+                  provider.logOut();
+                },
+                child: Text('Deconnexion'),
+              ),*/
               child: Center(
                 child: Text(snapshot.error.toString()),
               ),
@@ -55,7 +63,7 @@ class _AccountCheckerState extends State<AccountChecker> {
           if (data['role'] == 'medecin') {
             return DashboardMedecin();
           } else if (data['role'] == 'patient') {
-            return DonneesPatient();
+            return SignesDash();
           } else {
             return Scaffold(
               body: Padding(

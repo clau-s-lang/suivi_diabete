@@ -10,7 +10,7 @@ class Patient {
   final String userId;
   final String adresse;
   final String email;
-  final String medecinId;
+  String medecinId;
   final String numPhone;
   final String admittedDate;
   final String password;
@@ -21,7 +21,7 @@ class Patient {
 
   Patient({
     this.idPatient = '',
-    required this.medecinId,
+    this.medecinId = '',
     required this.fname,
     required this.sname,
     required this.email,
@@ -35,7 +35,6 @@ class Patient {
     required this.typeDediabte,
     this.userId = '',
     required this.password,
-
   });
   Map<String, dynamic> toJson() => {
         'idPatient': idPatient,

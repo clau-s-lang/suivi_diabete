@@ -1,41 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../api/apiProvider.dart';
-import '../users/pageInscriptionPatient.dart';
-import '../description/pagePatientDescription.dart';
-import '../tiles/patient_tile.dart';
+import 'package:gestion_diabete/signes_vitaux/pageDataPatient.dart';
 
-class DashboardMedecin extends StatefulWidget {
+import '../menus/pageMenuPatient.dart';
+import '../modeles/modelPatient.dart';
+import '../description/pageDescriptionSignePatient.dart';
+import '../tiles/signe_tile.dart';
+
+class SignesDash extends StatefulWidget {
   @override
-  _DashboardMedecinState createState() => _DashboardMedecinState();
+  _SignesDashState createState() => _SignesDashState();
 }
 
-class _DashboardMedecinState extends State<DashboardMedecin> {
+class _SignesDashState extends State<SignesDash> {
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      drawer: MenuPatient(),
       appBar: AppBar(
-        title: Text('Mes Patients'),
+        title: Text('Mes signes vitaux'),
         backgroundColor: Color(0xFF216DAD),
-        actions: [
-          TextButton.icon(
-              icon: Icon(Icons.logout, color: Colors.white,),
-              onPressed: (){
-                final provider = Provider.of<ProviderApi>(context, listen: false);
-                provider.logOut();
-                // Center(child: CircularProgressIndicator(),);
-              },
-              label: Text('Deconnexion', style:TextStyle(color: Colors.white),)),
-        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection('Patient')
-            .where('medecinId', isEqualTo: user!.uid)
+            .collection('SigneVitaux')
+            .where('patientId', isEqualTo: 'mlW2SHWMDUNGzcDpTUhaK8Cu2nm1')
             .snapshots(),
+
+
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.none) {
             return Material(
@@ -58,19 +52,18 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
               ),
             );
           }
+          print(user!.uid);
           return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
-                DocumentSnapshot patientAssigned = snapshot.data!.docs[index];
-                return patientTile(
-                  sname: patientAssigned['sname'],
-                  name: patientAssigned['fname'],
-                  email: patientAssigned['email'],
+                DocumentSnapshot messignes = snapshot.data!.docs[index];
+                return signeTile(
+                  glycemie: messignes['glycemie'],
                   routing: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PatientDescription(
-                        patientId: patientAssigned['idPatient'],
+                      builder: (context) => SigneVisioPat(
+                        idSigne: messignes['idSigne'],
                       ),
                     ),
                   ),
@@ -79,9 +72,9 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.person_add_alt_outlined),
+        child: const Icon(Icons.add_outlined),
         onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>  InscriptionPatient())),
+            MaterialPageRoute(builder: (context) =>  DonneesPatient())),
       ),
     );
   }

@@ -35,7 +35,7 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
   final vaccin = TextEditingController();
   final type = TextEditingController();
   final modeDeVie = TextEditingController();
-  final obesite = TextEditingController();
+ // final obesite = TextEditingController();
   String hypertension = 'Non';
   String hypotroide = 'Non';
   String maladie = 'Non';
@@ -81,7 +81,6 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
                     return Material(
                         child: Center(child: CircularProgressIndicator()));
                   }
-
                   print(widget.patientId);
                   if (!snapshot.hasData) {
                     return Material(
@@ -978,7 +977,7 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
                                   loading = true;
                                 });
                                 final doss = DossierMedical(
-                                    idPatient: doc['idPatient'],
+                                    idPatient: widget.patientId,
                                     idMedecin: auth.currentUser!.uid,
                                     insulinotherapie: insulinotherapie,
                                     insulinotherapieDepuis:

@@ -115,7 +115,8 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       Container(
                         height: 30,
                         child: Text(
-                          doc['sname'],
+                          'Ange',
+                         // doc['sname'],
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -127,8 +128,8 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       ),
                       Container(
                         height: 30,
-                        child: Text(
-                          doc['fname'],
+                        child: Text('Amina',
+                          //doc['fname'],
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -143,7 +144,8 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       Container(
                         height: 20,
                         child: Text(
-                          doc['email'],
+                          'amina@gmail.com',
+                         // doc['email'],
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -157,7 +159,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       label: 'Données chargées',
                       iconData: Icons.medical_services_outlined,
                       onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DonneesPatient()))),
+                          MaterialPageRoute(builder: (context) => DonneesDuPatient(idPatient:widget.patientId ,)))),
                   buttonWidget(
                       label: 'Prescrire une ordonnance',
                       iconData: Icons.feed_outlined,

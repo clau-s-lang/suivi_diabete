@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/dashboards/pageDahboqrdOrdonnance.dart';
+import 'package:gestion_diabete/dashboards/pageDashbaordDossPat.dart';
 import '../ordonnances/pageOrdonnancePatient.dart';
 import '../signes_vitaux/pageDataPatient.dart';
 import '../traitements/pageAccueilMonTraitement.dart';
@@ -50,7 +51,7 @@ class _MenuPatientState extends State<MenuPatient> {
           MenuNames(
             designation: 'Mon dossier médical',
             icone: Icon(Icons.medical_services_outlined),
-            ToPage: DonneesPatient(),
+            ToPage: DashDossPat(),
           ),
 
           MenuNames(

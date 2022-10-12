@@ -139,6 +139,11 @@ class FireBaseApi extends ChangeNotifier {
         'email': patient.email,
         'genre': patient.genre,
         'numPhone': patient.numPhone,
+        'anneeDecouverte' : patient.anneeDecouverte,
+        'modeDecouverte': patient.modeDecouverte,
+        'typeDediabete' : patient.typeDediabte,
+        'adresse': patient.adresse,
+        'admittedDate' : patient.admittedDate
       }).catchError((onError) => print(onError));
     } catch (e) {
       print(e);
@@ -189,7 +194,7 @@ class FireBaseApi extends ChangeNotifier {
       Fluttertoast.showToast(msg: e.toString());
     }
   }
-
+/*
   Future toFirestoreP(User? user, Patient patient) async {
     try {
       patient.idPatient = user!.uid;
@@ -201,7 +206,7 @@ class FireBaseApi extends ChangeNotifier {
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
     }
-  }
+  }*/
 
   Future addOrdo({required Ordonnance ord}) async {
     try {

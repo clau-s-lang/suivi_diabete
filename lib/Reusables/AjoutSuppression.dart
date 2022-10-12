@@ -5,16 +5,20 @@ class AjoutSuppression extends StatelessWidget {
     required this.icone,
     required this.designation,
     required this.couleur,
+
   });
 
   Icon icone;
   String designation;
   Color couleur;
 
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+
+      },
       child: Container(
         padding: EdgeInsets.only(left: 40, right: 5),
         child: Row(

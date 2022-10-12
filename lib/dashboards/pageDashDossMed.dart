@@ -1,34 +1,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestion_diabete/signes_vitaux/pageDataPatient.dart';
 
-import '../menus/pageMenuPatient.dart';
-import '../modeles/modelPatient.dart';
-import '../description/pageDescriptionSignePatient.dart';
-import '../tiles/signe_tile.dart';
+import '../dossier_med/pageDossierMedicalPatient.dart';
+import '../tiles/dossier_tile.dart';
 
-class SignesDash extends StatefulWidget {
+class DashDossPat extends StatefulWidget {
+  final String patientId;
+
+  const DashDossPat({Key? key, required this.patientId}) : super(key: key);
+
   @override
-  _SignesDashState createState() => _SignesDashState();
+  _DashDossPatState createState() => _DashDossPatState();
 }
 
-class _SignesDashState extends State<SignesDash> {
+class _DashDossPatState extends State<DashDossPat> {
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      drawer: MenuPatient(),
       appBar: AppBar(
-        title: Text('Mes signes vitaux'),
+        title: Text('Mon Dossier medical'),
         backgroundColor: Color(0xFF216DAD),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection('SigneVitaux')
-            .where('patientId', isEqualTo: user!.uid)
+            .collection('DossierMedical')
+            .where('idPatient', isEqualTo: widget.patientId).where('idMedecin', isEqualTo:user!.uid )//'mlW2SHWMDUNGzcDpTUhaK8Cu2nm1'
             .snapshots(),
-
 
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.none) {
@@ -52,29 +51,22 @@ class _SignesDashState extends State<SignesDash> {
               ),
             );
           }
-          print(user.uid);
           return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
-                DocumentSnapshot messignes = snapshot.data!.docs[index];
-                return signeTile(
-                  glycemie: messignes['glycemie'],
+                DocumentSnapshot mondoss = snapshot.data!.docs[index];
+                return dossierTile(
                   routing: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SigneVisioPat(
-                        idSigne: messignes['idSigne'],
+                      builder: (context) => DossierMedPatient(
+                        idDoss: mondoss['idDossier'],
                       ),
                     ),
                   ),
                 );
               });
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add_outlined),
-        onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>  DonneesPatient())),
       ),
     );
   }

@@ -13,7 +13,7 @@ class DashOrdonnance extends StatefulWidget {
 class _DashOrdonnanceState extends State<DashOrdonnance> {
   @override
   Widget build(BuildContext context) {
-    //User? user = FirebaseAuth.instance.currentUser;
+    User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: Text('Mes Ordonnances'),
@@ -22,7 +22,7 @@ class _DashOrdonnanceState extends State<DashOrdonnance> {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Ordonnance')
-            .where('idPatient', isEqualTo: 'auPmjFVOhTytonwgdpzQ')
+            .where('idPatient', isEqualTo: user!.uid)
             .snapshots(),
 
         builder: (context, snapshot) {

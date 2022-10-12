@@ -9,7 +9,6 @@ import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../menus/pageMenuMedecin.dart';
-import '../Reusables/AjoutSuppression.dart';
 import '../Reusables/ChampOrdonnance.dart';
 import '../Reusables/IdentifiantOrdonance.dart';
 import '../widget/pageloading.dart';
@@ -24,14 +23,18 @@ class PrescriptionMed extends StatefulWidget {
 }
 
 class _PrescriptionMedState extends State<PrescriptionMed> {
+  List<Widget> champs = [];
   final ordonance = TextEditingController();
   final posologie = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
   bool loading = false;
 
+
   @override
   Widget build(BuildContext context) {
+    String idPatient = widget.patientId;
+
     return loading
         ? Loading()
         : Scaffold(
@@ -43,7 +46,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
             body: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('Patient')
-                  .doc(widget.patientId)
+                  .doc(idPatient)
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.none) {
@@ -91,7 +94,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                           ),
                           IdOrdonnance(
                             variable: 'Patient : ',
-                            valeur: 'Claudette Vanzirwe',
+                            valeur: doc['sname'],
                           ),
                           SizedBox(
                             height: 10,
@@ -104,7 +107,9 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                             height: 10,
                           ),
                           IdOrdonnance(
-                              variable: 'Date : ', valeur: '24/08/2022'),
+                              variable: 'Date : ', valeur: DateFormat('yyyy-MM-dd')
+                              .format(DateTime.now())
+                              .toString()),
                           SizedBox(
                             height: 10,
                           ),
@@ -124,7 +129,45 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                             'Vous ne pouvez pas envoyer un formulaire vide',
                       ),
                       EspaceVerticale(),
-                      AjoutSuppression(
+                      Column(
+                        children:champs,
+                      ),
+                      EspaceVerticale(),
+                      GestureDetector(
+                        onTap: () {
+                         setState(() {
+                           champs.add(ChampOrdannance(
+                             ordonance: ordonance,
+                             posologie: posologie,
+                             label: 'Designation',
+                             hint: 'Exemple : Paracétamol',
+                             message:
+                             'Vous ne pouvez pas envoyer un formulaire vide',
+                           ),);
+                         });
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(left: 40, right: 5),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.add_circle_outline_outlined,
+                                color: Color(0xFFA2CCF9),
+                                size: 15,
+                              ),
+                              Container(
+                                child: Text(
+                                  'Ajouter',
+                                  style: TextStyle(
+                                    color: Color(0xFFA2CCF9),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      /*AjoutSuppression(
                         icone: Icon(
                           Icons.add_circle_outline_outlined,
                           color: Color(0xFFA2CCF9),
@@ -132,19 +175,9 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                         ),
                         designation: 'Ajouter',
                         couleur: Color(0xFFA2CCF9),
-                      ),
+                      ),*/
                       EspaceVerticale(),
-                      Column(
-                        children: [
-                          IdOrdonnance(
-                              variable: 'Médecin : ', valeur: 'Queen Mughole'),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          IdOrdonnance(
-                              variable: 'Signature : ', valeur: 'signature')
-                        ],
-                      ),
+
                       EspaceVerticale(),
                       GestureDetector(
                         onTap: () async {

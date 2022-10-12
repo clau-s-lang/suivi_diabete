@@ -118,7 +118,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                     ),
                   ),
                 ),
-                Container(
+                /*Container(
                   width: 330,
                   child: TextFormField(
                     controller: age,
@@ -154,7 +154,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                       labelText: 'Date d\'inscription',
                     ),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: 10,
                 ),
@@ -353,8 +353,9 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                           content: Text('Un nouveau patient a été ajouté'),
                         );
                         clearFields();
-                        provider.logOut();
                         Navigator.pop(context);
+                        provider.logOut();
+
                       }
                     }
                     //final name = nom.text;

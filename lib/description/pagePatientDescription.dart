@@ -3,11 +3,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/chat/pageChat.dart';
+import 'package:gestion_diabete/description/pageDescriptionDossMed.dart';
 import 'package:gestion_diabete/menus/pageMenuMedecin.dart';
 import 'package:gestion_diabete/ordonnances/pageOrdonanceMedecin.dart';
 import 'package:gestion_diabete/signes_vitaux/pageDataMedecin.dart';
 import 'package:gestion_diabete/traitements/pageTraitementMedecin.dart';
 import 'package:image_picker/image_picker.dart';
+import '../dashboards/pageDahboqrdOrdonnance.dart';
+import '../dashboards/pageDashDossMed.dart';
+import '../dashboards/pageDashOrdMed.dart';
+import '../dashboards/pageDashboardSigne.dart';
+import '../dashboards/pageDashboardSigneMed.dart';
 import '../dossier_med/pageMonDossierMedicalMedecin.dart';
 import '../historique/pageHistoriqueMedecin.dart';
 import '../signes_vitaux/pageDataPatient.dart';
@@ -115,8 +121,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       Container(
                         height: 30,
                         child: Text(
-                          'Ange',
-                         // doc['sname'],
+                          doc['sname'],
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -124,12 +129,12 @@ class _PatientDescriptionState extends State<PatientDescription> {
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
                       Container(
                         height: 30,
-                        child: Text('Amina',
-                          //doc['fname'],
+                        child: Text(
+                          doc['fname'],
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -144,8 +149,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       Container(
                         height: 20,
                         child: Text(
-                          'amina@gmail.com',
-                         // doc['email'],
+                         doc['email'],
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -159,12 +163,17 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       label: 'Données chargées',
                       iconData: Icons.medical_services_outlined,
                       onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DonneesDuPatient(idPatient:widget.patientId ,)))),
+                          MaterialPageRoute(builder: (context) => SignesDashMed(patientId:widget.patientId ,)))),
                   buttonWidget(
                       label: 'Prescrire une ordonnance',
                       iconData: Icons.feed_outlined,
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => PrescriptionMed(patientId:widget.patientId)))),
+                  buttonWidget(
+                      label: 'Visualiser les ordonnances',
+                      iconData: Icons.feed_outlined,
+                      onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => DashOrdonnanceMed(patientId:widget.patientId)))),
                   buttonWidget(
                       label: 'Contacter ce patient',
                       iconData: Icons.message_outlined,
@@ -176,7 +185,12 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => AfficherTraitement()))),
                   buttonWidget(
-                      label: 'Dossier médical',
+                      label: 'Visualiser le dossier médical',
+                      iconData: Icons.medication_outlined,
+                      onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => DashDossPat(patientId:widget.patientId, )))),
+                  buttonWidget(
+                      label: 'Modifier le dossier médical',
                       iconData: Icons.medication_outlined,
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => DossierMedicalPat(patientId:widget.patientId)))),

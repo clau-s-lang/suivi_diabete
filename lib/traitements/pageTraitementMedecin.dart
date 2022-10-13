@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../menus/pageMenuMedecin.dart';
 
@@ -21,3 +22,4 @@ class _AfficherTraitementState extends State<AfficherTraitement> {
     );
   }
 }
+

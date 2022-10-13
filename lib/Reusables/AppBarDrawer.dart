@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MenuHeader extends StatelessWidget {
   MenuHeader({
     required this.ident,
     required this.noms,
     required this.profil,
-  }) ;
+  });
 
-  String ident, noms,profil;
-
+  String ident, noms, profil;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MenuHeader extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 35,
-                backgroundImage: AssetImage(profil),
+                child: Icon(Icons.account_circle_outlined),
               ),
               SizedBox(
                 width: 10,
@@ -43,7 +43,9 @@ class MenuHeader extends StatelessWidget {
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(height: 5,),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Text(
                     ident,
                     style: TextStyle(
@@ -59,10 +61,8 @@ class MenuHeader extends StatelessWidget {
         ],
       ),
       decoration: BoxDecoration(
-          color: Color(0xFF216DAD),
-          image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage('assets/images/AccueilGluco2.PNG'))),
+        color: Color(0xFF216DAD),
+      ),
     );
   }
 }

@@ -11,6 +11,9 @@ class Patient {
   final String adresse;
   final String email;
   String medecinId;
+  String imgProfil;
+ /* String ordonnanceId;
+  String ;*/
   final String numPhone;
   final String admittedDate;
   final String password;
@@ -22,6 +25,7 @@ class Patient {
   Patient({
     this.idPatient = '',
     this.medecinId = '',
+    this.imgProfil = '',
     required this.fname,
     required this.sname,
     required this.email,
@@ -47,6 +51,7 @@ class Patient {
         'modeDecouverte': modeDecouverte,
         'typeDediabte': typeDediabte,
         'adresse': adresse,
+        'imgProfil': imgProfil,
         'medecinId': medecinId,
         'numPhone': numPhone,
         'admittedDate': admittedDate,

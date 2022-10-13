@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gestion_diabete/database/dbUser.dart';
@@ -45,9 +46,35 @@ class ProviderApi extends ChangeNotifier {
 
   void addSigne({required SigneVitaux signe})=>FireBaseApi().addSigne(signe: signe);
 
- /* void signInWithEmailPat(
-          {required String email,
-          required String password,
-          }) =>
-      FireBaseApi().signInWithEmailPat(email: email, password: password);*/
+  Future addProfil({
+    String imgUrl = '',
+  }) async {
+    try {
+      final docIdP = FirebaseFirestore.instance
+          .collection('Patient')
+          .doc(auth.currentUser!.uid);
+      String docId = docIdP.id;
+      await FirebaseFirestore.instance.collection('Patient').doc(docId).set({
+        'imgUrl': imgUrl,
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future addProfilMed({
+    String imgUrl = '',
+  }) async {
+    try {
+      final docIdP = FirebaseFirestore.instance
+          .collection('Medecin')
+          .doc(auth.currentUser!.uid);
+      String docId = docIdP.id;
+      await FirebaseFirestore.instance.collection('Medecin').doc(docId).set({
+        'imgUrl': imgUrl,
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 }

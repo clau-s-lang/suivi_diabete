@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../Reusables/AjoutSuppression.dart';
-import '../Reusables/EspaceVerticale.dart';
 import '../Reusables/IdentifiantOrdonance.dart';
+import '../subcollection_traitement.dart';
 
 class OrdonnancePatient extends StatefulWidget {
   final String ordonnanceId;
@@ -15,6 +15,7 @@ class OrdonnancePatient extends StatefulWidget {
 }
 
 class _OrdonnancePatientState extends State<OrdonnancePatient> {
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +143,32 @@ class _OrdonnancePatientState extends State<OrdonnancePatient> {
                   ),
                 ),
               ),
-              Container(
+              GestureDetector(
+                onTap: (){
+                  insertTraitement();
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: 240, right: 5),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.check,
+                        color: Colors.green,
+                        size: 15,
+                      ),
+                      Container(
+                        child: Text(
+                          'Confirmer',
+                          style: TextStyle(
+                            color: Colors.green,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+             /* Container(
                 padding: EdgeInsets.only(left: 200),
                 child: AjoutSuppression(
                   icone: Icon(
@@ -153,7 +179,7 @@ class _OrdonnancePatientState extends State<OrdonnancePatient> {
                   designation: 'Confirmer',
                   couleur: Colors.green,
                 ),
-              ),
+              ),*/
               SizedBox(
                 height: 5,
               ),
@@ -162,5 +188,16 @@ class _OrdonnancePatientState extends State<OrdonnancePatient> {
         },
       ),
     );
+  }
+  void insertTraitement() async{
+    var db = FirebaseFirestore.instance.collection('Patient');
+
+    db
+        .doc(user!.uid)
+        .collection('Traitement')
+        .doc()
+        .set({
+      "idTraitement": widget.ordonnanceId,
+    });
   }
 }

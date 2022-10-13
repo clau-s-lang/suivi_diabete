@@ -45,7 +45,7 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
- /* Future signUpWithEmailPat(
+  /* Future signUpWithEmailPat(
       {required String email,
         required String password,
         required Patient patient,
@@ -139,11 +139,11 @@ class FireBaseApi extends ChangeNotifier {
         'email': patient.email,
         'genre': patient.genre,
         'numPhone': patient.numPhone,
-        'anneeDecouverte' : patient.anneeDecouverte,
+        'anneeDecouverte': patient.anneeDecouverte,
         'modeDecouverte': patient.modeDecouverte,
-        'typeDediabete' : patient.typeDediabte,
+        'typeDediabete': patient.typeDediabte,
         'adresse': patient.adresse,
-        'admittedDate' : patient.admittedDate
+        'admittedDate': patient.admittedDate
       }).catchError((onError) => print(onError));
     } catch (e) {
       print(e);
@@ -194,6 +194,7 @@ class FireBaseApi extends ChangeNotifier {
       Fluttertoast.showToast(msg: e.toString());
     }
   }
+
 /*
   Future toFirestoreP(User? user, Patient patient) async {
     try {
@@ -223,12 +224,16 @@ class FireBaseApi extends ChangeNotifier {
 
   Future addDoss({required DossierMedical doss}) async {
     try {
-      final docIdDoss = FirebaseFirestore.instance.collection('DossierMedical').doc();
+      final docIdDoss =
+          FirebaseFirestore.instance.collection('DossierMedical').doc();
       String docId = docIdDoss.id;
       doss.idDossier = docId;
-      await FirebaseFirestore.instance.collection('DossierMedical').doc(docId).set(
-        doss.toJson(),
-      );
+      await FirebaseFirestore.instance
+          .collection('DossierMedical')
+          .doc(docId)
+          .set(
+            doss.toJson(),
+          );
     } catch (e) {
       print(e);
     }
@@ -236,14 +241,17 @@ class FireBaseApi extends ChangeNotifier {
 
   Future addSigne({required SigneVitaux signe}) async {
     try {
-      final docIdDoss = FirebaseFirestore.instance.collection('SigneVitaux').doc();
+      final docIdDoss =
+          FirebaseFirestore.instance.collection('SigneVitaux').doc();
       String docId = docIdDoss.id;
       signe.idSigne = docId;
       await FirebaseFirestore.instance.collection('SigneVitaux').doc(docId).set(
-        signe.toJson(),
-      );
+            signe.toJson(),
+          );
     } catch (e) {
       print(e);
     }
   }
+
+
 }

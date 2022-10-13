@@ -1,5 +1,6 @@
 class Medecin {
   String idMedecin;
+  String imgUrl;
   final String fname;
   final String sname;
   final String genre;
@@ -15,6 +16,7 @@ class Medecin {
 
   Medecin({
     this.idMedecin = '',
+    this.imgUrl = '',
     required this.specialisation,
     required this.clinique,
     required this.fname,
@@ -33,6 +35,7 @@ class Medecin {
         'fname': fname,
         'sname': sname,
         'genre': genre,
+        'imgUrl':imgUrl,
         'numPhone': numPhone,
         'email': email,
         'specialisation': specialisation,

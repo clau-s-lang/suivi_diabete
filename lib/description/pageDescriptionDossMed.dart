@@ -11,8 +11,10 @@ class DescriptionDossMed extends StatefulWidget {
 }
 
 class _DescriptionDossMedState extends State<DescriptionDossMed> {
+
   @override
   Widget build(BuildContext context) {
+    String idDoss = widget.idDoss;
     return Scaffold(
       drawer: MenuMedecin(),
       appBar: AppBar(
@@ -22,7 +24,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
       body: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection('DossierMedical')
-              .doc(widget.idDoss)
+              .doc(idDoss)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.none) {

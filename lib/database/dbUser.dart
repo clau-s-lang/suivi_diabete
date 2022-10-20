@@ -253,5 +253,15 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
-
+ /* Future<String> createComment(Topic comment, String topicId) async{
+    final docComment = FirebaseFirestore.instance
+        .collection('forum')
+        .doc(topicId)
+        .collection('comments')
+        .doc();
+    comment.topicId = docComment.id;
+    comment.uid = FirebaseAuth.instance.currentUser!.uid;
+    await docComment.set(comment.toJson());
+    return docComment.id;
+  }*/
 }

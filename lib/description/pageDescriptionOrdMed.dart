@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Reusables/AjoutSuppression.dart';
@@ -16,6 +17,7 @@ class ViewOrdonnanceMed extends StatefulWidget {
 }
 
 class _ViewOrdonnanceMedState extends State<ViewOrdonnanceMed> {
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,34 +81,87 @@ class _ViewOrdonnanceMedState extends State<ViewOrdonnanceMed> {
                           child: Text('Patient : '),
                         ),
                         Container(
-                          child: Text('Hope'),
-                          /*StreamBuilder<QuerySnapshot>(
+                          child: StreamBuilder<QuerySnapshot>(
                             stream: FirebaseFirestore.instance
                                 .collection('Patient')
-                                .where('idOrdonnance', isEqualTo: widget.ordonnanceId)
+                                .where('idPatient', isEqualTo: doc['idPatient'])
                                 .snapshots(),
                             builder: (context, snapshot) {
-                              return Text('');
-                            },
-                          ),*/
+                              if (snapshot.connectionState == ConnectionState.none) {
+                                return Material(
+                                  child: Center(
+                                    child: Text('Veuillez vous connecter à internet'),
+                                  ),
+                                );
+                              }
+                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                return Material(
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                              }
+                              if (!snapshot.hasData) {
+                                return Material(
+                                  child: Center(
+                                    child: Text('Aucun patient ne vous est assigné'),
+                                  ),
+                                );
+                              }
+
+                             return ListView.builder(itemBuilder: (context, index){
+                                //itemCount: snapshot.data!.docs.length;
+                                DocumentSnapshot docs = snapshot.data!.docs[index];
+                                return  Text(docs['sname']);
+                              });
+                            }
+                             ),
                         ),
                       ],
                     ),
-                    /*IdOrdonnance(
-                      variable: 'Patient : ',
-                      valeur: 'Claudette Vanzirwe',
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 100),
+                          child: Text('Age : '),
+                        ),
+                        Container(
+                          child: StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('Patient')
+                                .where('idPatient', isEqualTo: doc['idPatient'])
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              return Text('25 ans');
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                   /* IdOrdonnance(
+                      variable: 'Age : ',
+                      valeur: '24' + 'ans',
                     ),*/
                     SizedBox(
                       height: 10,
                     ),
-                    IdOrdonnance(
-                      variable: 'Age : ',
-                      valeur: '24' + 'ans',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 100),
+                          child: Text('Date : '),
+                        ),
+                        Container(
+                          child: Text('23/09/2022'),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    IdOrdonnance(variable: 'Date : ', valeur: '24/08/2022'),
+                   /* IdOrdonnance(variable: 'Date : ', valeur: '24/08/2022'),*/
                     SizedBox(
                       height: 10,
                     ),
@@ -190,8 +245,28 @@ class _ViewOrdonnanceMedState extends State<ViewOrdonnanceMed> {
                 ),
                 Column(
                   children: [
-                    IdOrdonnance(
-                        variable: 'Médecin : ', valeur: 'Queen Mughole'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 100),
+                          child: Text('Medecin : '),
+                        ),
+                        Container(
+                          child: StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('Medecin')
+                                .where('idMedecin', isEqualTo: user!.uid)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              return Text('Medecin');
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                   /* IdOrdonnance(
+                        variable: 'Médecin : ', valeur: 'Queen Mughole'),*/
                     SizedBox(
                       height: 10,
                     ),

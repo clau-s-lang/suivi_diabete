@@ -31,7 +31,7 @@ class Medecin {
   });
 
   Map<String, dynamic> toJson() => {
-        'idUser': idMedecin,
+        'idMedecin': idMedecin,
         'fname': fname,
         'sname': sname,
         'genre': genre,

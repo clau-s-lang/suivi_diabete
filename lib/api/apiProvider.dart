@@ -55,7 +55,8 @@ class ProviderApi extends ChangeNotifier {
           .doc(auth.currentUser!.uid);
       String docId = docIdP.id;
       await FirebaseFirestore.instance.collection('Patient').doc(docId).set({
-        'imgUrl': imgUrl,
+        'imgProfil': imgUrl,
+      },SetOptions(merge: true)).whenComplete(() {
       });
     } catch (e) {
       print(e);
@@ -72,6 +73,8 @@ class ProviderApi extends ChangeNotifier {
       String docId = docIdP.id;
       await FirebaseFirestore.instance.collection('Medecin').doc(docId).set({
         'imgUrl': imgUrl,
+      },SetOptions(merge: true)).whenComplete(() {
+
       });
     } catch (e) {
       print(e);

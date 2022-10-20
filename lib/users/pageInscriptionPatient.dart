@@ -32,7 +32,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
   final phone = TextEditingController();
   final email = TextEditingController();
   final code = TextEditingController();
-  final age = TextEditingController();
+  final birth = TextEditingController();
   final typeDiab = TextEditingController();
   final anneDecouv = TextEditingController();
   final modeDecouv = TextEditingController();
@@ -118,10 +118,11 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                     ),
                   ),
                 ),
-                /*Container(
+                SizedBox(height: 10,),
+                Container(
                   width: 330,
                   child: TextFormField(
-                    controller: age,
+                    controller: birth,
                     style: TextStyle(
                       fontSize: 15,
                       height: 0.5,
@@ -131,13 +132,15 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
-                          firstDate: DateTime(2022),
+                          firstDate: DateTime(1940),
                           lastDate: DateTime.now());
                       if (pickedDate != null) {
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
+                        var days = DateTime.now().difference(pickedDate);
+                        var age = days ~/360;
+                        /*String formattedDate =
+                            DateFormat('yyyy-MM-dd').format(pickedDate);*/
                         setState(() {
-                          age.text = formattedDate;
+                          birth.text = age.toString();
                         });
                       } else {
                         snackBarWidget(context,
@@ -151,10 +154,10 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                         color: Color(0xFFA2CCF9),
                       ),
                       border: OutlineInputBorder(),
-                      labelText: 'Date d\'inscription',
+                      labelText: 'Date de naissance',
                     ),
                   ),
-                ),*/
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -334,7 +337,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
                         adresse: adresse.text,
                         medecinId: auth.currentUser!.uid,
                         genre: genre,
-                        birthday: age.text,
+                        birthday: birth.text,
                         typeDediabte: typeDiab.text,
                         anneeDecouverte: anneDecouv.text,
                         modeDecouverte: modeDecouv.text,
@@ -368,6 +371,7 @@ class _InscriptionPatientState extends State<InscriptionPatient> {
       ),
     );
   }
+
 
   void clearFields() {
     name.clear();

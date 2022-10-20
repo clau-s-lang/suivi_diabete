@@ -87,6 +87,7 @@ class _MenuMedecinState extends State<MenuMedecin> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         CircleAvatar(
+                          backgroundImage:NetworkImage(doc['imgUrl']),
                           backgroundColor: Colors.grey,
                           radius: 35,
                           child: Icon(

@@ -2,19 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../description/pageDescriptionDossMed.dart';
 import '../dossier_med/pageDossierMedicalPatient.dart';
 import '../tiles/dossier_tile.dart';
 
-class DashDossPat extends StatefulWidget {
+class DashDossMed extends StatefulWidget {
   final String patientId;
 
-  const DashDossPat({Key? key, required this.patientId}) : super(key: key);
+  const DashDossMed({Key? key, required this.patientId}) : super(key: key);
 
   @override
-  _DashDossPatState createState() => _DashDossPatState();
+  _DashDossMedState createState() => _DashDossMedState();
 }
 
-class _DashDossPatState extends State<DashDossPat> {
+class _DashDossMedState extends State<DashDossMed> {
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
@@ -59,7 +60,7 @@ class _DashDossPatState extends State<DashDossPat> {
                   routing: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DossierMedPatient(
+                      builder: (context) => DescriptionDossMed(
                         idDoss: mondoss['idDossier'],
                       ),
                     ),

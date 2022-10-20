@@ -193,7 +193,7 @@ class _OrdonnancePatientState extends State<OrdonnancePatient> {
     var db = FirebaseFirestore.instance.collection('Patient');
 
     db
-        .doc(user!.uid)
+        .doc()
         .collection('Traitement')
         .doc()
         .set({

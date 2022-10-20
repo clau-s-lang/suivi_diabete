@@ -71,7 +71,17 @@ class _PatientDescriptionState extends State<PatientDescription> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  CircleAvatar(
+                    backgroundImage:NetworkImage(doc['imgProfil']),
+                    backgroundColor: Colors.grey,
+                    maxRadius: 50,
+                    child: Icon(
+                      Icons.account_circle_outlined,
+                      color: Colors.white70,
+                      size: 80,
+                    ),
+                  ),
+                  /*Container(
                     child: isLoaded
                         ? Column(
                             children: [
@@ -111,7 +121,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                               }
                             },
                           ),
-                  ),
+                  ),*/
                   SizedBox(
                     height: 10,
                   ),
@@ -188,7 +198,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       label: 'Visualiser le dossier médical',
                       iconData: Icons.medication_outlined,
                       onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DashDossPat(patientId:widget.patientId, )))),
+                          MaterialPageRoute(builder: (context) => DashDossMed(patientId:widget.patientId, )))),
                   buttonWidget(
                       label: 'Modifier le dossier médical',
                       iconData: Icons.medication_outlined,

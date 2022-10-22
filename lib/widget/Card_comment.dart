@@ -14,7 +14,6 @@ DateTime? date,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('$sender'),
           Text(time.inMinutes<= 59
           ? '${time.inMinutes} min ago'
               :time.inHours == 1

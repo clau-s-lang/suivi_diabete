@@ -1,9 +1,18 @@
-class TopicComment{
-  final String? topicId;
-  final String? sender;
+class Message {
+  String? messageId;
+  final String? senderId;
   final String? message;
   final DateTime? time;
-  final String? imgUrl;
 
-  TopicComment(this.topicId, this.sender, this.message, this.time, this.imgUrl);
+  Message({
+    this.messageId,
+    this.senderId,
+    this.message,
+    this.time,
+  });
+  Map<String, dynamic> toJson() => {
+        'message': message,
+        'senderId': senderId,
+        'time': time,
+      };
 }

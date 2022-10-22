@@ -6,6 +6,7 @@ import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import 'package:gestion_diabete/modeles/modelMedecin.dart';
 import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 
+import '../modeles/modelChatting.dart';
 import '../modeles/modelPatient.dart';
 import '../modeles/modelSigneVitaux.dart';
 
@@ -79,5 +80,15 @@ class ProviderApi extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<String> createMessage( Message message, String patientId) async{
+    final docMessage = FirebaseFirestore.instance
+        .collection('Message').
+        doc(patientId == auth.currentUser!.uid ? auth.currentUser!.uid : patientId).collection('chats').doc();
+    //topicId = docMessage.id;
+    //comment.uid = FirebaseAuth.instance.currentUser!.uid;
+    await docMessage.set(message.toJson());
+    return docMessage.id;
   }
 }

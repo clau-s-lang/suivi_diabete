@@ -1,4 +1,4 @@
-//import 'package:cloestore/cloud_firestore.dart';
+//import 'package:cloesloud_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 import 'package:gestion_diabete/modeles/modelDossierMed.dart';
+import '../modeles/modelChatting.dart';
 import '../modeles/modelMedecin.dart';
 import '../modeles/modelPatient.dart';
 import '../modeles/modelSigneVitaux.dart';
@@ -253,15 +254,5 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
- /* Future<String> createComment(Topic comment, String topicId) async{
-    final docComment = FirebaseFirestore.instance
-        .collection('forum')
-        .doc(topicId)
-        .collection('comments')
-        .doc();
-    comment.topicId = docComment.id;
-    comment.uid = FirebaseAuth.instance.currentUser!.uid;
-    await docComment.set(comment.toJson());
-    return docComment.id;
-  }*/
+
 }

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_diabete/chat/pageChatBon.dart';
 import 'package:gestion_diabete/dashboards/pageDahboqrdOrdonnance.dart';
 import 'package:gestion_diabete/dashboards/pageDashbaordDossPat.dart';
 import 'package:image_picker/image_picker.dart';
@@ -158,7 +159,7 @@ class _MenuPatientState extends State<MenuPatient> {
                 MenuNames(
                   designation: 'Contacter mon médecin',
                   icone: Icon(Icons.call),
-                  ToPage: Messagerie(),
+                  ToPage: MessagesBon(patientId: user!.uid,),
                 ),
                 MenuNames(
                   designation: 'Mon historique',

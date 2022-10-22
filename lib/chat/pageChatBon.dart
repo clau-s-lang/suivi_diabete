@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:bubble/bubble.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import '../api/apiProvider.dart';
+import '../modeles/modelChatting.dart';
 import '../widget/Card_comment.dart';
 
 
 class MessagesBon extends StatefulWidget {
-  final DocumentSnapshot topic;
+  final String patientId;
 
-  const MessagesBon({Key? key, required this.topic}) : super(key: key);
+  const MessagesBon({Key? key, required this.patientId}) : super(key: key);
   @override
   _MessagesBonState createState() => _MessagesBonState();
 }
@@ -21,7 +23,7 @@ class _MessagesBonState extends State<MessagesBon> {
   @override
   Widget build(BuildContext context) {
     User? _currentUser = FirebaseAuth.instance.currentUser;
-    var top = widget.topic;
+    String pat = widget.patientId;
     return Scaffold(
       appBar: AppBar(
         title: Text('Messagerie'),
@@ -29,27 +31,27 @@ class _MessagesBonState extends State<MessagesBon> {
       ),
       body: Column(
         children: [
-          Card(
+          /*Card(
             child: Column(
               children: [
                 ListTile(
                   leading: CircleAvatar(
-                    child: top['imgUrl'] == null
+                    child: pat['imgUrl'] == null
                     ?Text(
-                      '${top['sender']![0]}'
+                      '${pat['']![0]}'
                     ): ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: Image.network(
-                        top['imgUrl'],
+                        pat['imgUrl'],
                         height: 50,
                         width: 50,
                       ),
                     ),
                   ) ,
-                  title: Text('${top['sender']}',
+                  title: Text('${pat['sender']}',
                   style: TextStyle(fontWeight: FontWeight.bold),),
                   subtitle: Text(DateFormat('yyyy-MM-dd - kk:mm')
-                      .format(top['dateTime'].toDate()).toString()),
+                      .format(pat['dateTime'].toDate()).toString()),
                 ),
                 Divider(
                   indent: 20,
@@ -62,13 +64,11 @@ class _MessagesBonState extends State<MessagesBon> {
                 SizedBox(height: 20,)
               ],
             ),
-          ),
+          ),*/
           Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
-                .collection('forum')
-                .doc(top.id)
-                .collection('comments')
+                .collection('Message').doc(pat == _currentUser!.uid ? _currentUser!.uid : pat).collection('chats')
                 .snapshots(),
                 builder: (context, snapshot){
                   if (snapshot.connectionState == ConnectionState.none) {
@@ -96,9 +96,9 @@ class _MessagesBonState extends State<MessagesBon> {
                     physics: BouncingScrollPhysics(),
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder:(context, index){
-                      DocumentSnapshot comment = snapshot.data!.docs[index];
+                      DocumentSnapshot message = snapshot.data!.docs[index];
                       bool isMe(){
-                        return comment['uid'] == FirebaseAuth.instance.currentUser!.uid;
+                        return message['senderId'] == FirebaseAuth.instance.currentUser!.uid;
                       }
                       return Bubble(
                         alignment: isMe()?Alignment.topLeft:Alignment.bottomRight,
@@ -108,9 +108,8 @@ class _MessagesBonState extends State<MessagesBon> {
                         color: isMe()?Color(0xFF216DAD):Colors.white70,
                         nip: isMe()?BubbleNip.leftBottom:BubbleNip.rightBottom,
                         child: commentCard(
-                          sender : comment['sender'],
-                          message: comment['message'],
-                          date:comment['dateTime'].toDate(),
+                          message: message['message'],
+                          date:message['time'].toDate(),
                         ),
                       );
                       },
@@ -161,17 +160,16 @@ class _MessagesBonState extends State<MessagesBon> {
                       if(!isValid){
                         return;
                       } else {
-                       /* final comment = Topic(
-                          topic: top['topic'],
-                          message: commentText.text,
-                          sender:_currentUser!.displayName,
-                          imgUrl:_currentUser.photoURL,
-                        );*/
-                        print('${top['id'].toString()}');
-                       /* final provider = Provider.of<CompanionProvider>(context,listen: false);
-                        provider.commment(
-                          comment, top['id'].toString()
-                        );*/
+                       final message = Message(
+                         message: commentText.text,
+                         senderId: _currentUser!.uid,
+                         time: DateTime.now(),
+                       );
+                        //print('${pat['id'].toString()}');
+                       final provider = Provider.of<ProviderApi>(context,listen: false);
+                        provider.createMessage(
+                          message, pat
+                        );
                         commentText.clear();
                       }
                     },

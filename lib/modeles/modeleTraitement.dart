@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Ordonnance{
+class Traitement{
   String idTraitement;
   String idPatient;
   String idMedecin;
@@ -8,8 +8,9 @@ class Ordonnance{
   final String posologie;
   final String datedeDebut;
   final String datedeFin;
+  //final String delai;
 
-  Ordonnance({
+  Traitement({
     this.idTraitement = '',
     this.idPatient ='',
     this.idMedecin ='',
@@ -17,6 +18,7 @@ class Ordonnance{
     required this.posologie,
     required this.datedeDebut,
     required this.datedeFin,
+    //required this.delai,
   });
 
   Map<String, dynamic> toJson() => {
@@ -27,6 +29,7 @@ class Ordonnance{
     'posologie' : posologie,
     'datedeCreation': datedeDebut,
     'datedeFin' : datedeFin,
+    //'delai' : delai,
   };
 
  /* static Ordonnance fromJson(Map<String, dynamic> json) => Ordonnance(

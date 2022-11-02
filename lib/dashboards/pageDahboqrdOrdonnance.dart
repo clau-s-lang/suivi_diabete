@@ -52,8 +52,8 @@ class _DashOrdonnanceState extends State<DashOrdonnance> {
               itemBuilder: (context, index) {
                 DocumentSnapshot mesordonnances = snapshot.data!.docs[index];
                 return ordonnanceTile(
-                  designation: mesordonnances['designation'],
-                  posologie: mesordonnances['posologie'],
+                  designation: 'Ordonnance du',
+                  posologie: mesordonnances['datedeCreation'],
                   routing: () => Navigator.push(
                     context,
                     MaterialPageRoute(

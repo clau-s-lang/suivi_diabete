@@ -76,11 +76,11 @@ class _PatientDescriptionState extends State<PatientDescription> {
                     backgroundImage:NetworkImage(doc['imgProfil']),
                     backgroundColor: Colors.grey,
                     maxRadius: 50,
-                    child: Icon(
+                    /*child: Icon(
                       Icons.account_circle_outlined,
                       color: Colors.white70,
                       size: 80,
-                    ),
+                    ),*/
                   ),
                   /*Container(
                     child: isLoaded
@@ -160,7 +160,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       Container(
                         height: 20,
                         child: Text(
-                         doc['email'],
+                          doc['typeDediabte'],
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,

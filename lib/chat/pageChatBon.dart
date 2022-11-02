@@ -31,40 +31,6 @@ class _MessagesBonState extends State<MessagesBon> {
       ),
       body: Column(
         children: [
-          /*Card(
-            child: Column(
-              children: [
-                ListTile(
-                  leading: CircleAvatar(
-                    child: pat['imgUrl'] == null
-                    ?Text(
-                      '${pat['']![0]}'
-                    ): ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.network(
-                        pat['imgUrl'],
-                        height: 50,
-                        width: 50,
-                      ),
-                    ),
-                  ) ,
-                  title: Text('${pat['sender']}',
-                  style: TextStyle(fontWeight: FontWeight.bold),),
-                  subtitle: Text(DateFormat('yyyy-MM-dd - kk:mm')
-                      .format(pat['dateTime'].toDate()).toString()),
-                ),
-                Divider(
-                  indent: 20,
-                  endIndent: 40,
-                  thickness: 1.0,
-                ),
-                ListTile(
-                  title: Text('${'message'}'),
-                ),
-                SizedBox(height: 20,)
-              ],
-            ),
-          ),*/
           Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance

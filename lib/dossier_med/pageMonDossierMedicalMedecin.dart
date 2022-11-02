@@ -8,6 +8,8 @@ import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import 'package:provider/provider.dart';
 import '../api/apiProvider.dart';
 import '../menus/pageMenuPatient.dart';
+import '../signes_vitaux/pageDataPatient.dart';
+import '../users/pageInscriptionMedecin.dart';
 import '../users/pageLogin.dart';
 //import 'package:gestion_diabete/pages/pageMenuPatient.dart';
 
@@ -1036,6 +1038,11 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
                     ),
                   );
                 }),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add_outlined),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) =>  InscriptionMedecin())),
+      ),
           );
   }
 

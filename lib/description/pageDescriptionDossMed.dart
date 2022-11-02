@@ -86,7 +86,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['insulinotherapie']), //doc['insulinotherapie']
+                      child: Text('oui'), //doc['insulinotherapie']
                     ),
                   ],
                 ),
@@ -106,7 +106,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['insulinotherapieDepuis']),
+                      child: Text('2010'), //doc['insulinotherapieDepuis']
                     ),
                   ],
                 ),
@@ -126,7 +126,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['allergie']),
+                      child: Text('A la metronidazole'), //doc['allergie']
                     ),
                   ],
                 ),
@@ -146,7 +146,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['vaccination']),
+                      child: Text('BCG'), //doc['vaccination']
                     ),
                   ],
                 ),
@@ -166,7 +166,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['modeDeVie']),
+                      child: Text('Moyen'), //doc['modeDeVie']
                     ),
                   ],
                 ),
@@ -186,7 +186,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['surpoids']),
+                      child: Text('Oui'), //doc['surpoids']
                     ),
                   ],
                 ),
@@ -206,7 +206,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['hypertension']),
+                      child: Text('Non'), //doc['hypertension']
                     ),
                   ],
                 ),
@@ -226,7 +226,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['hypotroide']),
+                      child: Text('Non'), //doc['hypotroide']
                     ),
                   ],
                 ),
@@ -246,7 +246,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['maladieCoeliaque']),
+                      child: Text('Oui'), //doc['maladieCoeliaque']
                     ),
                   ],
                 ),
@@ -288,7 +288,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['antecedentMedicaux']),
+                      child: Text('Hypothension'), //doc['antecedentMedicaux']
                     ),
                   ],
                 ),
@@ -308,7 +308,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['antecedentChirurgicaux']),
+                      child: Text('Césarienne'), //doc['antecedentChirurgicaux']
                     ),
                   ],
                 ),
@@ -328,7 +328,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['antecedentFamilliaux']),
+                      child: Text('Antécedent diabetique'), //doc['antecedentFamilliaux']
                     ),
                   ],
                 ),
@@ -370,7 +370,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['tabagisme']),
+                      child: Text('Non'), //doc['tabagisme']
                     ),
                   ],
                 ),
@@ -390,7 +390,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['alcool']),
+                      child: Text('Oui'), //doc['alcool']
                     ),
                   ],
                 ),
@@ -410,7 +410,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['sendentarite']),
+                      child: Text('Non'), //doc['sendentarite']
                     ),
                   ],
                 ),
@@ -430,7 +430,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['cholesterol']),
+                      child: Text('Oui'), //doc['cholesterol']
                     ),
                   ],
                 ),
@@ -450,7 +450,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['heredite']),
+                      child: Text('Oui'), //doc['heredite']
                     ),
                   ],
                 ),
@@ -470,7 +470,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.only(left: 10),
                       color: Color(0xFFE8F0FE),
-                      child: Text(doc['cardiovasculare']),
+                      child: Text('Oui'), //doc['cardiovasculare']
                     ),
                   ],
                 ),

@@ -21,7 +21,12 @@ class _AjoutNoteState extends State<AjoutNote> {
   late String title;
   late String description;
   @override
-  Widget build(BuildContext context) => Scaffold();
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      title: Text('Prendre une note'),
+      backgroundColor: Color(0xFF216DAD),
+    ),
+  );
 
   void addOrUpdateNote() async {
     final isValid = _formKey.currentState!.validate();

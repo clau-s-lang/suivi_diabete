@@ -61,7 +61,7 @@ class _NotesMedecinState extends State<NotesMedecin> {
                   : buildNotes(),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF216DAD),
           child: Icon(Icons.add),
           onPressed: () async {
             await Navigator.of(context)

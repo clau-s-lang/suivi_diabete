@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gestion_diabete/modeles/modelSigneVitaux.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../api/apiProvider.dart';
 import '../menus/pageMenuPatient.dart';
@@ -50,7 +51,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
       appBar: AppBar(
         title: Text('Ajouter des données'),
         backgroundColor: Color(0xFF216DAD),
-        actions: [
+       /* actions: [
           TextButton.icon(
               icon: Icon(Icons.logout, color: Colors.white,),
               onPressed: (){
@@ -59,7 +60,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                 // Center(child: CircularProgressIndicator(),);
               },
               label: Text('Deconnexion', style:TextStyle(color: Colors.white),)),
-        ],
+        ],*/
       ),
       body: Form(
         key: _formKey,
@@ -126,9 +127,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
               designation: 'NOURRITURE PRISE',
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
+                  padding: EdgeInsets.all(10),
                   child: isLoaded
                       ? Column(
                           children: [
@@ -175,13 +177,14 @@ class _DonneesPatientState extends State<DonneesPatient> {
                           child: Placeholder(
                             color: Colors.transparent,
                             child: CircleAvatar(
-                              child: Icon(
+                              /*child: Icon(
                                 Icons.account_circle_outlined,
                                 color: Colors.white70,
                                 size: 30,
-                              ),
-                              backgroundColor: Colors.grey,
-                              maxRadius: 10,
+                              ),*/
+                              //backgroundColor: Colors.blue,
+                              backgroundImage: AssetImage('images/cam.PNG'),
+                              maxRadius: 20,
                             ),
                             fallbackHeight: 50,
                             fallbackWidth: 50,
@@ -201,6 +204,48 @@ class _DonneesPatientState extends State<DonneesPatient> {
                             }
                           },
                         ),
+                ),
+                SizedBox(width: 10,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 200,
+                          child: Text('Aliments'),
+                        ),
+                        SizedBox(width: 10,),
+                        Container(
+                          child: Text('Glucides'),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          width: 200,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFE8F0FE),
+                          ),
+                          child: Text('Pomme de terre'),
+                        ),
+                        SizedBox(width: 10,),
+                        Container(
+                          padding: EdgeInsets.all(10),
+
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFE8F0FE),
+                          ),
+                          child: Text('15' +' ' +'g'),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -567,7 +612,10 @@ class _DonneesPatientState extends State<DonneesPatient> {
                           pressionArterielleSyst: PAsyst.text,
                           pressionArterielleDiast: PAdiast.text,
                           remarque: remarque.text,
-                          time: Timestamp.now().toString(),
+                          time: DateFormat('yyyy-MM-dd')
+                              .format(DateTime.now())
+                              .toString(),
+                          //time: Timestamp.now().toString(),
                         );
                         final provider =
                             Provider.of<ProviderApi>(context, listen: false);

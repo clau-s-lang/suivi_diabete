@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Reusables/IdentifiantOrdonance.dart';
 import '../subcollection_traitement.dart';
+import '../traitements/pageTraitementPatient.dart';
 
 class OrdonnancePatient extends StatefulWidget {
   final String ordonnanceId;
@@ -19,6 +20,16 @@ class _OrdonnancePatientState extends State<OrdonnancePatient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Details de l\'ordonnance'),
+        backgroundColor: Color(0xFF216DAD),
+        actions: [
+          TextButton.icon(
+              icon: Icon(Icons.download_outlined, color: Colors.white,),
+              onPressed: (){},
+              label: Text('PDF', style:TextStyle(color: Colors.white),)),
+        ],
+      ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Ordonnance')
@@ -190,14 +201,28 @@ class _OrdonnancePatientState extends State<OrdonnancePatient> {
     );
   }
   void insertTraitement() async{
-    var db = FirebaseFirestore.instance.collection('Patient');
+    StreamBuilder<DocumentSnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('Ordonnance')
+          .doc(widget.ordonnanceId)
+          .snapshots(),
+      builder: (context, snapshot) {
+        DocumentSnapshot docu = snapshot.data!;
+        var db = FirebaseFirestore.instance.collection('Patient');
+        db
+            .doc()
+            .collection('Traitement')
+            .doc(widget.ordonnanceId)
+            .set({
+          "idTraitement": widget.ordonnanceId,
+          'designation': docu['designation'],
+          'posologie' : docu['posologie'],
+          'datedeCreation': DateTime.now(),
+          'datedeFin' : (DateTime.now().add(Duration(days: docu['nbreJours']))),
+        });
+        return TraitementPatient(idOrd: widget.ordonnanceId,);
+      },
+    );
 
-    db
-        .doc()
-        .collection('Traitement')
-        .doc()
-        .set({
-      "idTraitement": widget.ordonnanceId,
-    });
   }
 }

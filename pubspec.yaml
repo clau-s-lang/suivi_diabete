@@ -47,6 +47,7 @@ dependencies:
   fluttertoast: ^8.0.9
   image_picker: ^0.8.5+3
   bubble: ^1.2.1
+  webview_flutter: ^3.0.4
   #dropdown_formfield: ^0.1.4
 
 dev_dependencies:

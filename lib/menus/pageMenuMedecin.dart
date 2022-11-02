@@ -90,11 +90,11 @@ class _MenuMedecinState extends State<MenuMedecin> {
                           backgroundImage:NetworkImage(doc['imgUrl']),
                           backgroundColor: Colors.grey,
                           radius: 35,
-                          child: Icon(
+                          /*child: Icon(
                             Icons.account_circle_outlined,
                             color: Colors.white70,
                             size: 60,
-                          ),
+                          ),*/
                         ),
                         SizedBox(
                           width: 15,

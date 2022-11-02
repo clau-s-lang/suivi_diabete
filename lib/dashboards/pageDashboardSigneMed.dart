@@ -59,6 +59,7 @@ class _SignesDashMedState extends State<SignesDashMed> {
           }
           print(widget.patientId);
           return ListView.builder(
+            padding: EdgeInsets.all(15),
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 DocumentSnapshot Signes = snapshot.data!.docs[index];
@@ -76,11 +77,11 @@ class _SignesDashMedState extends State<SignesDashMed> {
               });
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add_outlined),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) =>  DonneesPatient())),
-      ),
+      ),*/
     );
   }
 }

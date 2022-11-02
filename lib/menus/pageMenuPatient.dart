@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:gestion_diabete/chat/pageChatBon.dart';
 import 'package:gestion_diabete/dashboards/pageDahboqrdOrdonnance.dart';
 import 'package:gestion_diabete/dashboards/pageDashbaordDossPat.dart';
+import 'package:gestion_diabete/info_diab/view_webview.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import '../api/apiProvider.dart';
 import '../profil/profil_patient.dart';
 import '../signes_vitaux/pageDataPatient.dart';
 import '../chat/pageChat.dart';
@@ -76,19 +79,10 @@ class _MenuPatientState extends State<MenuPatient> {
                             'E-Diab Care',
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           ),
-                          SizedBox(
+                          /*SizedBox(
                             width: 50,
-                          ),
-                          GestureDetector(
-                              onTap: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => EditProfilPat())),
-                            child: Text(
-                              'Editer le profil',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
+                          ),*/
+
                         ],
                       ),
                       SizedBox(
@@ -101,14 +95,14 @@ class _MenuPatientState extends State<MenuPatient> {
                             backgroundImage:NetworkImage(doc['imgProfil']),
                             backgroundColor: Colors.grey,
                             radius: 35,
-                            child: Icon(
+                            /*child: Icon(
                               Icons.account_circle_outlined,
                               color: Colors.white70,
                               size: 60,
-                            ),
+                            ),*/
                           ),
                           SizedBox(
-                            width: 15,
+                            width: 20,
                           ),
                           Column(
                             children: [
@@ -134,6 +128,17 @@ class _MenuPatientState extends State<MenuPatient> {
                             ],
                           ),
                         ],
+                      ),
+                      SizedBox(height: 10,),
+                      GestureDetector(
+                        onTap: () => Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => EditProfilPat())),
+                        child: Text(
+                          'Editer le profil',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
                       ),
                     ],
                   ),
@@ -166,26 +171,51 @@ class _MenuPatientState extends State<MenuPatient> {
                   icone: Icon(Icons.data_exploration_outlined),
                   ToPage: HistoriqueChart(),
                 ),
+           /* StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                .collection('Traitement')
+                .where('idPatient', isEqualTo: user!.uid)
+                .snapshots(),
+
+              builder: (context, snapshot) {
+                return ListTile(
+                leading:  Icon(Icons.medication_outlined),
+                title: Text('Mon traitement',
+                style: TextStyle(
+                fontSize: 15,
+                ),),
+                onTap: () => {
+                Navigator.push(context,MaterialPageRoute(builder: (context)
+                {
+                return TraitementPatient();
+                })),
+                },
+                );
+              }
+            ),*/
                 MenuNames(
                   designation: 'Mon traitement',
                   icone: Icon(Icons.medication_outlined),
-                  ToPage: TraitementPatient(),
+                  ToPage: TraitementPatient(idOrd: doc[''],),
                 ),
                 MenuNames(
                   designation: 'Infos sur le diabète',
                   icone: Icon(Icons.feed_outlined),
-                  ToPage: AccueilChatMedecin(),
+                  ToPage: EdenNews(),
                 ),
                 MenuNames(
                   designation: 'Paramètres',
                   icone: Icon(Icons.settings_outlined),
                   ToPage: DonneesPatient(),
                 ),
-                MenuNames(
-                  designation: 'Déconnexion vers Medecin',
-                  icone: Icon(Icons.exit_to_app),
-                  ToPage: AccueilChatMedecin(),
-                ),
+                ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Déconnexion', style: TextStyle(fontSize: 15),),
+                    onTap: () {
+                      final provider =
+                      Provider.of<ProviderApi>(context, listen: false);
+                      provider.logOut();
+                    }),
               ],
             );
           }),

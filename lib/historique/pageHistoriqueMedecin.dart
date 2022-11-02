@@ -18,16 +18,16 @@ class _HistoriqueChartState extends State<HistoriqueChart> {
     // TODO: implement initState
     super.initState();
     data = [
-      ChartData(17, 21500),
-      ChartData(18, 22684),
-      ChartData(19, 21643),
-      ChartData(20, 22997),
-      ChartData(21, 22883),
-      ChartData(22, 22635),
-      ChartData(23, 21800),
-      ChartData(24, 23500),
-      ChartData(25, 21354),
-      ChartData(26, 21354),
+      ChartData(17, 89),
+      ChartData(18, 134),
+      ChartData(19, 97),
+      ChartData(20, 72),
+      ChartData(21, 150),
+      ChartData(22, 200),
+      ChartData(23, 230),
+      ChartData(24, 86),
+      ChartData(25, 134),
+      ChartData(26, 223),
     ];
   }
 
@@ -44,6 +44,17 @@ class _HistoriqueChartState extends State<HistoriqueChart> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Container(
+            child: Text(
+              'Evolution de la glycémie',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
           Center(
             child: SfCartesianChart(
               margin: EdgeInsets.all(0),
@@ -51,18 +62,18 @@ class _HistoriqueChartState extends State<HistoriqueChart> {
               borderColor: Colors.transparent,
               plotAreaBorderWidth: 0,
               primaryXAxis: NumericAxis(
-                minimum: 17,
-                maximum: 26,
-                isVisible: false,
+                minimum: 16,
+                maximum: 27,
+                isVisible: true,
                 interval: 1,
                 borderWidth: 0,
                 borderColor: Colors.transparent,
               ),
               primaryYAxis: NumericAxis(
-                minimum: 19000,
-                maximum: 24000,
-                isVisible: false,
-                interval: 1000,
+                minimum: 0,
+                maximum: 300,
+                isVisible: true,
+                interval: 10,
                 borderWidth: 0,
                 borderColor: Colors.transparent,
               ),

@@ -26,6 +26,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
   List<Widget> champs = [];
   final ordonance = TextEditingController();
   final posologie = TextEditingController();
+  final nombre = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
   bool loading = false;
@@ -123,6 +124,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                       ChampOrdannance(
                         ordonance: ordonance,
                         posologie: posologie,
+                        nombre: nombre,
                         label: 'Designation',
                         hint: 'Exemple : Paracétamol',
                         message:
@@ -139,6 +141,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                            champs.add(ChampOrdannance(
                              ordonance: ordonance,
                              posologie: posologie,
+                             nombre: nombre,
                              label: 'Designation',
                              hint: 'Exemple : Paracétamol',
                              message:
@@ -192,6 +195,7 @@ class _PrescriptionMedState extends State<PrescriptionMed> {
                                 idMedecin: auth.currentUser!.uid,
                                 designation: ordonance.text,
                                 posologie: posologie.text,
+                                  nbreJours: nombre.text,
                                 datedeCreation: DateFormat('yyyy-MM-dd')
                                     .format(DateTime.now())
                                     .toString(),

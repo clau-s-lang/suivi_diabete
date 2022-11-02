@@ -4,11 +4,11 @@ Widget signeTile(
     {required String glycemie,routing}) {
   return Card(
     child: ListTile(
-      title: Text("Glycémie"),
+      title: Text("Les données du "),
       subtitle: Text("$glycemie"),
       trailing: CircleAvatar(
         radius: 7.0,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white,
         child:Text(
           '',
           style: TextStyle(

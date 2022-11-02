@@ -20,7 +20,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
       appBar: AppBar(
         title: Text('Mes Patients'),
         backgroundColor: Color(0xFF216DAD),
-        actions: [
+        /*actions: [
           TextButton.icon(
               icon: Icon(Icons.logout, color: Colors.white,),
               onPressed: (){
@@ -29,7 +29,7 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
                 // Center(child: CircularProgressIndicator(),);
               },
               label: Text('Deconnexion', style:TextStyle(color: Colors.white),)),
-        ],
+        ],*/
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -65,7 +65,8 @@ class _DashboardMedecinState extends State<DashboardMedecin> {
                 return patientTile(
                   sname: patientAssigned['sname'],
                   name: patientAssigned['fname'],
-                  email: patientAssigned['email'],
+                  //email:'Diabète de type 2',
+                  email: patientAssigned['typeDediabte'],
                   routing: () => Navigator.push(
                     context,
                     MaterialPageRoute(

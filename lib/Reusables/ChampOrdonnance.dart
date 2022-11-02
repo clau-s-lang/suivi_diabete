@@ -9,10 +9,12 @@ class ChampOrdannance extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.message,
+    required this.nombre,
   }) ;
 
   final TextEditingController ordonance;
   final TextEditingController posologie;
+  final TextEditingController nombre;
   String label, hint,message;
 
   @override
@@ -32,6 +34,15 @@ class ChampOrdannance extends StatelessWidget {
           name: posologie,
           label: 'Posologie',
           hint: 'Exemple : 3x2Co',
+          message: 'Vous ne pouvez pas envoyer un formulaire vide',
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        ReusableTextFormFieldData(
+          name: nombre,
+          label: 'Durée de la cure',
+          hint: 'Exemple : 10jours',
           message: 'Vous ne pouvez pas envoyer un formulaire vide',
         ),
       ],

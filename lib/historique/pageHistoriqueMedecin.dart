@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import '../menus/pageMenuMedecin.dart';
 import 'package:gestion_diabete/style/styleChart.dart';
@@ -113,3 +114,4 @@ class _HistoriqueChartState extends State<HistoriqueChart> {
     );
   }
 }
+*/

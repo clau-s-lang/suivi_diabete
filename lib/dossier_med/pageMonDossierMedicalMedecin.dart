@@ -7,17 +7,11 @@ import 'package:gestion_diabete/menus/pageMenuMedecin.dart';
 import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import 'package:provider/provider.dart';
 import '../api/apiProvider.dart';
-import '../menus/pageMenuPatient.dart';
-import '../signes_vitaux/pageDataPatient.dart';
+import '../complication/CompleterComplication.dart';
 import '../users/pageInscriptionMedecin.dart';
-import '../users/pageLogin.dart';
-//import 'package:gestion_diabete/pages/pageMenuPatient.dart';
-
-import '../Reusables/BoutonDeConfimation.dart';
 import '../Reusables/ChampDossierMed.dart';
 import '../Reusables/EspaceVerticale.dart';
 import '../Reusables/PlageIdentifiantData.dart';
-import '../Reusables/ChampdeRedactionMessage.dart';
 import '../widget/pageloading.dart';
 
 class DossierMedicalPat extends StatefulWidget {
@@ -1003,7 +997,7 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
                                 final provider = Provider.of<ProviderApi>(
                                     context,
                                     listen: false);
-                                provider.addDoss(doss: doss);
+                                provider.addDoss(doss: doss, patientId: widget.patientId);
                               } catch (e) {
                                 Fluttertoast.showToast(msg: e.toString());
                                 setState(() {
@@ -1041,7 +1035,7 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add_outlined),
         onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>  InscriptionMedecin())),
+            MaterialPageRoute(builder: (context) =>  AjoutComplication(patientId: widget.patientId,))),
       ),
           );
   }
@@ -1055,4 +1049,29 @@ class _DossierMedicalPatState extends State<DossierMedicalPat> {
     chirurgicaux.clear();
     familliaux.clear();
   }
+
+ /* void insertComplication() async{
+    StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('DossierMedical').where('idPatient', isEqualTo:widget.patientId )
+          .snapshots(),
+      builder: (context, snapshot) {
+        DocumentSnapshot docu = snapshot.data! as DocumentSnapshot<Object?>;
+        var db = FirebaseFirestore.instance.collection('DossierMedical');
+        db
+            .doc()
+            .collection('Complication')
+            .doc()
+            .set({
+          "idComplication": widget.patientId,
+          'designation': docu['designation'],
+          'posologie' : docu['posologie'],
+          'datedeCreation': DateTime.now(),
+          'datedeFin' : (DateTime.now().add(Duration(days: docu['nbreJours']))),
+        });
+        return Container();
+      },
+    );
+
+  }*/
 }

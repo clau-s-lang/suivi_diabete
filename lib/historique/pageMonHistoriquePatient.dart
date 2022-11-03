@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/style/styleChart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -101,3 +102,4 @@ class _HistoriqueChartState extends State<HistoriqueChart> {
     );
   }
 }
+*/

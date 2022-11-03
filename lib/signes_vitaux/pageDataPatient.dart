@@ -196,6 +196,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                               maxWidth: 50,
                               imageQuality: 100,
                             );
+                            
                             if (pickedFile != null) {
                               setState(() {
                                 _image = File(pickedFile.path);
@@ -599,7 +600,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                          /* idMedecin: auth.currentUser!.uid,*/
 
                           patientId: auth.currentUser!.uid,
-                          glycemie: glycemie.text,
+                          glycemie:double.parse(glycemie.text),
                           insulinebasale: insulineBasale.text,
                           insulineBolus: insulineBolus.text,
                           insulineDeCorrection: insulineCorr.text,

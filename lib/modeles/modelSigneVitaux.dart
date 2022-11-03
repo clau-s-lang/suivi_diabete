@@ -2,7 +2,7 @@ class SigneVitaux{
   String idSigne;
   String patientId;
   String medecinId;
-  final String glycemie;
+  final double glycemie;
   final String insulinebasale;
   final String insulineBolus;
   final String insulineDeCorrection;

@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
 import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import '../modeles/modelChatting.dart';
+import '../modeles/modelComplication.dart';
 import '../modeles/modelMedecin.dart';
 import '../modeles/modelPatient.dart';
 import '../modeles/modelSigneVitaux.dart';
@@ -117,6 +118,15 @@ class FireBaseApi extends ChangeNotifier {
       Fluttertoast.showToast(msg: e.toString());
     }
   }*/
+  Future addComplication({required Complication comp, required String patientId}) async{
+    try{
+      final CompId = FirebaseFirestore.instance.collection('DossierMedical').doc(patientId).collection('Complication').doc();
+      String docId = CompId.id;
+      await FirebaseFirestore.instance.collection('DossierMedical').doc(patientId).collection('Complication').doc(docId).set(comp.toJson());
+    }catch(e){
+      print(e);
+    }
+  }
 
   Future addPatient({required Patient patient}) async {
     final medecinId = auth.currentUser!.uid;
@@ -223,10 +233,10 @@ class FireBaseApi extends ChangeNotifier {
     }
   }
 
-  Future addDoss({required DossierMedical doss}) async {
+  Future addDoss({required DossierMedical doss, required String patientId}) async {
     try {
       final docIdDoss =
-          FirebaseFirestore.instance.collection('DossierMedical').doc();
+          FirebaseFirestore.instance.collection('DossierMedical').doc(patientId);
       String docId = docIdDoss.id;
       doss.idDossier = docId;
       await FirebaseFirestore.instance

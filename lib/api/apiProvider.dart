@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gestion_diabete/database/dbUser.dart';
+import 'package:gestion_diabete/modeles/modelComplication.dart';
 import 'package:gestion_diabete/modeles/modelDossierMed.dart';
 import 'package:gestion_diabete/modeles/modelMedecin.dart';
 import 'package:gestion_diabete/modeles/modelOrdonnance.dart';
@@ -43,9 +44,11 @@ class ProviderApi extends ChangeNotifier {
       );
   void addOrdo({required Ordonnance ord})=>FireBaseApi().addOrdo(ord:ord);
 
-  void addDoss({required DossierMedical doss})=>FireBaseApi().addDoss(doss:doss);
+  void addDoss({required DossierMedical doss, required String patientId})=>FireBaseApi().addDoss(doss:doss, patientId: patientId);
 
   void addSigne({required SigneVitaux signe})=>FireBaseApi().addSigne(signe: signe);
+
+  void addCompl({required Complication comp, required patientId}) => FireBaseApi().addComplication(comp: comp,patientId: patientId);
 
   Future addProfil({
     String imgUrl = '',

@@ -61,7 +61,7 @@ class _DashDossMedState extends State<DashDossMed> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DescriptionDossMed(
-                        idDoss: mondoss['idDossier'],
+                        patientId: mondoss['idDossier'],
                       ),
                     ),
                   ),

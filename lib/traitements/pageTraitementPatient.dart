@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/tiles/traitement_tile.dart';
 
@@ -11,6 +12,7 @@ class TraitementPatient extends StatefulWidget {
 }
 
 class _TraitementPatientState extends State<TraitementPatient> {
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +20,9 @@ class _TraitementPatientState extends State<TraitementPatient> {
         title: Text('Details du traitement'),
         backgroundColor: Color(0xFF216DAD),
       ),
-      body: StreamBuilder<DocumentSnapshot>(
+      body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
-              .collection('Traitement')
-              .doc(widget.idOrd)
+              .collection('Ordonnance').where('status', isEqualTo: 'en cours').where('idPatient', isEqualTo: user!.uid)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.none) {
@@ -42,145 +43,17 @@ class _TraitementPatientState extends State<TraitementPatient> {
                 ),
               );
             }
-            DocumentSnapshot doc = snapshot.data!;
             return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
               itemBuilder: (BuildContext context, int index) {
+                DocumentSnapshot doc = snapshot.data!.docs[index];
                 return traitementTile(
                   designation: doc['designation'],
                   posologie: doc['posologie'],
                   datedeFin: doc['datedeFin'],
                 );
               },
-              /*  children: [
-              Column(
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'E-Diab Health Care Service',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Les médicaments en cours...',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Padding(
-                    padding: EdgeInsets.only(left: 30,right: 30),
-                    child: Card(
-                      color: Color(0xFFE8F0FE),
-                      child: Column(
-                        children: [
-                          Container(
-                            //height: 100,
-                            padding: EdgeInsets.only(left: 15, top: 10),
-                            // margin: EdgeInsets.only(left: 30, right: 30),
-                            width: 300,
-                            child: const Text(
-                              'Paracétamol',
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 15,),
-                          Container(
-                            padding: EdgeInsets.only(left: 5),
-                            // margin: EdgeInsets.only(left: 30, right: 30),
-                            width: 300,
-                            child: const Text(
-                              'Duree restant',
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 15,),
-                          Container(
-                            //height: 100,
-                            padding: EdgeInsets.only(left: 15, bottom: 10),
-                            // margin: EdgeInsets.only(left: 30, right: 30),
-                            width: 300,
-                            child: const Text(
-                              '3jours',
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Padding(
-                    padding: EdgeInsets.only(left: 30,right: 30),
-                    child: Card(
-                      color: Color(0xFFE8F0FE),
-                      child: Column(
-                        children: [
-                          Container(
-                            //height: 100,
-                            padding: EdgeInsets.only(left: 15, top: 10),
-                            // margin: EdgeInsets.only(left: 30, right: 30),
-                            width: 300,
-                            child: const Text(
-                              'Anaflam',
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 15,),
-                          Container(
-                            padding: EdgeInsets.only(left: 5),
-                            // margin: EdgeInsets.only(left: 30, right: 30),
-                            width: 300,
-                            child: const Text(
-                              'Duree restant',
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 15,),
-                          Container(
-                            //height: 100,
-                            padding: EdgeInsets.only(left: 15, bottom: 10),
-                            // margin: EdgeInsets.only(left: 30, right: 30),
-                            width: 300,
-                            child: const Text(
-                              '10jours',
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],*/
+
             );
           }),
     );

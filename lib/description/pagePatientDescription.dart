@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gestion_diabete/chat/pageChat.dart';
 import 'package:gestion_diabete/chat/pageChatBon.dart';
 import 'package:gestion_diabete/description/pageDescriptionDossMed.dart';
+import 'package:gestion_diabete/historique/Historique.dart';
 import 'package:gestion_diabete/menus/pageMenuMedecin.dart';
 import 'package:gestion_diabete/ordonnances/pageOrdonanceMedecin.dart';
 import 'package:gestion_diabete/signes_vitaux/pageDataMedecin.dart';
@@ -209,7 +210,7 @@ class _PatientDescriptionState extends State<PatientDescription> {
                       label: 'Historique glycémique',
                       iconData: Icons.data_exploration_outlined,
                       onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HistoriqueChart()))),
+                          MaterialPageRoute(builder: (context) => HistoriqueSigne()))),
                 ],
               ),
             ],

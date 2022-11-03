@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/menus/pageMenuMedecin.dart';
-class DescriptionDossMed extends StatefulWidget {
-  final String idDoss;
 
-  const DescriptionDossMed({Key? key, required this.idDoss}) : super(key: key);
+import '../complication/CompleterComplication.dart';
+class DescriptionDossMed extends StatefulWidget {
+  final String patientId;
+
+  const DescriptionDossMed({Key? key, required this.patientId}) : super(key: key);
 
   @override
   _DescriptionDossMedState createState() => _DescriptionDossMedState();
@@ -14,7 +16,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
 
   @override
   Widget build(BuildContext context) {
-    String idDoss = widget.idDoss;
+    String idDoss = widget.patientId;
     return Scaffold(
       drawer: MenuMedecin(),
       appBar: AppBar(
@@ -37,7 +39,7 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
                   child: Center(child: CircularProgressIndicator()));
             }
 
-            print(widget.idDoss);
+            print(widget.patientId);
             if (!snapshot.hasData) {
               return Material(
                 child: Center(
@@ -479,6 +481,12 @@ class _DescriptionDossMedState extends State<DescriptionDossMed> {
               ],
             );
           }),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add_outlined),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) =>  AjoutComplication(patientId: widget.patientId,))),
+      ),
     );
+
   }
 }

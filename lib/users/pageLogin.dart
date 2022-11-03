@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_diabete/api/apiProvider.dart';
+import 'package:gestion_diabete/widget/loading.dart';
 //import 'package:gestion_diabete/pages/pageDataPatient.dart';
 import 'pageInscriptionPatient.dart';
 //import 'package:gestion_diabete/pages/pageMenuPatient.dart';
@@ -22,11 +23,12 @@ class _ConnexionState extends State<Connexion> {
   final Mdp = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isVisible = true;
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      child: Scaffold(
+      child: loading? Loading(): Scaffold(
         body: ListView(
           children: [
             ReusableRetour(),
@@ -103,12 +105,22 @@ class _ConnexionState extends State<Connexion> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      final provider =
-                          Provider.of<ProviderApi>(context, listen: false);
-                      provider.signInWithEmail(
+
+                      if(_formKey.currentState!.validate()){
+                        setState(() {
+                          loading = true;
+                        });
+                        final provider =
+                        Provider.of<ProviderApi>(context, listen: false);
+                        provider.signInWithEmail(
                           email: email.text,
                           password: Mdp.text,
-                          );
+                        );
+                      }
+                      else{
+                        loading = false;
+                      }
+
                       Center(
                         child: CircularProgressIndicator(),
                       );

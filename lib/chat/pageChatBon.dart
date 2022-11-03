@@ -22,7 +22,7 @@ class _MessagesBonState extends State<MessagesBon> {
   final commentText = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    User? _currentUser = FirebaseAuth.instance.currentUser;
+    User _currentUser = FirebaseAuth.instance.currentUser!;
     String pat = widget.patientId;
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +34,7 @@ class _MessagesBonState extends State<MessagesBon> {
           Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
-                .collection('Message').doc(pat == _currentUser!.uid ? _currentUser!.uid : pat).collection('chats')
+                .collection('Message').doc(pat == _currentUser.uid ? _currentUser.uid : pat).collection('chats')
                 .snapshots(),
                 builder: (context, snapshot){
                   if (snapshot.connectionState == ConnectionState.none) {
@@ -128,7 +128,7 @@ class _MessagesBonState extends State<MessagesBon> {
                       } else {
                        final message = Message(
                          message: commentText.text,
-                         senderId: _currentUser!.uid,
+                         senderId: _currentUser.uid,
                          time: DateTime.now(),
                        );
                         //print('${pat['id'].toString()}');

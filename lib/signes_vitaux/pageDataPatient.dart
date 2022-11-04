@@ -1,6 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +43,31 @@ class _DonneesPatientState extends State<DonneesPatient> {
   bool loading = false;
   String activitePhysique = 'Musculation';
   String contexte = 'Stress';
+  String nourriture = '';
+
+  uploadeImage() async {
+    final request = http.MultipartRequest("POST", Uri.parse("http://192.168.43.80:6000/"));
+
+    final headers = {"Content-type": "multipart/form-data"};
+
+    request.files.add(
+      http.MultipartFile('image', _image!.readAsBytes().asStream(), _image!.lengthSync(),
+      filename: _image!.path.split("/").last));
+
+    request.headers.addAll(headers);
+    final response = await request.send();
+    if (response.statusCode == 200) {
+      print('ok');
+    }
+    http.Response res = await http.Response.fromStream(response);
+    final resJson = jsonDecode(res.body);
+
+
+
+    setState(() {
+      nourriture = resJson['message'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,82 +154,53 @@ class _DonneesPatientState extends State<DonneesPatient> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: isLoaded
-                      ? Column(
-                          children: [
-                            Image.file(
-                              _image!,
-                              height: 50,
-                            ),
-                            /* Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: isLoaded
+                          ? Column(
                               children: [
-                                OutlinedButton.icon(
-                                  onPressed: () async {
-                                    await _image!.delete();
-                                    setState(() {
-                                      isLoaded = false;
-                                    });
-                                  },
-                                  icon: Icon(Icons.delete_outline),
-                                  label: Text(''),
+                                Image.file(
+                                  _image!,
+                                  height: 50,
+                                  width: 50,
                                 ),
-                                OutlinedButton.icon(
-                                  onPressed: () async {
-                                    final pickedFile = await ImagePicker().getImage(
-                                      source: ImageSource.gallery,
-                                      maxHeight: 150,
-                                      maxWidth: 150,
-                                      imageQuality: 100,
-                                    );
-                                    if (pickedFile != null) {
-                                      setState(() {
-                                        _image = File(pickedFile.path);
-                                        isLoaded = true;
-                                      });
-                                    }
-                                  },
-                                  icon: Icon(Icons.camera_alt_outlined),
-                                  label: Text(''),
-                                ),
+
                               ],
-                            ),*/
-                          ],
-                        )
-                      : InkWell(
-                          child: Placeholder(
-                            color: Colors.transparent,
-                            child: CircleAvatar(
-                              /*child: Icon(
-                                Icons.account_circle_outlined,
-                                color: Colors.white70,
-                                size: 30,
-                              ),*/
-                              //backgroundColor: Colors.blue,
-                              backgroundImage: AssetImage('images/cam.PNG'),
-                              maxRadius: 20,
+                            )
+                          : InkWell(
+                              child: Placeholder(
+                                color: Colors.transparent,
+                                child: CircleAvatar(
+                                  backgroundImage: AssetImage('images/cam.PNG'),
+                                  maxRadius: 20,
+                                ),
+                                fallbackHeight: 50,
+                                fallbackWidth: 50,
+                              ),
+                              onTap: () async {
+                                final pickedFile = await ImagePicker().getImage(
+                                  source: ImageSource.gallery,
+                                  maxHeight: 50,
+                                  maxWidth: 50,
+                                  imageQuality: 100,
+                                );
+
+                                if (pickedFile != null) {
+                                  setState(() {
+                                    _image = File(pickedFile.path);
+                                    isLoaded = true;
+                                  });
+                                }
+                              },
                             ),
-                            fallbackHeight: 50,
-                            fallbackWidth: 50,
-                          ),
-                          onTap: () async {
-                            final pickedFile = await ImagePicker().getImage(
-                              source: ImageSource.camera,
-                              maxHeight: 50,
-                              maxWidth: 50,
-                              imageQuality: 100,
-                            );
-                            
-                            if (pickedFile != null) {
-                              setState(() {
-                                _image = File(pickedFile.path);
-                                isLoaded = true;
-                              });
-                            }
-                          },
-                        ),
+                    ),
+                    SizedBox(height: 10,),
+                    TextButton.icon(
+                        onPressed: uploadeImage,
+                        icon: Icon(Icons.upload_file_outlined), label: Text('')),
+                  ],
                 ),
                 SizedBox(width: 10,),
                 Column(
@@ -232,7 +228,7 @@ class _DonneesPatientState extends State<DonneesPatient> {
                           decoration: BoxDecoration(
                             color: Color(0xFFE8F0FE),
                           ),
-                          child: Text('Pomme de terre'),
+                          child: Text(nourriture),
                         ),
                         SizedBox(width: 10,),
                         Container(
